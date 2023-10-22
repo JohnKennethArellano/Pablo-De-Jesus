@@ -1742,7 +1742,7 @@ input{
     color: var(--white);
     transition: all ease .3s;
 }
-.containerOTP #verifyEmail:hover{
+.containerOTP #verifyEmail:hover,.containerOTP #editEmail:hover{
     color: var(--blue);
     background: var(--white);
 }
