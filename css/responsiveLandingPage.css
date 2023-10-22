@@ -39,13 +39,14 @@
         display: none;
     }
     .header {
+        width: 100vw;
         justify-content: space-between;
     }
     .spinner span img{
         width: 12vh;
     }
     .cookieHolder{
-        background-color: #2196F3;
+        width: 100vw;
         padding: 0 1vw;
     }
     .cookieHolder span{
