@@ -7,19 +7,17 @@ function load(){
     listeners();
     animation();
     fetchClinics();
-    openInChrome();
+    // openInChrome();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-
         const targetElement = document.querySelector("#clinics");
         if (targetElement) {
             window.scrollTo({
                 top: targetElement.offsetTop,
                 behavior: "smooth"
             });
-        }
-    
+        } 
 });
 
 // global variables
@@ -627,21 +625,21 @@ function loader(){
         body.classList.add('loaded');
     },3000);
 }
-function openInChrome() {
+// function openInChrome() {
 
-    function isMobile() {
-        const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-        return regex.test(navigator.userAgent);
-      }
+//     function isMobile() {
+//         const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+//         return regex.test(navigator.userAgent);
+//       }
       
-      if (isMobile()) {
-        console.log("Mobile device detected");
-        window.open('https://dencare.netlify.app/', '_system');
-      } else {
-        console.log("Desktop device detected");
-      }
+//       if (isMobile()) {
+//         console.log("Mobile device detected");
+//         window.open('https://dencare.netlify.app/', '_system');
+//       } else {
+//         console.log("Desktop device detected");
+//       }
 
-  }
+//   }
   
 
   
