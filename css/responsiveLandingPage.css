@@ -345,7 +345,8 @@
         display: block;
     }
     .inputContent{
-        height: 6vh;
+        height: 7vh;
+        background-color: #2196F3;
     }
     .inputContent .fa-circle-check {
         font-size: var(--medium);
@@ -360,7 +361,7 @@
     .inputContent label{
         height: fit-content;
         font-size: 1.2vh;
-        padding: 0 0 1vw 1.2vw;
+        padding: 0 0 1vw 2vw;
     }
     .inputContent .input{
         height: 4vh;
