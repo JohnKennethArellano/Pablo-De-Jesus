@@ -286,6 +286,7 @@
     .form-container{
         width: 70%;
         position: absolute;
+        left: 0;
     }
     .overlay-container{
         display: none;
