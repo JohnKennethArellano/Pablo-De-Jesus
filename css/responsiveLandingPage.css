@@ -290,25 +290,23 @@
     }
     .form-container{
         position: absolute;
-        width: 100%;
+        width: 70%;
         height: 100%;
     }
     .overlay-container{
         display: none;
     }
     .container.active, .containerAdmin.active,.containerOTP.active{
-        width: 80vw;
-        height: 50vh;
+        width: 100vw;
+        height: 70vh;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     .sign-in-container{
-        left: 0;
         z-index: 2;
     }
     .sign-up-container{
-        left: 0;
         opacity: 0;
         z-index: 1;
         padding-bottom: 5vh;
