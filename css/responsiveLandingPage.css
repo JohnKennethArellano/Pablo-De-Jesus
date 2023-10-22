@@ -49,6 +49,7 @@
         top: 0;
         z-index: 999;
         justify-content: space-between;
+        -webkit-backface-visibility: hidden;
     }
     .spinner span img{
         width: 12vh;
