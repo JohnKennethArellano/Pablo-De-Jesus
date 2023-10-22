@@ -339,6 +339,7 @@
         display: none;
     }
     .container h1,.containerAdmin h1{
+        margin-top: 1vh;
         font-size: 3vh; 
     }
     .responsiveButtons{
@@ -367,13 +368,13 @@
         height: 4vh;
         border-radius: .3vh;
         letter-spacing: .05vh;
-        font-size: 1.5vh;
+        font-size: 1.3vh;
     }
     .errorMessage{
         font-size: var(--small);
     }
     .forgot{
-        margin-top: .5vh;
+        margin-top: 1vh;
     }
     .forgot a{
         font-size: 1vh;
