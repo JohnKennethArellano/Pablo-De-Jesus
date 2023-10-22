@@ -299,6 +299,16 @@
         align-items: center;
         justify-content: center;
     }
+    .sign-in-container{
+        left: 0;
+        z-index: 2;
+    }
+    .sign-up-container{
+        left: 0;
+        opacity: 0;
+        z-index: 1;
+        padding-bottom: 5vh;
+    }
     .containerAdmin .logo,.container .logo,.containerOTP .logo{
         width: 20vw;
     }
