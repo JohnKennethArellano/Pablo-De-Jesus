@@ -283,6 +283,9 @@
         border-radius: .3vh;
         font-size: 1.1vh;
     }
+    .form-container{
+        width: 100%;
+    }
     .container.active, .containerAdmin.active,.containerOTP.active{
         width: 100vw;
         height: 50vh;
@@ -293,9 +296,11 @@
         width: 20vw;
     }
     .overlay-left span{
+        z-index: 90;
         right: 8vw;
     }
     .overlay-right span{
+        z-index: 90;
         right: 8vw;
     }
     .overlay-panel {
