@@ -369,7 +369,7 @@
         display: none;
     }
     .ul.responsive{
-        position: sticky;
+        position: absolute;
         display: flex;
         flex-direction: column;
         justify-content: unset;
