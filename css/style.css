@@ -698,6 +698,16 @@ header a:hover{
     width: var(--large);
     border-radius: 50%;
 }
+.responsiveButtons{
+    position: absolute;
+    bottom: 1vh;
+    border: none;
+    outline: none;
+    background-color: var(--white);
+    color: var(--darkgray);
+    text-decoration: underline;
+    display: none;
+}
 .terms input[type="checkbox"] {
     display: none;
 } 

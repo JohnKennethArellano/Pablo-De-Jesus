@@ -302,6 +302,9 @@
     .container h1,.containerAdmin h1{
         font-size: 3vh; 
     }
+    .responsiveButtons{
+        display: block;
+    }
     .inputContent{
         height: 6vh;
     }
