@@ -387,6 +387,7 @@
     }
     .buttonContainer{
         height: 9vh;
+        bottom: 6vh;
     }
     .container .btn, .containerAdmin .btn{
         height: 4vh;
