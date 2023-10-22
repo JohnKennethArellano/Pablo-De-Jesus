@@ -284,6 +284,7 @@
         font-size: 1.1vh;
     }
     .form-container{
+        position: absolute;
         width: 70%;
         height: 100%;
     }
@@ -293,6 +294,7 @@
     .container.active, .containerAdmin.active,.containerOTP.active{
         width: 100vw;
         height: 50vh;
+        left: 0;
         display: flex;
         align-items: center;
         justify-content: center;
