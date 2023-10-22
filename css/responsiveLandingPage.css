@@ -275,7 +275,7 @@
         font-size: 1.1vh;
     }
     .container.active, .containerAdmin.active,.containerOTP.active{
-        width: 90%;
+        width: 100vw;
         height: 50vh;
         left: 5vw;
         backdrop-filter: blur(2px);
