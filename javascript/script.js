@@ -11,7 +11,7 @@ function load(){
 
 document.addEventListener("DOMContentLoaded", function () {
 
-        const targetElement = document.querySelector("#services");
+        const targetElement = document.querySelector("#clinics");
         if (targetElement) {
             window.scrollTo({
                 top: targetElement.offsetTop,
