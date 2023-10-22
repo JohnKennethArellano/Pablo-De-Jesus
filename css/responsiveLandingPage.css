@@ -289,6 +289,9 @@
         left: 0;
         backdrop-filter: blur(2px);
     }
+    .containerAdmin .logo,.container .logo,.containerOTP .logo{
+        width: 20vw;
+    }
     .container h1,.containerAdmin h1{
         font-size: 3vh; 
     }
