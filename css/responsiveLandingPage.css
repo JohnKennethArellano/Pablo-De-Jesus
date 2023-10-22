@@ -369,14 +369,14 @@
         display: none;
     }
     .ul.responsive{
-        position: absolute;
+        position: sticky;
         display: flex;
         flex-direction: column;
         justify-content: unset;
         background-color: var(--blue);
         width: 70vw;
         right: -1.2vh;
-        top: -20vh;
+        top: 0;
         height:100vh;
         z-index: 97;
         padding-top: 10vh;
