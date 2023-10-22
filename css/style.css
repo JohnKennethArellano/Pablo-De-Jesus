@@ -67,6 +67,7 @@ body::-webkit-scrollbar{
     color: var(--white);
 }
 .header{
+    position: absolute;
     z-index: 90;
     width: 100%;
     height: 11vh;
