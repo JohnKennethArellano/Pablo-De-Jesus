@@ -297,6 +297,7 @@
         display: none;
     }
     .container.active, .containerAdmin.active,.containerOTP.active{
+        left: 0;
         width: 100vw;
         height: 70vh;
         display: flex;
