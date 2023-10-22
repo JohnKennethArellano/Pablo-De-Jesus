@@ -299,7 +299,6 @@
     .container.active, .containerAdmin.active,.containerOTP.active{
         width: 80vw;
         height: 50vh;
-        left: 0;
         display: flex;
         align-items: center;
         justify-content: center;
