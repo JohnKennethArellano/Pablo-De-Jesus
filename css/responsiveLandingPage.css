@@ -46,6 +46,8 @@
     .header {
         width: 100vw;
         position: absolute;
+        position: fixed;
+        top: 0;
         z-index: 999;
         justify-content: space-between;
     }
@@ -375,8 +377,10 @@
         justify-content: unset;
         background-color: var(--blue);
         width: 70vw;
+        position: absolute;
+        position: fixed;
+        top: 0;
         right: -1.2vh;
-        bottom: -1vh;
         height: 100vh;
         z-index: 97;
         padding-top: 10vh;
