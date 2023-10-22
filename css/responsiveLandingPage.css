@@ -285,6 +285,10 @@
     }
     .form-container{
         width: 70%;
+        position: absolute;
+    }
+    .overlay-container{
+        display: none;
     }
     .container.active, .containerAdmin.active,.containerOTP.active{
         width: 100vw;
