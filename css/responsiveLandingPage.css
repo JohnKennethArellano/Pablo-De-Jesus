@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
 
 
-@media only screen and (max-device-width : 420px){
+@media only screen and (max-device-width : 780px){
     *{  
         margin: 0;
         padding: 0;
