@@ -38,10 +38,10 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         transition: all ease .3s;
+        position: fixed;
     }
     body::-webkit-scrollbar{
         display: none;
-        position: fixed;
     }
     .header {
         width: 100vw;
