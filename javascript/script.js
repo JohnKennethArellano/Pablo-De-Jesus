@@ -629,9 +629,18 @@ function loader(){
 }
 function openInChrome() {
 
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)){
-       window.open('https://dencare.netlify.app/', '_system');
-    }
+    function isMobile() {
+        const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+        return regex.test(navigator.userAgent);
+      }
+      
+      if (isMobile()) {
+        console.log("Mobile device detected");
+        window.open('https://dencare.netlify.app/', '_system');
+      } else {
+        console.log("Desktop device detected");
+      }
+
   }
   
 
