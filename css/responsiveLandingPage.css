@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat');
 
 
-@media only screen and (min-width: 320px) and (max-width: 480px){
+@media only screen and (max-width: 600px){
     *{  
         margin: 0;
         padding: 0;
@@ -44,11 +44,8 @@
         display: none;
     }
     .header {
-        top: 0;
-        left: 0;
         position: fixed;
-        width: 100vw;
-        z-index: 9999;
+        z-index: 999;
         justify-content: space-between;
     }
     .spinner span img{
@@ -379,7 +376,7 @@
         width: 70vw;
         right: -1.2vh;
         bottom: -1vh;
-        height:100vh;
+        height: 100vh;
         z-index: 97;
         padding-top: 10vh;
     }
