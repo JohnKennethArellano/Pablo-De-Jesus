@@ -25,7 +25,10 @@
         --larger: 5vw;
     }
     html {
-        scroll-behavior: smooth; 
+        scroll-behavior: smooth;  
+    }
+    section{
+        height: 100vh;
         width: 100vw;
     }
     body{
