@@ -174,34 +174,27 @@ var scrollPage = (function(){
 });
 
 function login(){
-    const signUpForm = document.getElementById('signUpForm');
-    const loginForm = document.getElementById('loginForm');
-    const container = document.getElementById('container');
-    const containerAdmin = document.getElementById('containerAdmin');
-    const login = document.getElementById('user');
-    const admin = document.getElementById('admin');
-    const register = document.getElementById('register');
-    const registerResponsive = document.getElementById('registerResponsive');
-    const createResponsive = document.getElementById('createResponsive');
-    const loginResponsive = document.getElementById('loginResponsive');
-    //add this russel
-    const username = document.getElementById('username');
-    const password = document.getElementById('password');
+    const signUpForm = document.querySelector('#signUpForm');
+    const loginForm = document.querySelector('#loginForm');
+    const container = document.querySelector('#container');
+    const containerAdmin = document.querySelector('#containerAdmin');
+    const login = document.querySelector('#user');
+    const admin = document.querySelector('#admin');
+    const register = document.querySelector('#register');
+    const registerResponsive = document.querySelector('#registerResponsive');
+    const createResponsive = document.querySelector('#createResponsive');
+    const loginResponsive = document.querySelector('#loginResponsive');
     const ul = document.querySelector('.ul');
-    const navBarOptions = document.querySelectorAll('.ul responsive li a');
-    const navBarCheck = document.getElementById('navBarCheck');
-    const confirmPassword = document.getElementById('confirmPassword');
-    const usernameLogIn = document.querySelector("#usernameLogIn");
-    const passwordLogIn = document.getElementById('passwordLogIn');
-    //end of adding
+    const navBarOptions = document.querySelectorAll('.links');
+    const navBarCheck = document.querySelector('#navBarCheck');
 
     navBarCheck.addEventListener("click", ()=>{
         ul.classList.toggle("responsive")
     })
-    navBarOptions.forEach(link => {
-        link.addEventListener("click",()=>{
-            alert()  
-        })
+    navBarOptions.forEach((evt) => {
+        evt.addEventListener("click", () => {
+            ul.classList.remove("responsive")
+        });
     });
     signUpForm.addEventListener('click', () => {
         container.classList.add("right-panel-active")
