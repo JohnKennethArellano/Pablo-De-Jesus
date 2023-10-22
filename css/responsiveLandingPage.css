@@ -350,14 +350,14 @@
         background-color: #2196F3;
     }
     .inputContent .fa-circle-check {
-        font-size: var(--medium);
-        margin-top: 2.6vh ;
-        right: 2.2vh ;
+        font-size: 1vh;
+        margin-top: 3vh ;
+        right: 3vh ;
     }
     .inputContent .fa-exclamation-circle{
-        font-size: var(--medium);
-        margin-top: 2.9vh ;
-        right: 2.5vh ;
+        font-size: 1vh;
+        margin-top: 3vh ;
+        right: 3vh ;
     }
     .inputContent label{
         height: fit-content;
