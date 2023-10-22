@@ -32,13 +32,13 @@
         max-width: 100vw;
     }
     body{
+        position: absolute;
         font-family: 'Poppins', Arial, Helvetica, sans-serif;    
         background: rgb(175,221,255);
         background: linear-gradient(231deg, rgba(175,221,255,1) 0%, rgba(255,255,255,1) 40%);
         background-repeat: no-repeat;
         background-attachment: fixed;
         transition: all ease .3s;
-        position: fixed;
     }
     body::-webkit-scrollbar{
         display: none;
