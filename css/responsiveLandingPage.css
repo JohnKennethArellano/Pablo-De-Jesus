@@ -293,11 +293,10 @@
         width: 20vw;
     }
     .overlay-left span{
-        padding: 3vh 0 0 8vw;
+        right: 8vw;
     }
     .overlay-right span{
-
-        padding: 3vh 8vw 0 0;
+        right: 8vw;
     }
     .container h1,.containerAdmin h1{
         font-size: 3vh; 
