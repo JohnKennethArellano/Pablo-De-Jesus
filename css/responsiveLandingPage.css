@@ -53,6 +53,11 @@
         left: 0;
         justify-content: space-between;
     }
+    #home{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     .spinner span img{
         width: 12vh;
     }
