@@ -330,8 +330,7 @@
         font-size: 1vh;
     }
     .container1  span{
-        width: fit-content;
-        background-color: #2196F3;
+        width: 10vw;
     }
     .buttonContainer{
         height: 9vh;
