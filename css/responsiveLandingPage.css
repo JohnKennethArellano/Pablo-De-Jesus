@@ -305,11 +305,14 @@
         justify-content: center;
         background-color: none;
         backdrop-filter: none   ;
+        box-shadow: none;
     }
     .sign-in-container{
+        left: unset;
         z-index: 2;
     }
     .sign-up-container{
+        left: unset;
         opacity: 0;
         z-index: 1;
         padding-bottom: 5vh;
