@@ -311,6 +311,24 @@ header a:hover{
     color:var(--blue);
     background: none;
 }
+#registerResponsive{
+    width: 49%;
+    height: 6vh;
+    outline: none;
+    border: none;
+    background-color: var(--blue);
+    border: solid 1px var(--blue);
+    border-radius: .3vw;
+    color: var(--white);
+    font-size: var(--medium);
+    transition:  ease .3s;
+    transition-delay: 200ms;
+    display: none;
+}
+#registerResponsive:hover{
+    color:var(--blue);
+    background: none;
+}
 #bookButton{
     width: 49%;
     height: 6vh;

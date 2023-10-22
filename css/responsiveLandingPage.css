@@ -89,7 +89,7 @@
     #services,#aboutUs{
         padding-top: 15vh;
     }
-    #register, #bookButton{
+    #register, #bookButton,#registerResponsive{
         height: 4vh;
         font-size: 1.7vh;
         border-radius: .5vw;
@@ -324,6 +324,15 @@
         z-index: 1;
         padding-bottom: 5vh;
     }
+    .container.right-panel-active .sign-in-container{
+        transform: translateX(0%);
+        opacity: 0;
+    }
+    .container.right-panel-active .sign-up-container{
+        transform: translateX(0%);
+        opacity: 1;
+        z-index: 5;
+    }
     .containerAdmin .logo,.container .logo,.containerOTP .logo{
         top: 3vh;
         width: 20vw;
@@ -479,6 +488,12 @@
         right: 6vh;
         z-index: 90;
     }
+    #register{
+        display: none;
+    }
+    #registerResponsive{
+        display: block;
+    }
 }
 @media screen and (max-width:961px) {
     *{  
@@ -516,4 +531,5 @@
         background-attachment: fixed;
         transition: all ease .3s;
     }
+    
   }

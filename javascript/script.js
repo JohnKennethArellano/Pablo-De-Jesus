@@ -181,6 +181,9 @@ function login(){
     const login = document.getElementById('user');
     const admin = document.getElementById('admin');
     const register = document.getElementById('register');
+    const registerResponsive = document.getElementById('registerResponsive');
+    const createResponsive = document.getElementById('createResponsive');
+    const loginResponsive = document.getElementById('loginResponsive');
     //add this russel
     const username = document.getElementById('username');
     const password = document.getElementById('password');
@@ -228,6 +231,16 @@ function login(){
     register.addEventListener('click', () => {
         container.classList.toggle("right-panel-active")
         container.classList.toggle("active")       
+    });
+    loginResponsive.addEventListener('click', () => {
+        container.classList.remove("right-panel-active")    
+    });
+    createResponsive.addEventListener('click', () => {
+        container.classList.add("right-panel-active")     
+    });
+    registerResponsive.addEventListener('click', () => {
+        container.classList.add("right-panel-active")  
+        container.classList.toggle("active")    
     });
 
 }
