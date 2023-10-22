@@ -494,6 +494,28 @@
     #registerResponsive{
         display: block;
     }
+    .termsHolder-show{
+        padding: 1vh;
+        top: 17%;
+        width: 70%;
+        height: 50vh;
+        right: 15vw;
+    }
+    .termsHolder-show span{
+        font-size: 2vh;
+    }
+    .termsHolder-show span i{
+        font-size: 1vh;
+    }
+    .termsConditions{
+        font-size: 1vh;
+    }
+    #termsAndConditions1{
+        margin-left: 1vw;
+        font-size: 1vh;
+        transition: ease 0.3s;
+        cursor: pointer;
+    }
 }
 @media screen and (max-width:961px) {
     *{  
