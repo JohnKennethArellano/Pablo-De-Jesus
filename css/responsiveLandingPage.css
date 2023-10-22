@@ -45,9 +45,8 @@
     }
     .header {
         position: absolute;
-        position: sticky;
-        top: 0;
-        z-index: 9999;
+        top: 1vh;
+        position: fixed;
         width: 100vw;
         justify-content: space-between;
     }
