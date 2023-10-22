@@ -369,6 +369,9 @@
         display: none;
     }
     .ul.responsive{
+        position: absolute;
+        top: 0;
+        right: 0;
         display: flex;
         flex-direction: column;
         justify-content: unset;
