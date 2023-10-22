@@ -45,6 +45,7 @@
     }
     .header {
         position: absolute;
+        position: fixed;
         top: 0;
         position: fixed;
         width: 100vw;
@@ -374,7 +375,7 @@
         display: flex;
         flex-direction: column;
         justify-content: unset;
-        background-color: var(--white);
+        background-color: var(--blue);
         width: 70vw;
         right: -1.2vh;
         bottom: -1vh;
