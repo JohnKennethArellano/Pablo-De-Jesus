@@ -359,14 +359,14 @@
     }
     .inputContent label{
         height: fit-content;
-        font-size: var(--medium);
+        font-size: 2vh;
         padding: 0 0 1vw 1.2vw;
     }
     .inputContent .input{
-        height: 3.5vh;
+        height: 4vh;
         border-radius: .3vh;
         letter-spacing: .05vh;
-        font-size: var(--medium);
+        font-size: 2vh;
     }
     .errorMessage{
         font-size: var(--small);
