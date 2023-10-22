@@ -286,7 +286,7 @@
     .container.active, .containerAdmin.active,.containerOTP.active{
         width: 100vw;
         height: 50vh;
-        left: 5vw;
+        left: 0;
         backdrop-filter: blur(2px);
     }
     .container h1,.containerAdmin h1{
