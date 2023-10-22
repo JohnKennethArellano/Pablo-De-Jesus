@@ -41,6 +41,7 @@
     }
     body::-webkit-scrollbar{
         display: none;
+        position: fixed;
     }
     .header {
         width: 100vw;
