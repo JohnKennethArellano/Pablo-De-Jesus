@@ -290,7 +290,7 @@
     }
     .form-container{
         position: absolute;
-        width: 70%;
+        width: 80%;
         height: 100%;
     }
     .overlay-container{
@@ -299,7 +299,7 @@
     .container.active, .containerAdmin.active,.containerOTP.active{
         left: 0;
         width: 100vw;
-        height: 70vh;
+        height: 60vh;
         display: flex;
         align-items: center;
         justify-content: center;
