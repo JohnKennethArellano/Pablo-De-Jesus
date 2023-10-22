@@ -598,6 +598,9 @@ header a:hover{
     height: 0;
     width: 0;
 }
+.container1  span{
+    width: fit-content;
+}
 .container1.checkmark {
     font-size: var(--small);
     transition: ease 0.3s;
