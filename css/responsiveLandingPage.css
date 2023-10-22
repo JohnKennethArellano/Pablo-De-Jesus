@@ -366,10 +366,11 @@
         z-index: 99;
     }
     .ul{
+        right: -1.2vh;
+        top: -1vh;
         display: none;
     }
     .ul.responsive{
-        position: absolute;
         display: flex;
         flex-direction: column;
         justify-content: unset;

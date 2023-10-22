@@ -114,7 +114,6 @@ nav{
 }
 .ul{
     position: absolute;
-    position: fixed;
     right: 10vw;
     width: 100%;
     height: 100%;
