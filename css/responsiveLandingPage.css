@@ -362,7 +362,6 @@
         display: none;
     }
     .ul.responsive{
-        position: absolute;
         display: flex;
         flex-direction: column;
         justify-content: unset;
