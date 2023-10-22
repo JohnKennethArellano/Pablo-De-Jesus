@@ -292,6 +292,13 @@
     .containerAdmin .logo,.container .logo,.containerOTP .logo{
         width: 20vw;
     }
+    .overlay-left span{
+        padding: 3vh 0 0 8vw;
+    }
+    .overlay-right span{
+
+        padding: 3vh 8vw 0 0;
+    }
     .container h1,.containerAdmin h1{
         font-size: 3vh; 
     }
