@@ -262,7 +262,7 @@
         height: 5vh;
     }
     .input input{
-        height: 90%;
+        height: 70%;
         font-size: 1vh;
     }
     .input label{
@@ -363,7 +363,7 @@
         padding: 0 0 1vw 1.2vw;
     }
     .inputContent .input{
-        height: 2.5vh;
+        height: 3.5vh;
         border-radius: .3vh;
         letter-spacing: .05vh;
         font-size: var(--medium);
@@ -387,7 +387,7 @@
     }
     .buttonContainer{
         height: 9vh;
-        bottom: 6vh;
+        bottom: 4vh;
     }
     .container .btn, .containerAdmin .btn{
         height: 4vh;
