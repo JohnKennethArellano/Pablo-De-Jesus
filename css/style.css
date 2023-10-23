@@ -720,8 +720,8 @@ header a:hover{
     outline: none;
     background-color: var(--white);
     color: var(--darkgray);
-    text-decoration: underline;
     display: none;
+    color: var(--blue);
 }
 .terms input[type="checkbox"] {
     display: none;

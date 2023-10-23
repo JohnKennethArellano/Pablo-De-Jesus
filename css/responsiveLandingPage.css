@@ -360,10 +360,11 @@
     .responsiveButtons{
         display: block;
         bottom: 3vh;
+        font-size: 1.5vh;
     }
     .inputContent{
         position: relative;
-        height: 7vh;
+        height: 8vh;
     }
     .inputContent .fa-circle-check {
         font-size: 1.5vh;
@@ -376,9 +377,10 @@
         right: 2.9vh ;
     }
     .inputContent label{
+        width: 90%;
         height: fit-content;
         font-size: 1.2vh;
-        padding: 0 0 1vw 2vw;
+        padding: 0;
     }
     .inputContent .input{
         height: 4vh;
@@ -387,17 +389,18 @@
         font-size: 1.3vh;
     }
     .errorMessage{
-        font-size: 1.5vh;
+        font-size: 1.1vh;
     }
     .forgot{
+        width: 87%;
         margin-top: 1vh;
     }
     .forgot a{
-        font-size: 1vh;
+        font-size: 1.3vh;
     }
     .container1{
         width: fit-content;
-        font-size: 1vh;
+        font-size: 1.3vh;
     }
     .container1 span{
         margin-left: 1vw;
@@ -409,7 +412,7 @@
     }
     .container .btn, .containerAdmin .btn{
         height: 4vh;
-        font-size: 1.1vh;
+        font-size: 1.5vh;
         border-radius: .3vh;
     }
     .googleBtn{
@@ -418,28 +421,25 @@
         border-radius: .3vh;
     }
     .terms{
-        font-size: 1.1vh;
+        font-size: 1.3vh;
     }
     .container .btnMain{
         height: 4vh;
-        font-size: .8vh;
+        font-size: 1vh;
         border-radius: .3vh;
     }
     .optionsGrp{
-        bottom: 3vh;
+        bottom: 4vh;
     }
     .optionsGrp i{
         font-size: 3vh;
     }
     .optionsGrp span{
-        font-size: 1vh;
+        font-size: 1.5vh;
     }
     .optionsGrp img{
         width: 3.8vh;
         border-radius: 50%;
-    }
-    .errorMessage{
-        font-size: .8vh;
     }
     .navBarCheck{
         display: block;
