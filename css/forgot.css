@@ -251,6 +251,7 @@ body::-webkit-scrollbar{
     font-size: var(--medium);
     letter-spacing: .05vw;
     transition: all ease .3s;
+    padding: 0 2vw;
 }
 .inputContainer #otpCode{
     outline: none;
@@ -384,14 +385,6 @@ body::-webkit-scrollbar{
     color: var(--red);
     opacity: 0;
 }
-#errormessage1{
-    position: absolute;
-    bottom: 12vh;
-    margin-top: 1vh;
-    font-size: var(--smaller);
-    color: var(--red);
-    opacity: 0;
-}
 .passwordContainer{
     width: 100%;
     height: 15vh;
@@ -400,7 +393,6 @@ body::-webkit-scrollbar{
     align-items: center;
     justify-content: center;
     padding: 1vh;
-
     margin-bottom: 1vh;
 }
 .passwordContainer label{

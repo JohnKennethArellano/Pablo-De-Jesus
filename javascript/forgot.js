@@ -263,7 +263,7 @@ function listener() {
     var confirmPasswordValue = confirmPassword.value.trim();
 
     if (passwordValue === "") {
-      errormessage2.innerText = "Number Empty";
+      errormessage2.innerText = "Email empty";
       errormessage2.style.opacity = 1;
       password.classList.add("shake");
       password.style.borderColor = "var(--red)";

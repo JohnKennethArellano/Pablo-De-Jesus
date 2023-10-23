@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+@import url('https://fonts.googleapis.com/css2?family=Inter');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
+
+@media only screen and (max-device-width : 780px){
+    *{  
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    :root{
+        --blue:#2196F3;
+        --lightgray:#BDBDBD;
+        --darkgray:#424242;
+        --white:#ffffff;        
+        --orange: #FFCC80; 
+        --green: #66BB6A;
+        --lightred:#EF9A9A;
+        --red:#EF5350;
+        --smaller:.8vw;
+        --small: 1vw;
+        --medium: 2vw;
+        --large: 4vw;
+        --larger: 5vw;
+    }
+    html {
+        scroll-behavior: smooth;  
+    }
+    section{
+        height: 100vh;
+        max-width: 100vw;
+    }
+    body{
+        position: absolute;
+        font-family: 'Poppins', Arial, Helvetica, sans-serif;    
+        background: rgb(175,221,255);
+        background: linear-gradient(231deg, rgb(19, 20, 20) 0%, rgba(255,255,255,1) 40%);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        transition: all ease .3s;
+        max-width: 100vw;
+        overflow-x: hidden;
+        
+    }
+    body::-webkit-scrollbar{
+        display: none;
+    }
+    #main, #pictureHolder{
+        display: none;
+    }
+    .container{
+        display: block;
+        top: 20%;
+        left: 10%;
+        width: 80vw;
+        padding: 1vh;
+    }
+    .logo{
+        width: 12vh;
+    }
+    .containerHolder .t1{
+        font-size: 3vh;
+        color: var(--darkgray);
+    }
+    .containerHolder .t2{
+        margin-top: 1vh;
+        width: 70%;
+        height: 4vh;
+        font-size: 1.3vh;
+    }
+    .emailOrPhone{
+        font-size: 1.3vh !important;
+    }
+    .inputContainer #recovery,.inputContainer #otpCode{
+        font-size: 1.7vh;
+        border-radius: 1vw;
+    }
+    .containerHolder #continueButton,.containerHolder #verifyButton, #newPassword{
+        font-size: 1.8vh;
+        border-radius: 1vw;
+    }
+    .opt{
+        font-size: 1.5vh;
+    }
+    #errormessage,.otpCountdown{
+        font-size: 1.3vh;
+    }
+    #emailOrPhoneInput{
+        font-size: 1.5vh;
+    }
+    .inputContainer label{
+        font-size: 1.3vh;
+    }
+    .fa-angles-left{
+        left: 3vw;
+        font-size: 2vh;
+    }
+    .passwordContainer{
+        width: 90%;
+        height: 10vh;
+    }
+    .passwordContainer label{
+        font-size: 1.3vh;
+    }
+    .passwordContainer input{
+        border-radius: 1vw;
+        font-size: 1.5vh;
+    }
+    #errormessage2,#errormessage3{
+        margin-top: 10.5vh;
+        font-size: 1.2vh;
+    }
+}
+@media screen and (max-width:961px) {
+    *{  
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    :root{
+        --blue:#2196F3;
+        --lightgray:#BDBDBD;
+        --darkgray:#424242;
+        --white:#ffffff;        
+        --orange: #FFCC80; 
+        --green: #66BB6A;
+        --lightred:#EF9A9A;
+        --red:#EF5350;
+        --smaller:.8vw;
+        --small: 1vw;
+        --medium: 2vw;
+        --large: 4vw;
+        --larger: 5vw;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    section{
+        width: 100vw;
+        height: 100vh;
+    }
+    body{
+        font-family: 'Poppins', Arial, Helvetica, sans-serif;    
+        background: rgb(175,221,255);
+        background: linear-gradient(231deg, rgba(175,221,255,1) 0%, rgba(255,255,255,1) 40%);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        transition: all ease .3s;
+    }
+    
+  }
