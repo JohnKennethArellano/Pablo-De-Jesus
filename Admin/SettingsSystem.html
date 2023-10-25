@@ -7,8 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/settings.css">
+    <script src="../javascript/addressDropdown.js" defer></script>
     <script src="../javascript/settingSystem.js" defer></script>
     <link rel="website icon" type="png " href="../images/logo.png">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js" ></script>
+    <script src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.0.js" ></script>
     <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
     <title>Services</title>
 </head>
@@ -113,8 +116,8 @@
                 <span class="pageTitle">Settings</span>
             </div>
             <div class="containerBodySystem">
-                <div class="infoContainerSystem">
-                    <form action="">
+                <form action="">
+                    <div class="infoContainerSystem">
                         <div class="imagesClinic">
                             <div class="imgInput">
                                 <label for="locationBgClinicInput"><i class="fa-solid fa-plus"></i></label>
@@ -129,21 +132,57 @@
                         </div>
                         <div class="formInput">
                             <label for="clinicName">Clinic name</label>
-                            <input type="text"  id="clinicName" placeholder="Clinic name" autocomplete="off">
+                            <input type="text"  id="clinicName" name="clinicName" placeholder="Clinic name" autocomplete="off">
                             <span class="errorMessage"></span>
-                        </div>
+                        </div> 
                         <div class="formInput">
                             <label for="email">Email</label>
-                            <input type="text"  id="email" placeholder="email@gmail.com" autocomplete="off">
+                            <input type="text"  id="email" name="email" placeholder="email@gmail.com" autocomplete="off">
                             <span class="errorMessage"></span>
                         </div>
                         <div class="formInput">
                             <label for="contactNumber">Contact number</label>
-                            <input type="text"  id="contactNumber" placeholder="9519077637" maxlength="10" autocomplete="off">
+                            <input type="text"  id="contactNumber" name="contactNumber" placeholder="9519077637" maxlength="10" autocomplete="off">
                             <span class="errorMessage"></span>
                         </div>
-                    </form>
-                </div>         
+                    </div>    
+                    <div class="infoContainerSystem">
+                        <div class="formInput">
+                            <label for="facebookLink">Facebook</label>
+                            <input type="text"  id="facebookLink" name="facebookLink" placeholder="https://www.facebook.com/clinicpage"  autocomplete="off">
+                            <span class="errorMessage"></span>
+                        </div>   
+                        <div class="formInput">
+                            <label for="province">Province</label>
+                            <input autocomplete="off" style="display: none;" name="province" id="provinceInput">
+                            <select id="province" onchange="showValue(this,provinceInput)">
+                                <option value="" selected>Select province first</option>
+                            </select>
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="formInput">
+                            <label for="city">City</label>
+                            <input autocomplete="off" style="display: none;" name="city" id="cityInput">
+                            <select id="city" onchange="showValue(this,cityInput)">
+                                <option value="" selected>Select province first</option>
+                            </select>
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="formInput">
+                            <label for="barangay" class="formLabel">Barangay</label>
+                            <input autocomplete="off" style="display: none;" name="barangay" id="barangayInput">
+                            <select id="barangay" onchange="showValue(this,barangayInput)">
+                                <option value="" selected >Select city first</option>
+                            </select>
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="formInput">
+                            <label for="clinicDescription">Description</label>
+                            <textarea name="clinicDescription" id="clinicDescription" cols="30" rows="10" placeholder="Clinic description"></textarea>
+                            <span class="errorMessage"></span>
+                        </div>
+                    </div>   
+                </form>
             </div>
         </div>
         <!-- No data Found -->
