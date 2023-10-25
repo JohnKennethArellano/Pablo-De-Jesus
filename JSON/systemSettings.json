@@ -1,0 +1,20 @@
+{
+    "clinicInfo": {
+      "image": "clinicPlaceholder.png",
+      "logo": "logo.png",
+      "clinicName": "Pablo De Jesus",
+      "description": "This is a modern healthcare clinic providing quality services.",
+      "staffCount": 10,
+      "servicesCount": 20,
+      "appointmentsCount": 100,
+      "contactNumber": "9876543210",
+      "email": "clinic@example.com",
+      "location":{
+        "province":"BULACAN",
+        "city":"NORZAGARAY",
+        "barangay":"PINAGULAYAN"
+    },
+      "facebookLink": "https://www.facebook.com/clinicpage"
+    }
+}
+  

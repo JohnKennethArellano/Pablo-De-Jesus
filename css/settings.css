@@ -410,8 +410,9 @@
     justify-content: center;
 }
 .infoContainerSystem{
+    position: relative;
     width: 40%;
-    height: 80%;
+    height: 87%;
     padding: .5vw;
     background-color: var(--white);
     border-radius: .3vw;
@@ -423,14 +424,11 @@
     padding: 1vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 .infoContainerSystem:first-child{
     margin-right: 1vh;
     width: 40%;
-}
-.infoContainerSystem:nth-child(2){
-    padding-top: 4vh;
+    padding-top: 3vh;
 }
 .imagesClinic{
     position: relative;
@@ -528,7 +526,24 @@
     padding: 1vh;
     text-align: center;
 }
-
+.infoContainerSystem button{
+    position: absolute;
+    font-size: var(--medium);
+    color: var(--white);
+    border: solid 1px var(--green);
+    outline: none;
+    background-color: var(--green);
+    border-radius: .2vw;
+    padding: 1vh 3vh;
+    bottom: 1vw;
+    right: 1vw;
+    cursor: pointer;
+    transition: all ease .3s;
+}
+.infoContainerSystem button:hover{
+    background-color: white;
+    color:  var(--green);
+}
 
 
 

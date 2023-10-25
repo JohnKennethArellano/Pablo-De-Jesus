@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/settings.css">
     <script src="../javascript/addressDropdown.js" defer></script>
+    <script src="../javascript/sweetalert2.js" defer></script>
     <script src="../javascript/settingSystem.js" defer></script>
     <link rel="website icon" type="png " href="../images/logo.png">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js" ></script>
@@ -116,18 +117,18 @@
                 <span class="pageTitle">Settings</span>
             </div>
             <div class="containerBodySystem">
-                <form action="">
+                <form action="" id="settingsForm" >
                     <div class="infoContainerSystem">
                         <div class="imagesClinic">
-                            <div class="imgInput">
+                            <div class="imgInput" ondrop="handleDrop(event)" ondragover="handleDragOver(event)">
                                 <label for="locationBgClinicInput"><i class="fa-solid fa-plus"></i></label>
                                 <img src="../images/clinicPlaceholder.png" alt="" class="imgInputImage" id="locationBgClinic">
-                                <input type="file"style="display:none" id="locationBgClinicInput">
+                                <input type="file"style="display:none" id="locationBgClinicInput" onchange="previewImage(event)">
                             </div>
-                            <div class="imgInput">
+                            <div class="imgInput" ondrop="handleDrop1(event)" ondragover="handleDragOver(event)">
                                 <label for="logoClinicInput"><i class="fa-solid fa-plus"></i></label>
                                 <img src="../images/logo.png" alt="" class="imgInputImage" id="logoClinic">
-                                <input type="file"style="display:none" id="logoClinicInput">
+                                <input type="file"style="display:none" id="logoClinicInput" onchange="previewImage1(event)">
                             </div>
                         </div>
                         <div class="formInput">
@@ -181,6 +182,7 @@
                             <textarea name="clinicDescription" id="clinicDescription" cols="30" rows="10" placeholder="Clinic description"></textarea>
                             <span class="errorMessage"></span>
                         </div>
+                        <button type="button" onclick="validateSystemSettings()">Save</button>
                     </div>   
                 </form>
             </div>
