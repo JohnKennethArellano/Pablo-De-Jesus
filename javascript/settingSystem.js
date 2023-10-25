@@ -345,8 +345,10 @@ function showValue(selectElement, input) {
   input.value = selectedText;
 }
 function validateSystemSettings() {
-  var locationBgClinicInput = document.querySelector("#locationBgClinicInput"),
-    logoClinicInput = document.querySelector("#logoClinicInput"),
+  var locationBgClinicInput = document.querySelector(
+      "#locationBgClinicInput"
+    ).value,
+    logoClinicInput = document.querySelector("#logoClinicInput").value,
     clinicName = document.querySelector("#clinicName"),
     clinicEmail = document.querySelector("#email"),
     clinicNumber = document.querySelector("#contactNumber"),
@@ -362,86 +364,70 @@ function validateSystemSettings() {
     clinicNumberValue = clinicNumber.value.trim(),
     clinicFacebookValue = clinicFacebook.value.trim(),
     clinicDescriptionValue = clinicDescription.value.trim();
-
   if (
-    clinicNameValue !== clinicDataArray.clinicName ||
-    clinicEmailValue !== clinicDataArray.email ||
-    clinicNumberValue !== clinicDataArray.contactNumber ||
-    clinicFacebookValue !== clinicDataArray.facebookLink ||
-    clinicDescriptionValue !== clinicDataArray.description ||
-    clinicProvince.value !== clinicDataArray.province ||
-    clinicCity.value !== clinicDataArray.city ||
-    clinicBarangay.value !== clinicDataArray.barangay ||
-    locationBgClinicInput.files.length > 0 ||
-    logoClinicInput.files.length > 0
+    clinicNameValue !== String(clinicDataArray[0].clinicName) ||
+    clinicEmailValue !== String(clinicDataArray[0].email) ||
+    clinicNumberValue !== String(clinicDataArray[0].contactNumber) ||
+    clinicFacebookValue !== String(clinicDataArray[0].facebookLink) ||
+    clinicDescriptionValue !== String(clinicDataArray[0].description) ||
+    clinicProvince.value !== String(clinicDataArray[0].province) ||
+    clinicCity.value !== String(clinicDataArray[0].city) ||
+    clinicBarangay.value !== String(clinicDataArray[0].barangay) ||
+    locationBgClinicInput != "" ||
+    logoClinicInput != ""
   ) {
+    if (locationBgClinicInput != "" || logoClinicInput != "") {
+      isValid = true;
+    }
+    if (clinicNameValue === "") {
+      showError(clinicName, "Field required");
+      isValid = false;
+    } else {
+      removeError(clinicName);
+      isValid = true;
+    }
+    if (clinicEmailValue === "") {
+      showError(clinicEmail, "Field required");
+      isValid = false;
+    } else if (!emailRegex.test(clinicEmailValue)) {
+      showError(clinicEmail, "InvalidFormat");
+      isValid = false;
+    } else {
+      removeError(clinicEmail);
+      isValid = true;
+    }
+    if (clinicNumberValue === "") {
+      showError(clinicNumber, "Field required");
+      isValid = false;
+    } else if (!numbersOnlyRegex.test(clinicNumberValue)) {
+      showError(clinicNumber, "InvalidFormat");
+      isValid = false;
+    } else if (clinicNumberValue.length < 9) {
+      showError(clinicNumber, "InvalidFormat");
+      isValid = false;
+    } else {
+      removeError(clinicNumber);
+      isValid = true;
+    }
+    if (clinicFacebookValue === "") {
+      removeError(clinicFacebook);
+      isValid = true;
+    } else if (!facebookPattern.test(clinicFacebookValue)) {
+      showError(clinicFacebook, "InvalidFormat");
+      isValid = false;
+    } else {
+      removeError(clinicFacebook);
+      isValid = true;
+    }
+    if (clinicDescriptionValue === "") {
+      showError(clinicDescription, "Field required");
+      isValid = false;
+    } else {
+      removeError(clinicDescription);
+      isValid = true;
+    }
 
-    if(clinicNameValue === ""){
-      showError(clinicName, "Field required")
-      isValid = false;
-    }
-    else{
-      removeError(clinicName)
-      isValid = true;
-    }
-    if(clinicEmailValue === ""){
-      showError(clinicEmail, "Field required")
-      isValid = false;
-    }
-    else if(!emailRegex.test(clinicEmailValue)){
-      showError(clinicEmail, "InvalidFormat")
-      isValid = false;
-    }
-    else{
-      removeError(clinicEmail)
-      isValid = true;
-    }
-    if(clinicNumberValue === ""){
-      showError(clinicNumber, "Field required")
-      isValid = false;
-    }
-    else if(!numbersOnlyRegex.test(clinicNumberValue)){
-      showError(clinicNumber, "InvalidFormat")
-      isValid = false;
-    }
-    else if(clinicNumberValue.length < 9){
-      showError(clinicNumber, "InvalidFormat")
-      isValid = false;
-    }
-    else{
-      removeError(clinicNumber)
-      isValid = true;
-    }
-    if(clinicFacebookValue === ""){
-      removeError(clinicFacebook)
-      isValid = true;
-    }
-    else if(!facebookPattern.test(clinicFacebookValue)){
-      showError(clinicFacebook, "InvalidFormat")
-      isValid = false;
-    }
-    else{
-      removeError(clinicFacebook)
-      isValid = true;
-    }
-    if(clinicDescriptionValue === ""){
-      showError(clinicDescription,"Field required")
-      isValid = false;
-    }
-    else{
-      removeError(clinicDescription)
-      isValid = true;
-    }
     if (isValid) {
-      settingsForm.addEventListener("settingsForm", function (event) {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const formDataObject = {};
-        formData.forEach((value, key) => {
-          formDataObject[key] = value;
-        });
-        console.log(formDataObject);
-      });
       Swal.fire({
         title: "Confirm changes? ",
         text: "You won't be able to revert this.",
@@ -463,9 +449,5 @@ function validateSystemSettings() {
         }
       });
     }
-
   }
-
-
-
 }
