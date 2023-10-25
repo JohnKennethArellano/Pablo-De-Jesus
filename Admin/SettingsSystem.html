@@ -114,11 +114,36 @@
             </div>
             <div class="containerBodySystem">
                 <div class="infoContainerSystem">
-                    <div class="infoContainer"></div>
-                </div>
-                <div class="infoContainerSystem">
-                    <div class="infoContainer"></div>
-                </div>             
+                    <form action="">
+                        <div class="imagesClinic">
+                            <div class="imgInput">
+                                <label for="locationBgClinicInput"><i class="fa-solid fa-plus"></i></label>
+                                <img src="../images/clinicPlaceholder.png" alt="" class="imgInputImage" id="locationBgClinic">
+                                <input type="file"style="display:none" id="locationBgClinicInput">
+                            </div>
+                            <div class="imgInput">
+                                <label for="logoClinicInput"><i class="fa-solid fa-plus"></i></label>
+                                <img src="../images/logo.png" alt="" class="imgInputImage" id="logoClinic">
+                                <input type="file"style="display:none" id="logoClinicInput">
+                            </div>
+                        </div>
+                        <div class="formInput">
+                            <label for="clinicName">Clinic name</label>
+                            <input type="text"  id="clinicName" placeholder="Clinic name" autocomplete="off">
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="formInput">
+                            <label for="email">Email</label>
+                            <input type="text"  id="email" placeholder="email@gmail.com" autocomplete="off">
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="formInput">
+                            <label for="contactNumber">Contact number</label>
+                            <input type="text"  id="contactNumber" placeholder="9519077637" maxlength="10" autocomplete="off">
+                            <span class="errorMessage"></span>
+                        </div>
+                    </form>
+                </div>         
             </div>
         </div>
         <!-- No data Found -->
