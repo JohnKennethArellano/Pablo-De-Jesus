@@ -278,12 +278,12 @@ function showForm() {
   resetDefault(birthdate, "");
   resetDefault(houseNumber, "");
   resetDefaultSelect(selectSex, sex, "");
-  resetDefaultSelect(province, provinceInput, "");
-  resetDefaultSelect(city, cityInput, "");
-  resetDefaultSelect(barangay, barangayInput, "");
-  resetDefaultSelect(provinceAdmin, provinceInputAdmin, "");
-  resetDefaultSelect(cityAdmin, cityInputAdmin, "");
-  resetDefaultSelect(barangayAdmin, barangayInputAdmin, "");
+  // resetDefaultSelect(province, provinceInput, "");
+  // resetDefaultSelect(city, cityInput, "");
+  // resetDefaultSelect(barangay, barangayInput, "");
+  // resetDefaultSelect(provinceAdmin, provinceInputAdmin, "");
+  // resetDefaultSelect(cityAdmin, cityInputAdmin, "");
+  // resetDefaultSelect(barangayAdmin, barangayInputAdmin, "");
 
   formContainer.forEach((forms) => {
     forms.classList.remove("hidden");
