@@ -136,6 +136,7 @@ function listeners() {
           post.service;
         truncateText(tableRow.querySelector("#serviceTable"), 15);
         tableRow.querySelector("#statusTable").textContent = post.status;
+
         tableBody.append(tableRow);
       });
 
@@ -424,4 +425,22 @@ function viewNotificationContainer(event) {
   var notificationContainer = parent.querySelector(".notificationContainer");
   notificationContainer.classList.toggle("hidden");
   event.target.classList.toggle("showContainer");
+}
+function printPdf() {
+  var appointmentContainer = document.querySelector("#appointmentContainer");
+
+  const toPDF = (appointmentContainer) => {
+    const htmlCode = `<link rel="stylesheet" href="../css/appointment.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <table id="appointmentContainer">${appointmentContainer.innerHTML}</table>`;
+
+    const new_window = window.open();
+    new_window.document.write(htmlCode);
+    setTimeout(() => {
+      new_window.print();
+      new_window.close();
+    }, 2000);
+  };
+
+  toPDF(appointmentContainer);
 }

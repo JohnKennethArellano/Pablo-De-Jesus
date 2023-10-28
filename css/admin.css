@@ -596,7 +596,7 @@ button{
 .sortOptions{
     position: absolute;
     top: 6vh;
-    right: 9vw;
+    right: 24vw;
     width: 12vw;
     height: fit-content;
     display: flex;
