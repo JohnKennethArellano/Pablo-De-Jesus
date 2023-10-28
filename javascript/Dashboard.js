@@ -170,7 +170,6 @@ function getSubColors(mainColor) {
     return [];
   }
   const subcolors = [...colorObj.subcolors];
-
   return { mainColor, subcolors };
 }
 
@@ -200,26 +199,25 @@ async function fetchDataForCharts() {
         count = document.querySelector("#count"),
         count1 = document.querySelector("#count1"),
         count2 = document.querySelector("#count2");
-        const totalAppointments = data.totalAppointments;
-        const topServices = data.topServices;
-        const totalPatients = data.totalPatients;
-        const dataBarChart1 = data.dataBarChart1;
-        const dataBarChart2 = data.dataBarChart2;
-        const dataBarChart3 = data.dataBarChart3;
+      const totalAppointments = data.totalAppointments;
+      const topServices = data.topServices;
+      const totalPatients = data.totalPatients;
+      const dataBarChart1 = data.dataBarChart1;
+      const dataBarChart2 = data.dataBarChart2;
+      const dataBarChart3 = data.dataBarChart3;
 
       let totalValue = [];
       let services = [];
       let patients = 0;
-      for(item of topServices){       
-          totalValue.push(item.total)
-          services.push(item.serviceName)
+      for (item of topServices) {
+        totalValue.push(item.total);
+        services.push(item.serviceName);
       }
-      for(item of totalPatients){       
-
+      for (item of totalPatients) {
       }
-      console.log(services + totalValue)
+      console.log(services + totalValue);
 
-      if(services.length > 0){
+      if (services.length > 0) {
         fetchDataPolarChart1(services, totalValue);
       }
 
@@ -395,7 +393,7 @@ function fetchDataPolarChart(totalAppointments) {
   const ctx = document.querySelector("#doughnutChart").getContext("2d");
   const { subcolors } = getSubColors(color1);
   const data = {
-    labels: ["Accepted", "Pending", "Cancelled"],
+    labels: ["Accepted", "Pending", "Cancelled", "asdad"],
     datasets: [
       {
         data: totalAppointments,
@@ -412,10 +410,10 @@ function fetchDataPolarChart1(services, totalValue) {
   const ctx = document.querySelector("#doughnutChart1").getContext("2d");
   const { subcolors } = getSubColors(color2);
   const data = {
-    labels: [services[0],services[1],services[2]],
+    labels: [services[0], services[1], services[2]],
     datasets: [
       {
-        data: [totalValue[0],totalValue[1],totalValue[2]],
+        data: [totalValue[0], totalValue[1], totalValue[2]],
         backgroundColor: subcolors,
         hoverOffset: 4,
         fill: false,
@@ -464,7 +462,10 @@ async function fetchTodayAppointments() {
     const data = await response.json();
 
     const now = new Date();
-    const currentTime = now.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
+    const currentTime = now.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
 
     const currentAppointments = data.appointments.filter((appointment) => {
       return !appointment.status && appointment.startTime < currentTime;
@@ -474,22 +475,30 @@ async function fetchTodayAppointments() {
       return !appointment.status && appointment.startTime > currentTime;
     });
 
-    
     currentAppointments.sort((a, b) => a.startTime.localeCompare(b.startTime));
     upcomingAppointments.sort((a, b) => a.startTime.localeCompare(b.startTime));
-    console.log(currentAppointments)
+    console.log(currentAppointments);
     appointmentCurrent.innerHTML = "";
     appointmentUpcoming.innerHTML = "";
 
     if (currentAppointments.length > 0) {
       appointmentCurrent.innerHTML = "";
-      const lastCurrentAppointment = currentAppointments[currentAppointments.length - 1];
-      const mainTemplateClone = document.importNode(appointmentMain.content, true);
-      mainTemplateClone.querySelector(".appointment").style.borderColor = "#A5D6A7";
-      mainTemplateClone.querySelector("#time").textContent = lastCurrentAppointment.startTime;
-      mainTemplateClone.querySelector("#appointmentId").textContent = lastCurrentAppointment.id;
-      mainTemplateClone.querySelector("#name").textContent = lastCurrentAppointment.name;
-      mainTemplateClone.querySelector("#serviceAvailed").textContent = lastCurrentAppointment.service;
+      const lastCurrentAppointment =
+        currentAppointments[currentAppointments.length - 1];
+      const mainTemplateClone = document.importNode(
+        appointmentMain.content,
+        true
+      );
+      mainTemplateClone.querySelector(".appointment").style.borderColor =
+        "#A5D6A7";
+      mainTemplateClone.querySelector("#time").textContent =
+        lastCurrentAppointment.startTime;
+      mainTemplateClone.querySelector("#appointmentId").textContent =
+        lastCurrentAppointment.id;
+      mainTemplateClone.querySelector("#name").textContent =
+        lastCurrentAppointment.name;
+      mainTemplateClone.querySelector("#serviceAvailed").textContent =
+        lastCurrentAppointment.service;
       appointmentCurrent.appendChild(mainTemplateClone);
     } else {
       const clone = document.importNode(noappointment.content, true);
@@ -499,11 +508,18 @@ async function fetchTodayAppointments() {
 
     if (upcomingAppointments.length > 0) {
       for (let i = 0; i < 5 && i < upcomingAppointments.length; i++) {
-        const mainTemplateClone = document.importNode(appointmentMain.content, true);
-        mainTemplateClone.querySelector("#appointmentId").textContent = upcomingAppointments[i].id;
-        mainTemplateClone.querySelector("#time").textContent = upcomingAppointments[i].startTime;
-        mainTemplateClone.querySelector("#name").textContent = upcomingAppointments[i].name;
-        mainTemplateClone.querySelector("#serviceAvailed").textContent = upcomingAppointments[i].service;
+        const mainTemplateClone = document.importNode(
+          appointmentMain.content,
+          true
+        );
+        mainTemplateClone.querySelector("#appointmentId").textContent =
+          upcomingAppointments[i].id;
+        mainTemplateClone.querySelector("#time").textContent =
+          upcomingAppointments[i].startTime;
+        mainTemplateClone.querySelector("#name").textContent =
+          upcomingAppointments[i].name;
+        mainTemplateClone.querySelector("#serviceAvailed").textContent =
+          upcomingAppointments[i].service;
         appointmentUpcoming.appendChild(mainTemplateClone);
       }
     } else {
@@ -516,34 +532,27 @@ async function fetchTodayAppointments() {
   }
 }
 
-function endAppointment(event)
-{
-//eto pang set mo ng status 
-var name = event.target.closest(".appointment").querySelector("#name").textContent;
- Swal.fire({
-  title: "Appointment finished?",
-  text: name,
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#73E977",
-  cancelButtonColor: "#fa6363",
-  confirmButtonText: "Confirm",
-}).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire({
-      title: "Appointment Completed",
-      icon: "success",
-      timer: 2000,
-      showConfirmButton: false,
-    });
-  }
-});
+function endAppointment(event) {
+  //eto pang set mo ng status
+  var name = event.target
+    .closest(".appointment")
+    .querySelector("#name").textContent;
+  Swal.fire({
+    title: "Appointment finished?",
+    text: name,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#73E977",
+    cancelButtonColor: "#fa6363",
+    confirmButtonText: "Confirm",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Appointment Completed",
+        icon: "success",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    }
+  });
 }
-
-
-
-
-
-
-
-
