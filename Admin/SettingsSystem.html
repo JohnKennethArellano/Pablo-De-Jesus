@@ -7,12 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/settings.css">
-    <script src="../javascript/addressDropdown.js" defer></script>
     <script src="../javascript/sweetalert2.js" defer></script>
     <script src="../javascript/settingSystem.js" defer></script>
     <link rel="website icon" type="png " href="../images/logo.png">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js" ></script>
-    <script src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.0.js" ></script>
     <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
     <title>Services</title>
 </head>
@@ -155,26 +153,17 @@
                         </div>   
                         <div class="formInput">
                             <label for="province">Province</label>
-                            <input autocomplete="off" style="display: none;" name="province" id="provinceInput">
-                            <select id="province" onchange="showValue(this,provinceInput)">
-                                <option value="" selected>Select province first</option>
-                            </select>
+                            <input autocomplete="off"  name="province" id="province">
                             <span class="errorMessage"></span>
                         </div>
                         <div class="formInput">
                             <label for="city">City</label>
-                            <input autocomplete="off" style="display: none;" name="city" id="cityInput">
-                            <select id="city" onchange="showValue(this,cityInput)">
-                                <option value="" selected>Select province first</option>
-                            </select>
+                            <input autocomplete="off" name="city" id="city">
                             <span class="errorMessage"></span>
                         </div>
                         <div class="formInput">
                             <label for="barangay" class="formLabel">Barangay</label>
-                            <input autocomplete="off" style="display: none;" name="barangay" id="barangayInput">
-                            <select id="barangay" onchange="showValue(this,barangayInput)">
-                                <option value="" selected >Select city first</option>
-                            </select>
+                            <input autocomplete="off" name="barangay" id="barangay">
                             <span class="errorMessage"></span>
                         </div>
                         <div class="formInput">

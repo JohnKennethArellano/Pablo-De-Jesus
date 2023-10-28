@@ -2,7 +2,7 @@ function load(){
     scroll();
     login();
     // repeat();
-    //loader();
+    loader();
     scrollPage();
     listeners();
     animation();

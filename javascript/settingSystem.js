@@ -42,23 +42,19 @@ async function fetchData() {
     clinicDataArray = [];
 
     var clinicImage = document.querySelector("#locationBgClinic"),
-      locationBgClinicInput = document.querySelector("#locationBgClinicInput"),
       clinicLogo = document.querySelector("#logoClinic"),
-      logoClinicInput = document.querySelector("#logoClinicInput"),
       clinicName = document.querySelector("#clinicName"),
       clinicEmail = document.querySelector("#email"),
       clinicNumber = document.querySelector("#contactNumber"),
       clinicFacebook = document.querySelector("#facebookLink"),
-      clinicProvince = document.querySelector("#provinceInput"),
-      clinicCity = document.querySelector("#cityInput"),
-      clinicBarangay = document.querySelector("#barangayInput"),
+      clinicProvince = document.querySelector("#province"),
+      clinicCity = document.querySelector("#city"),
+      clinicBarangay = document.querySelector("#barangay"),
       clinicDescription = document.querySelector("#clinicDescription");
 
     clinicImage.src = "../images/" + clinicInfo.image;
     clinicLogo.src = "../images/" + clinicInfo.logo;
 
-    // locationBgClinicInput.value = clinicInfo.image;
-    // logoClinicInput.value = clinicInfo.logo;
     clinicName.value = clinicInfo.clinicName;
     clinicEmail.value = clinicInfo.email;
     clinicNumber.value = clinicInfo.contactNumber;
@@ -353,9 +349,9 @@ function validateSystemSettings() {
     clinicEmail = document.querySelector("#email"),
     clinicNumber = document.querySelector("#contactNumber"),
     clinicFacebook = document.querySelector("#facebookLink"),
-    clinicProvince = document.querySelector("#provinceInput"),
-    clinicCity = document.querySelector("#cityInput"),
-    clinicBarangay = document.querySelector("#barangayInput"),
+    clinicProvince = document.querySelector("#province"),
+    clinicCity = document.querySelector("#city"),
+    clinicBarangay = document.querySelector("#barangay"),
     clinicDescription = document.querySelector("#clinicDescription");
   isValid = false;
 
@@ -363,16 +359,19 @@ function validateSystemSettings() {
     clinicEmailValue = clinicEmail.value.trim(),
     clinicNumberValue = clinicNumber.value.trim(),
     clinicFacebookValue = clinicFacebook.value.trim(),
-    clinicDescriptionValue = clinicDescription.value.trim();
+    clinicDescriptionValue = clinicDescription.value.trim(),
+    clinicProvinceValue = clinicProvince.value.trim(),
+    clinicCityValue = clinicCity.value.trim(),
+    clinicBarangayValue = clinicBarangay.value.trim();
   if (
     clinicNameValue !== String(clinicDataArray[0].clinicName) ||
     clinicEmailValue !== String(clinicDataArray[0].email) ||
     clinicNumberValue !== String(clinicDataArray[0].contactNumber) ||
     clinicFacebookValue !== String(clinicDataArray[0].facebookLink) ||
     clinicDescriptionValue !== String(clinicDataArray[0].description) ||
-    clinicProvince.value !== String(clinicDataArray[0].province) ||
-    clinicCity.value !== String(clinicDataArray[0].city) ||
-    clinicBarangay.value !== String(clinicDataArray[0].barangay) ||
+    clinicCityValue !== String(clinicDataArray[0].province) ||
+    clinicCityValue !== String(clinicDataArray[0].city) ||
+    clinicBarangayValue !== String(clinicDataArray[0].barangay) ||
     locationBgClinicInput != "" ||
     logoClinicInput != ""
   ) {
@@ -424,6 +423,27 @@ function validateSystemSettings() {
       isValid = false;
     } else {
       removeError(clinicDescription);
+      isValid = true;
+    }
+    if (clinicProvinceValue === "") {
+      showError(clinicProvince, "Field required");
+      isValid = false;
+    } else {
+      removeError(clinicProvince);
+      isValid = true;
+    }
+    if (clinicCityValue === "") {
+      showError(clinicCity, "Field required");
+      isValid = false;
+    } else {
+      removeError(clinicCity);
+      isValid = true;
+    }
+    if (clinicBarangayValue === "") {
+      showError(clinicBarangay, "Field required");
+      isValid = false;
+    } else {
+      removeError(clinicBarangay);
       isValid = true;
     }
 
