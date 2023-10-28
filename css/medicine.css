@@ -882,12 +882,17 @@
     align-items: center;
     bottom: 1vh;
     width: 95%;
-    height: 8vh;
+    height: 12vh;
     padding: 1vh;
     border: solid 1px var(--blue);
     border-width: 1px 0 0 0;
     font-size: var(--small);
     color: var(--darkgray);
+}
+.doctorSignature img{
+    position: absolute;
+    width: 5vw;
+    top: -.5vw;
 }
 .patientInformation{
     position: relative;
