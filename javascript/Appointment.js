@@ -429,7 +429,6 @@ function viewNotificationContainer(event) {
 function printPdf() {
   var appointmentContainer = document.querySelector("#appointmentContainer");
 
-  const toPDF = (appointmentContainer) => {
     const htmlCode = `<link rel="stylesheet" href="../css/appointment.css">
     <link rel="stylesheet" href="../css/admin.css">
     <table id="appointmentContainer">${appointmentContainer.innerHTML}</table>`;
@@ -440,7 +439,5 @@ function printPdf() {
       new_window.print();
       new_window.close();
     }, 2000);
-  };
 
-  toPDF(appointmentContainer);
 }
