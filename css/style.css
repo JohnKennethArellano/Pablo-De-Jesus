@@ -1930,4 +1930,40 @@ input{
     100% {
      transform: translateX(100%);
     }
-  }
+}
+
+  /* footer */
+
+footer{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    background-color: var(--white);
+}
+.bgHolderFooter{
+    position: absolute;
+    top: -13vw;
+    width: 100%;
+    overflow: hidden;
+}
+.bgHolderFooter img{
+    width: 100%;
+}
+.footerContent{
+    position: absolute;
+    top:8vw;
+    width: 100%;
+    height: 35vh;
+    background-color: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.footerSecion{
+    width: calc(90%/ 4.2);
+    height: 90%;
+    background-color: var(--white);
+
+}
