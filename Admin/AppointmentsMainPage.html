@@ -10,6 +10,7 @@
     <script src="../javascript/Appointment.js" defer></script>
     <script src="../javascript/calendar.js" defer></script>
     <script src="../javascript/sweetalert2.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js" defer></script>
     <link rel="website icon" type="png " href="../images/logo.png">
     <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
     <title>Appointment</title>
@@ -123,7 +124,7 @@
                     <button class="calendar" id="calendarShow"><span>Calendar</span><i
                             class="fa-solid fa-calendar-days"></i></button>
                     <button id="pdfPrint" onclick="printPdf()"><span>PDF</span><i class="fa-solid fa-file-pdf"></i></button>
-                    <button id="excelfPrint"><span>Excel</span><i class="fa-solid fa-file-pdf"></i></button>
+                    <button id="excelfPrint" onclick="exportToExcel()"><span>Excel</span><i class="fa-solid fa-file-pdf"></i></button>
                     <div class="sortOptions" id="sortOptions">
                         <span id="allAppointment">All</span>
                         <span id="acceptedAppointment">Accepted</span>
@@ -262,9 +263,9 @@
                     </td>
                     <td class="nameTable">
                         <div id="nameTable" class="numberTablediv">
-                            <div class="imgHolderNameTable"><img src="../images/noProfile.png" alt=""> </div><span
-                                id="patientNameOriginalValue" style="display: none;"></span><span
-                                id="patientName"></span>
+                            <div class="imgHolderNameTable"><img src="../images/noProfile.png" alt=""></div>
+                            <span id="patientNameOriginalValue" style="display: none;">Original Value</span>
+                            <span id="patientName">Display Value</span>
                         </div>
                     </td>
                     <td class="dateTable">

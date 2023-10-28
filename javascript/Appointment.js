@@ -429,15 +429,58 @@ function viewNotificationContainer(event) {
 function printPdf() {
   var appointmentContainer = document.querySelector("#appointmentContainer");
 
-    const htmlCode = `<link rel="stylesheet" href="../css/appointment.css">
+  const htmlCode = `<link rel="stylesheet" href="../css/appointment.css">
     <link rel="stylesheet" href="../css/admin.css">
     <table id="appointmentContainer">${appointmentContainer.innerHTML}</table>`;
 
-    const new_window = window.open();
-    new_window.document.write(htmlCode);
-    setTimeout(() => {
-      new_window.print();
-      new_window.close();
-    }, 2000);
+  const new_window = window.open();
+  new_window.document.write(htmlCode);
+  setTimeout(() => {
+    new_window.print();
+    new_window.close();
+  }, 2000);
+}
+
+function exportToExcel() {
+  // Select all the rows you want to export
+const rowsToExport = document.querySelectorAll("#tableBody tr");
+
+// Create an array to hold the data
+const data = [];
+
+rowsToExport.forEach((row) => {
+  const numberTable = row.querySelector(".numberTable #numberTable");
+  const number = numberTable ? numberTable.innerText : "";
+
+  const nameElement = row.querySelector(".nameTable #patientNameOriginalValue");
+  const name = nameElement ? nameElement.innerText : "";
+
+  const dateTable = row.querySelector(".dateTable #dateTable");
+  const date = dateTable ? dateTable.innerText : "";
+
+  const timeTable = row.querySelector(".timeTable #timeTable");
+  const time = timeTable ? timeTable.innerText : "";
+
+  const serviceTable = row.querySelector(".serviceTable #serviceTableOriginalValue");
+  const service = serviceTable ? serviceTable.innerText : "";
+
+  const statusTable = row.querySelector(".statusTable #statusTable");
+  const status = statusTable ? statusTable.innerText : "";
+
+  // Push the content into the data array as an array for each row
+  data.push([number, name, date, time, service, status]);
+});
+
+// Create a worksheet
+const ws = XLSX.utils.aoa_to_sheet(data);
+
+// Create a workbook and add the worksheet to it
+const wb = XLSX.utils.book_new();
+XLSX.utils.book_append_sheet(wb, ws, "Data");
+
+// Save the Excel file
+const date = new Date();
+const fileName = "table_data_" + date.toISOString().split("T")[0] + ".xlsx";
+XLSX.writeFile(wb, fileName);
 
 }
