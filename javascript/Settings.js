@@ -373,6 +373,24 @@ function listeners() {
           } else {
             removeError(age);
           }
+          if (provinceInputValue == "") {
+            showError(provinceInput, "This field is required");
+            isValid = false;
+          } else {
+            removeError(provinceInput);
+          }
+          if (cityInputValue == "") {
+            showError(cityInput, "This field is required");
+            isValid = false;
+          } else {
+            removeError(cityInput);
+          }
+          if (barangayInputValue == "") {
+            showError(barangayInput, "This field is required");
+            isValid = false;
+          } else {
+            removeError(barangayInput);
+          }
         } else if (
           homeAddressValue === houseNumberStreetFetch ||
           religionValue === religionFetch ||
