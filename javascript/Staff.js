@@ -3,7 +3,6 @@ function onload() {
   fetchNotification();
 }
 
-
 function listeners() {
   const links = document.querySelectorAll(".links");
   links.forEach((link) => {
@@ -15,56 +14,56 @@ function listeners() {
 
     link.appendChild(tooltip);
   });
-  var profileExpand = document.querySelector('#profileExpand');
-  var logoutHolder = document.querySelector('#logoutHolder');
-  var logoutHolderOptions = document.querySelectorAll('.logoutHolder span');
+  var profileExpand = document.querySelector("#profileExpand");
+  var logoutHolder = document.querySelector("#logoutHolder");
+  var logoutHolderOptions = document.querySelectorAll(".logoutHolder span");
   profileExpand.addEventListener("click", () => {
     logoutHolder.classList.toggle("hidden");
     logoutHolderOptions.forEach((action) => {
       action.addEventListener("click", () => {
-        logoutHolder.classList.add("hidden")
-      })
-    })
-  })
+        logoutHolder.classList.add("hidden");
+      });
+    });
+  });
 
-  var sortButton = document.querySelector('#sortButton');
-  var sortOptions = document.querySelector('#sortOptions');
-  var sorts = document.querySelectorAll('.sortOptions2 span');
-  var sortText = document.querySelector('#sortText');
+  var sortButton = document.querySelector("#sortButton");
+  var sortOptions = document.querySelector("#sortOptions");
+  var sorts = document.querySelectorAll(".sortOptions2 span");
+  var sortText = document.querySelector("#sortText");
   const lettersOnlyRegex = /^[a-zA-Z\s]+$/;
   const numbersOnlyRegex = /^[0-9]+$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z.-]+\.[a-zA-Z]{2,}$/;
 
   //show sort Options
-  sortButton.addEventListener('click', () => {
-    sortOptions.classList.toggle('showElement');
+  sortButton.addEventListener("click", () => {
+    sortOptions.classList.toggle("showElement");
     const caretIcons = document.querySelectorAll(".fa-caret-down");
     caretIcons.forEach((icon) => {
       const currentTransform = icon.style.transform;
-      if (currentTransform === '') {
+      if (currentTransform === "") {
         icon.style.transform = "rotate(180deg)";
       } else {
-        icon.style.transform = '';
+        icon.style.transform = "";
       }
     });
-  })
+  });
   //change text content of sort button
   sorts.forEach(function (sort) {
-    sort.addEventListener('click', function () {
+    sort.addEventListener("click", function () {
       var textSpan = this.innerText;
       sortText.innerText = textSpan;
-      sortOptions.classList.remove('showElement');
+      sortOptions.classList.remove("showElement");
       const caretIcons = document.querySelectorAll(".fa-caret-down");
       caretIcons.forEach((icon) => {
         const currentTransform = icon.style.transform;
-        if (currentTransform === '') {
+        if (currentTransform === "") {
           icon.style.transform = "rotate(180deg)";
         } else {
-          icon.style.transform = '';
+          icon.style.transform = "";
         }
       });
-    })
-  })
+    });
+  });
 
   const tableBody = document.querySelector("#tableBody");
   const staffTemplateLoader = document.querySelector("#staffTemplateLoader");
@@ -74,7 +73,6 @@ function listeners() {
   for (let i = 0; i < 7; i++) {
     const clone = document.importNode(staffTemplateLoader.content, true);
     tableBody.appendChild(clone);
-
   }
   fetch("../JSON/staff.json")
     .then((response) => response.json())
@@ -84,7 +82,7 @@ function listeners() {
       search.addEventListener("input", function () {
         updateDisplay(this.value, data);
       });
-    })
+    });
   function filterData(data, searchTerm) {
     const employees = data.employees;
 
@@ -104,7 +102,6 @@ function listeners() {
     });
   }
 
-
   function updateDisplay(searchTerm, data) {
     tableBody.innerHTML = "";
     const filteredData = filterData(data, searchTerm);
@@ -119,15 +116,15 @@ function listeners() {
         searchTerm
       );
 
-      clone.querySelector("#patientNameOriginalValue").innerHTML = obj.staffName
-      clone.querySelector("#religionFetch").innerHTML = obj.religion
-      clone.querySelector("#imgSourceFetch").innerHTML = obj.imgSource
-      clone.querySelector("#birthdayFetch").innerHTML = obj.birthday
-      clone.querySelector("#ageFetch").innerHTML = obj.age
-      clone.querySelector("#civilStatusFetch").innerHTML = obj.civilStatus
-      clone.querySelector("#addressFetch").innerHTML = obj.address
-      clone.querySelector("#dateHiredFetch").innerHTML = obj.dateHired
-
+      clone.querySelector("#patientNameOriginalValue").innerHTML =
+        obj.staffName;
+      clone.querySelector("#religionFetch").innerHTML = obj.religion;
+      clone.querySelector("#imgSourceFetch").innerHTML = obj.imgSource;
+      clone.querySelector("#birthdayFetch").innerHTML = obj.birthday;
+      clone.querySelector("#ageFetch").innerHTML = obj.age;
+      clone.querySelector("#civilStatusFetch").innerHTML = obj.civilStatus;
+      clone.querySelector("#addressFetch").innerHTML = obj.address;
+      clone.querySelector("#dateHiredFetch").innerHTML = obj.dateHired;
 
       truncateText(clone.querySelector("#staffName"), 15);
       clone.querySelector("#position").innerHTML = highlightText(
@@ -145,10 +142,9 @@ function listeners() {
       var status = clone.querySelector("#status");
       status.innerHTML = highlightText(obj.status.toUpperCase(), searchTerm);
       if (obj.status === "active") {
-        status.style.backgroundColor = "var(--green)"
-      }
-      else {
-        status.style.backgroundColor = "var(--orange)"
+        status.style.backgroundColor = "var(--green)";
+      } else {
+        status.style.backgroundColor = "var(--orange)";
       }
       var img = clone.querySelector("#imgStaff");
       img.src = "../images/" + obj.imgSource;
@@ -183,7 +179,7 @@ function listeners() {
       positionType = document.querySelector("#positionType"),
       positionCaret = document.querySelector("#positionCaret");
     selectPosition.addEventListener("click", () => {
-      positionOption.classList.toggle("showElement")
+      positionOption.classList.toggle("showElement");
       if (positionOption.classList.contains("showElement")) {
         positionCaret.style.transform = "rotate(180deg)";
       } else {
@@ -191,12 +187,12 @@ function listeners() {
       }
       posOpttion.forEach((select) => {
         select.addEventListener("click", () => {
-          removeErrorMessage(selectPosition)
+          removeErrorMessage(selectPosition);
           pos = select.innerText;
           choosePosition.value = pos;
           positionOption.classList.remove("showElement");
           positionType.innerText = pos;
-          positionType.style.color = "var(--darkgray)"
+          positionType.style.color = "var(--darkgray)";
           if (positionOption.classList.contains("showElement")) {
             positionCaret.style.transform = "rotate(180deg)";
           } else {
@@ -213,8 +209,8 @@ function listeners() {
       statusType = document.querySelector("#statusType"),
       statusCaret = document.querySelector("#statusCaret");
     selectStatus.addEventListener("click", () => {
-      removeErrorMessage(selectStatus)
-      statusOption.classList.toggle("showElement")
+      removeErrorMessage(selectStatus);
+      statusOption.classList.toggle("showElement");
       if (statusOption.classList.contains("showElement")) {
         statusCaret.style.transform = "rotate(180deg)";
       } else {
@@ -226,7 +222,7 @@ function listeners() {
           chooseStatus.value = pos;
           statusOption.classList.remove("showElement");
           statusType.innerText = pos;
-          statusType.style.color = "var(--darkgray)"
+          statusType.style.color = "var(--darkgray)";
           if (statusOption.classList.contains("showElement")) {
             statusCaret.style.transform = "rotate(180deg)";
           } else {
@@ -235,11 +231,11 @@ function listeners() {
         });
       });
     });
-    var inputBox = document.querySelectorAll('input[type="text"]')
+    var inputBox = document.querySelectorAll('input[type="text"]');
 
     inputBox.forEach((inp) => {
       inp.addEventListener("input", () => {
-        removeErrorMessage(inp)
+        removeErrorMessage(inp);
       });
     });
     addStaff.addEventListener("click", () => {
@@ -256,11 +252,11 @@ function listeners() {
       var cancelButton2 = document.querySelector("#cancelButton2");
 
       line.forEach((click) => {
-        click.classList.remove("completed")
-      })
+        click.classList.remove("completed");
+      });
       xmarks.forEach((xmark) => {
         xmark.classList.replace("fa-circle-check", "fa-circle-xmark");
-      })
+      });
 
       var position = document.querySelector("#choosePosition"),
         // chooseClinic to be removed ↓↓↓
@@ -273,31 +269,32 @@ function listeners() {
         age = document.querySelector("#age"),
         civilStatus = document.querySelector("#chooseStatus"),
         phoneNumber = document.querySelector("#phoneNumber"),
-        email = document.querySelector("#email");
+        email = document.querySelector("#email"),
+        provinceInputValue = document.querySelector("#provinceInput"),
+        cityInputValue = document.querySelector("#cityInput"),
+        barangayInputValue = document.querySelector("#barangayInput");
 
       //Automatic Date Calculation
       roundedAge = calculateAge(birthday.value);
       birthday.addEventListener("change", () => {
         let roundedAge = calculateAge(birthday.value);
         if (roundedAge <= 0) {
-          showError(birthday, "Invalid birthday")
-          birthday.value = ""
-          age.value = 0
-        }
-        else if (roundedAge <= 17) {
-          showError(birthday, "Person too young")
-          showError(age, "Person too young")
-          birthday.value = ""
-          age.value = 0
-        }
-        else {
-          removeError(birthday)
-          removeError(age)
+          showError(birthday, "Invalid birthday");
+          birthday.value = "";
+          age.value = 0;
+        } else if (roundedAge <= 17) {
+          showError(birthday, "Person too young");
+          showError(age, "Person too young");
+          birthday.value = "";
+          age.value = 0;
+        } else {
+          removeError(birthday);
+          removeError(age);
           age.value = roundedAge;
         }
       });
       nextButton1.addEventListener("click", (e) => {
-        e.preventDefault()
+        e.preventDefault();
         var firstNameValue = firstName.value.trim(),
           // chooseClinic to be removed ↓↓↓
           clinicAsignedValue = clinicAsigned.value.trim(),
@@ -309,111 +306,97 @@ function listeners() {
           statusValue = civilStatus.value,
           emailValue = email.value.trim();
 
-        isValid = true
+        isValid = true;
         if (positionValue == "") {
-          showError(selectPosition, "Select position")
+          showError(selectPosition, "Select position");
           isValid = false;
+        } else {
+          removeError(selectPosition);
         }
-        else {
-          removeError(selectPosition)
-        }
-        // chooseClinic to be removed ↓↓↓ 
+        // chooseClinic to be removed ↓↓↓
         if (clinicAsignedValue == "") {
-          showError(clinicAsigned, "Select clinic")
+          showError(clinicAsigned, "Select clinic");
           isValid = false;
-        }
-        else {
-          removeError(clinicAsigned)
+        } else {
+          removeError(clinicAsigned);
         }
         // chooseClinic to be removed ↑↑↑
         if (firstNameValue == "") {
-          showError(firstName, "First name missing")
+          showError(firstName, "First name missing");
           isValid = false;
-        }
-        else if (!lettersOnlyRegex.test(firstNameValue)) {
-          showError(firstName, "Invalid format")
+        } else if (!lettersOnlyRegex.test(firstNameValue)) {
+          showError(firstName, "Invalid format");
           isValid = false;
-        }
-        else {
-          removeError(firstName)
+        } else {
+          removeError(firstName);
         }
         if (lastNameValue == "") {
-          showError(lastName, "Last name missing")
+          showError(lastName, "Last name missing");
           isValid = false;
-        }
-        else if (!lettersOnlyRegex.test(lastNameValue)) {
-          showError(lastName, "Invalid format")
+        } else if (!lettersOnlyRegex.test(lastNameValue)) {
+          showError(lastName, "Invalid format");
           isValid = false;
-        }
-        else {
-          removeError(lastName)
+        } else {
+          removeError(lastName);
         }
         if (middleNameValue == "") {
-          middleName.style.borderColor = ""
-        }
-        else if (!lettersOnlyRegex.test(middleNameValue) && middleNameValue != "") {
-          showError(middleName, "Invalid format")
+          middleName.style.borderColor = "";
+        } else if (
+          !lettersOnlyRegex.test(middleNameValue) &&
+          middleNameValue != ""
+        ) {
+          showError(middleName, "Invalid format");
           isValid = false;
-        }
-        else {
-          removeError(middleName)
+        } else {
+          removeError(middleName);
         }
         if (religionValue == "") {
-          showError(religion, "Religion missing")
+          showError(religion, "Religion missing");
           isValid = false;
-        }
-        else if (!lettersOnlyRegex.test(religionValue)) {
-          showError(religion, "Invalid format")
+        } else if (!lettersOnlyRegex.test(religionValue)) {
+          showError(religion, "Invalid format");
           isValid = false;
-        }
-        else {
-          removeError(religion)
+        } else {
+          removeError(religion);
         }
         if (roundedAge <= 0) {
-          showError(age, "Invalid age")
-          showError(birthday, "Invalid birthdate")
+          showError(age, "Invalid age");
+          showError(birthday, "Invalid birthdate");
           isValid = false;
         }
         if (birthday.value == "") {
-          showError(age, "Age missing")
-          showError(birthday, "Birthdate missing")
+          showError(age, "Age missing");
+          showError(birthday, "Birthdate missing");
           isValid = false;
-        }
-        else {
-          removeError(age)
+        } else {
+          removeError(age);
         }
         if (statusValue == "") {
-          showError(selectStatus, "Select status")
+          showError(selectStatus, "Select status");
           isValid = false;
-        }
-        else {
-          removeError(selectStatus)
+        } else {
+          removeError(selectStatus);
         }
         if (phoneNumberValue == "") {
-          showError(phoneNumber, "Phone number Missing")
+          showError(phoneNumber, "Phone number Missing");
           isValid = false;
-        }
-        else if (phoneNumberValue.length < 10) {
-          showError(phoneNumber, "Invalid number")
+        } else if (phoneNumberValue.length < 10) {
+          showError(phoneNumber, "Invalid number");
           isValid = false;
-        }
-        else if (!numbersOnlyRegex.test(phoneNumberValue)) {
-          showError(phoneNumber, "Invalid format")
+        } else if (!numbersOnlyRegex.test(phoneNumberValue)) {
+          showError(phoneNumber, "Invalid format");
           isValid = false;
-        }
-        else {
-          removeError(phoneNumber)
+        } else {
+          removeError(phoneNumber);
         }
         if (emailValue == "") {
-          showError(email, "Email missing")
+          showError(email, "Email missing");
           isValid = false;
-        }
-        else if (!emailRegex.test(emailValue)) {
-          showError(email, "Invalid email")
+        } else if (!emailRegex.test(emailValue)) {
+          showError(email, "Invalid email");
           isValid = false;
-        }
-        else {
-          removeError(email)
+        } else {
+          removeError(email);
         }
         if (isValid) {
           formSection1.classList.add("hidden");
@@ -426,26 +409,24 @@ function listeners() {
         }
       });
 
-
       cancelButton1.addEventListener("click", () => {
         formContainer.classList.add("hidden");
-        position.value = ""
-        civilStatus.value = ""
-        defaultDesign(selectPosition, "")
-        defaultText(positionType, "Select Position")
-        defaultDesign(firstName, "")
-        defaultDesign(clinicAsigned, "")
-        defaultDesign(lastName, "")
-        defaultDesign(middleName, "")
-        defaultDesign(religion, "")
-        defaultDesign(age, 0)
-        defaultDesign(birthday, "")
-        defaultDesign(selectStatus, "")
-        defaultText(statusType, "Select Status")
-        defaultDesign(phoneNumber, "")
-        defaultDesign(email, "")
+        position.value = "";
+        civilStatus.value = "";
+        defaultDesign(selectPosition, "");
+        defaultText(positionType, "Select Position");
+        defaultDesign(firstName, "");
+        defaultDesign(clinicAsigned, "");
+        defaultDesign(lastName, "");
+        defaultDesign(middleName, "");
+        defaultDesign(religion, "");
+        defaultDesign(age, 0);
+        defaultDesign(birthday, "");
+        defaultDesign(selectStatus, "");
+        defaultText(statusType, "Select Status");
+        defaultDesign(phoneNumber, "");
+        defaultDesign(email, "");
       });
-      // var province = document.querySelector("#province"),
       //  city = document.querySelector("#city"),
       // barangay = document.querySelector("#barangay"),
       // houseNumberStreet = document.querySelector("#houseNumberStreet");
@@ -486,7 +467,7 @@ function listeners() {
       //     line2.classList.add("completed");
       //     setTimeout(() => {
       //       check2.classList.replace("fa-circle-xmark", "fa-circle-check");
-      //     }, 900); 
+      //     }, 900);
       //     check2.classList.add("completedIcon");
 
       //     formSection2.classList.add("hidden")
@@ -496,20 +477,17 @@ function listeners() {
       // });
 
       cancelButton2.addEventListener("click", () => {
-        formSection2.classList.add("hidden")
-        formSection1.classList.remove("hidden")
+        formSection2.classList.add("hidden");
+        formSection1.classList.remove("hidden");
       });
-
-      // cancelButton3.addEventListener("click", () => {
-      //   formSection3.classList.add("hidden")
-      //   formSection2.classList.remove("hidden")
-      // });
     });
 
     var deleteButton = document.querySelectorAll(".deleteButton");
     deleteButton.forEach((del) => {
       del.addEventListener("click", function () {
-        var serviceName = this.closest("tr").querySelector("#patientNameOriginalValue").textContent;
+        var serviceName = this.closest("tr").querySelector(
+          "#patientNameOriginalValue"
+        ).textContent;
 
         Swal.fire({
           title: "Delete " + serviceName + "?",
@@ -540,26 +518,36 @@ function listeners() {
         formContainer.classList.remove("hidden");
         document.querySelector("#addStaffForm").classList.add("hidden");
         document.querySelector("#viewStaffDetails").classList.remove("hidden");
-        var name = this.closest("tr").querySelector("#patientNameOriginalValue").textContent;
-        var src = this.closest("tr").querySelector("#imgSourceFetch").textContent;
-        var position = this.closest("tr").querySelector("#position").textContent;
-        var religion = this.closest("tr").querySelector("#religionFetch").textContent;
-        var birthday = this.closest("tr").querySelector("#birthdayFetch").textContent;
+        var name = this.closest("tr").querySelector(
+          "#patientNameOriginalValue"
+        ).textContent;
+        var src =
+          this.closest("tr").querySelector("#imgSourceFetch").textContent;
+        var position =
+          this.closest("tr").querySelector("#position").textContent;
+        var religion =
+          this.closest("tr").querySelector("#religionFetch").textContent;
+        var birthday =
+          this.closest("tr").querySelector("#birthdayFetch").textContent;
         var age = this.closest("tr").querySelector("#ageFetch").textContent;
-        var civilStatus = this.closest("tr").querySelector("#civilStatusFetch").textContent;
-        var contactNumber = this.closest("tr").querySelector("#contactNumber").textContent;
-        var email = this.closest("tr").querySelector("#emailAddresss").textContent;
-        var address = this.closest("tr").querySelector("#addressFetch").textContent;
-        var dateHired = this.closest("tr").querySelector("#dateHiredFetch").textContent;
+        var civilStatus =
+          this.closest("tr").querySelector("#civilStatusFetch").textContent;
+        var contactNumber =
+          this.closest("tr").querySelector("#contactNumber").textContent;
+        var email =
+          this.closest("tr").querySelector("#emailAddresss").textContent;
+        var address =
+          this.closest("tr").querySelector("#addressFetch").textContent;
+        var dateHired =
+          this.closest("tr").querySelector("#dateHiredFetch").textContent;
 
         var status = this.closest("tr").querySelector("#status").textContent;
         var statusController = document.querySelector("#statusController");
-        console.log(status.toLowerCase)
+        console.log(status.toLowerCase);
         if (status.toLowerCase() == "active") {
-          statusController.style.backgroundColor = "var(--green)"
-        }
-        else {
-          statusController.style.backgroundColor = ""
+          statusController.style.backgroundColor = "var(--green)";
+        } else {
+          statusController.style.backgroundColor = "";
         }
 
         document.querySelector("#viewName").innerText = name;
@@ -650,77 +638,74 @@ function calculateAge(userDateInput) {
 
 function showError(input, message) {
   parentElem = input.parentElement;
-  errorMes = parentElem.querySelector(".errorPrompt")
+  errorMes = parentElem.querySelector(".errorPrompt");
   errorMes.innerText = message;
-  input.style.borderColor = "var(--red)"
-  input.classList.add("shake")
+  input.style.borderColor = "var(--red)";
+  input.classList.add("shake");
   setTimeout(() => {
-    input.classList.remove("shake")
-  }, 500)
+    input.classList.remove("shake");
+  }, 500);
 }
 function removeError(input) {
   parentElem = input.parentElement;
-  errorMes = parentElem.querySelector(".errorPrompt")
+  errorMes = parentElem.querySelector(".errorPrompt");
   errorMes.innerText = "";
-  input.style.borderColor = "var(--green)"
+  input.style.borderColor = "var(--green)";
 }
 function removeErrorMessage(input) {
   parentElem = input.parentElement;
-  errorMes = parentElem.querySelector(".errorPrompt")
+  errorMes = parentElem.querySelector(".errorPrompt");
   errorMes.innerText = "";
-  input.style.borderColor = ""
+  input.style.borderColor = "";
 }
 function defaultDesign(input, val) {
   parentElem = input.parentElement;
-  errorMes = parentElem.querySelector(".errorPrompt")
+  errorMes = parentElem.querySelector(".errorPrompt");
   errorMes.innerText = "";
-  input.style.borderColor = ""
-  input.value = val
+  input.style.borderColor = "";
+  input.value = val;
 }
 function defaultText(input, opt) {
-  input.innerText = opt
-  input.style.color = "lightgray"
+  input.innerText = opt;
+  input.style.color = "lightgray";
 }
 
 function addStaff() {
-
-  var province = document.querySelector("#province"),
+  var province = document.querySelector("#provinceInput"),
     name = document.querySelector("#firstName").value,
     choosePosition = document.querySelector("#choosePosition").value,
-    city = document.querySelector("#city"),
-    barangay = document.querySelector("#barangay"),
+    city = document.querySelector("#cityInput"),
+    barangay = document.querySelector("#barangayInput"),
     houseNumberStreet = document.querySelector("#houseNumberStreet");
 
+  var houseNumberStreetValue = houseNumberStreet.value.trim(),
+    provinceValue = province.value.trim(),
+    cityValue = city.value.trim(),
+    barangayValue = barangay.value.trim();
 
-  var houseNumberStreetValue = houseNumberStreet.value.trim();
-
-  if (province.value == "") {
-    showError(province, "Province missing")
+  if (provinceValue == "") {
+    showError(province, "Province missing");
     return false;
+  } else {
+    removeError(province);
   }
-  else {
-    removeError(province)
-  }
-  if (city.value == "") {
-    showError(city, "City missing")
+  if (cityValue == "") {
+    showError(city, "City missing");
     return false;
+  } else {
+    removeError(city);
   }
-  else {
-    removeError(city)
-  }
-  if (barangay.value == "") {
-    showError(barangay, "City missing")
+  if (barangayValue == "") {
+    showError(barangay, "City missing");
     return false;
-  }
-  else {
-    removeError(barangay)
+  } else {
+    removeError(barangay);
   }
   if (houseNumberStreetValue == "") {
-    showError(houseNumberStreet, "House # and Street missing")
+    showError(houseNumberStreet, "House # and Street missing");
     return false;
-  }
-  else {
-    removeError(houseNumberStreet)
+  } else {
+    removeError(houseNumberStreet);
   }
   if (isValid) {
     var addStaffForm = document.getElementById("addStaffForm"),
@@ -761,8 +746,6 @@ function addStaff() {
       }
     });
   }
-
-
 }
 const clinics = [
   "Pablo De Jesus",
@@ -790,7 +773,7 @@ function displaySuggestions(filteredNames) {
 
   filteredNames.forEach((name) => {
     const suggestion = document.createElement("span");
-    suggestion.className = "clinicsName"
+    suggestion.className = "clinicsName";
     let highlightedName = "";
     let currentIndex = 0;
     for (let i = 0; i < name.length; i++) {
@@ -845,14 +828,14 @@ function showValue(selectElement, input) {
 }
 function viewNotification(event) {
   var url = event.currentTarget.querySelector("#urlRedirect").textContent;
-  window.location.href ="../Admin" + url;
+  window.location.href = "../Admin" + url;
 }
 
-async function fetchNotification(){
-  const container = document.querySelector("#allNotification")
-  const loader = document.querySelector("#notificationLoader")
-  const mainContainer = document.querySelector("#notificationMainTemplate")
-  const nodatafound = document.querySelector("#no-notifications")
+async function fetchNotification() {
+  const container = document.querySelector("#allNotification");
+  const loader = document.querySelector("#notificationLoader");
+  const mainContainer = document.querySelector("#notificationMainTemplate");
+  const nodatafound = document.querySelector("#no-notifications");
   try {
     for (let i = 0; i < 5; i++) {
       const clone = document.importNode(loader.content, true);
@@ -860,7 +843,7 @@ async function fetchNotification(){
     }
     const response = await fetch("../JSON/notification.json");
     const data = await response.json();
-    console.log( data);
+    console.log(data);
 
     function filterData(data, searchTerm) {
       searchTerm = searchTerm ? searchTerm.toLowerCase() : "";
@@ -869,10 +852,7 @@ async function fetchNotification(){
       for (const notifs of data.notification) {
         const title = notifs.title.toLowerCase();
         const text = notifs.text.toLowerCase();
-        if (
-          title.includes(searchTerm) ||
-          text.includes(searchTerm)
-        ) {
+        if (title.includes(searchTerm) || text.includes(searchTerm)) {
           filteredData.push(notifs);
         }
       }
@@ -887,7 +867,7 @@ async function fetchNotification(){
         const clone = document.importNode(nodatafound.content, true);
         container.appendChild(clone);
       } else {
-        let hasUnreadNotifications = false; 
+        let hasUnreadNotifications = false;
         filteredData.sort((a, b) => {
           if (a.status === b.status) {
             return 0;
@@ -897,14 +877,14 @@ async function fetchNotification(){
         filteredData.forEach((item) => {
           const clone = document.importNode(mainContainer.content, true);
 
-          var notificationStatus = item.status
+          var notificationStatus = item.status;
 
-          if(notificationStatus === false){
-            clone.querySelector(".notif").classList.add("unread")
+          if (notificationStatus === false) {
+            clone.querySelector(".notif").classList.add("unread");
             const notifDot = document.createElement("div");
             notifDot.classList.add("notifDot");
             clone.querySelector(".notif").appendChild(notifDot);
-            hasUnreadNotifications = true; 
+            hasUnreadNotifications = true;
           }
           clone.querySelector("#imgNotif").src = "../images/" + item.image;
           clone.querySelector("#notificationTitle").innerHTML = highlightText(
@@ -920,10 +900,9 @@ async function fetchNotification(){
         });
         const notificationDots = document.querySelector(".notification-dot");
         if (!hasUnreadNotifications) {
-          notificationDots.classList.add("hidden")
-        }
-        else{
-          notificationDots.classList.remove("hidden")
+          notificationDots.classList.add("hidden");
+        } else {
+          notificationDots.classList.remove("hidden");
         }
       }
     }
@@ -933,7 +912,10 @@ async function fetchNotification(){
       }
 
       const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, "gi");
-      return text.replace(regex, (match) => `<p class="highlight">${match}</p>`);
+      return text.replace(
+        regex,
+        (match) => `<p class="highlight">${match}</p>`
+      );
     }
 
     function escapeRegExp(string) {
@@ -945,15 +927,13 @@ async function fetchNotification(){
     search.addEventListener("input", function () {
       updateDisplay(this.value);
     });
-  }
-  catch (error) {
+  } catch (error) {
     console.error("An error occurred:", error);
   }
-
 }
 function viewNotificationContainer(event) {
   var parent = event.target.parentElement;
   var notificationContainer = parent.querySelector(".notificationContainer");
   notificationContainer.classList.toggle("hidden");
-  event.target.classList.toggle("showContainer")
+  event.target.classList.toggle("showContainer");
 }

@@ -369,6 +369,7 @@ th, td{
     color: var(--darkgray);
     text-align: center;
     font-size: var(--small);
+    transition: all ease .3s ;
 }
 .inputPreview{
     display: flex;
@@ -406,9 +407,8 @@ th, td{
     0px 3px 24px rgba(3, 7, 18, 0.02);
     background-color: var(--white);
 }
-.inputField:focus,.inputField:hover {
-    border-color: none !important;
-    box-shadow: none;
+.inputField:is(:focus, :hover), .addressPicker:is(:focus, :hover) {
+    border-color: var(--blue);
 }
 .input2{
     width: 18vw;
@@ -447,6 +447,7 @@ th, td{
     text-align: center;
     font-size: var(--small);
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    transition: all ease .3s;
 }
 #selectStatus,#selectPosition,#selectProvince{
     position: relative;
