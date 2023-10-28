@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#2196F3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="website icon" type="png " href="../images/logo.png">
+    <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
+    <title>Pablo De Jesus</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Poppins', Arial, Helvetica, sans-serif;  
+    }
+    :root{
+    --blue:#2196F3;
+    --lightgray:#BDBDBD;
+    --darkgray:#424242;
+    --white:#ffffff;        
+    --orange: #FFCC80; 
+    --green: #66BB6A;
+    --lightred:#EF9A9A;
+    --red:#EF5350;
+    --smaller:.6vw;
+    --small: .8vw;
+    --medium: 1vw;
+    --large: 2.5vw;
+    --larger: 3vw;
+}
+    .container {
+        width: 50%;
+        height: 90%;
+        background-color: var(--white);
+        padding: 1vw;
+        border-radius: .4vw;
+        color: var(--darkgray);
+        -webkit-box-shadow: 0px 0px 5px 0px rgb(199, 199, 199);
+        -moz-box-shadow: 0px 0px 5px 0px rgb(199, 199, 199);
+        box-shadow: 0px 0px 5px 0px rgb(199, 199, 199);
+        display: flex;
+        flex-direction: column;
+    }
+    .navigations{
+        width: 100%;
+        height: fit-content;
+        margin-bottom: 1vw;
+    }
+    .navigations span{
+        padding: .5vw 1vw;
+        border: solid 1px var(--lightgray);
+        border-width: 0 0 0 0;
+        transition: all ease .5s;
+        cursor: pointer;
+        font-size: var(--medium);
+    }
+    .navigations span:first-child{
+        margin-right: 1vw;
+    }
+    .navigations span.active,.navigations span:is(:hover) {
+        border-width: 0 0 1px 0;
+        font-size: 1.1vw;
+    }
+    .textContainer{
+        position: relative;
+        flex-grow: 1;
+        width: 100%;
+    }
+    .text{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 0 1vw;
+        overflow-y: scroll;
+    }
+    .text::-webkit-scrollbar{
+        display: none;
+    }
+    .contentHolder{
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .title{
+        font-size: var(--medium);
+        width: 100%;
+        padding: .5vw 0 ;
+    }
+    .content{
+        font-size: var(--small);
+        width: 95%;
+    }
+    .hidden{
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="navigations">
+            <span class="active" id="privacyLink">Privacy policy</span><span id="termsLink">Terms of use</span>
+        </div>
+        <div class="textContainer">
+            <div class="text" id="privacy">
+                <div class="contentHolder">
+                    <p class="title">1. Acceptance of Terms</p>
+                    <p class="content">1.1. By accessing or using the website, 
+                        you agree to comply with and be bound by these following Terms and Conditions.
+                    </p>
+                    <p class="content">
+                        1.2. If you do not agree with any part of these terms, you should not use our services.
+                    </p>
+                </div>
+                <div class="contentHolder">
+                    <p class="title">2. Definitions In this document: </p>
+                    <p class="content">2.1. "We," "us," or "Pablo De Jesus Dental Center" refers to the company operating the website. </p>
+                    <p class="content">2.2. "User" refers to anyone who accesses or uses the website.</p>
+                </div>
+                <div class="contentHolder">
+                    <p class="title">3. Use of Services</p>
+                    <p class="content">3.1. Users are responsible for maintaining the confidentiality of their account information and passwords.</p>
+                    <p class="content">3.2. Users agree to provide accurate and up-to-date information when using our services.
+                    </p>
+                    <p class="content">3.3 You must be at least 18 years old to use this website. If you are under 18, you may only use      
+                        this website with the involvement and consent of a parent or legal guardian.
+                    </p>
+                </div>
+                <div class="contentHolder">
+                    <p class="title">4. Intellectual Property</p>
+                    <p class="content">4.1. All content on this website, including text, graphics, logos, and software,
+                         is the property of "Pablo De Jesus Dental Center" and is protected by copyright and other intellectual property laws.
+                    </p>
+                    <p class="content">4.2. Users are not allowed to reproduce, distribute, or modify any content from our website without prior written consent.</p>
+                </div>
+                <div class="contentHolder">
+                    <p class="title">5. Privacy</p>
+                    <p class="content">
+                        5.1. Our Privacy Policy outlines how we collect, use, and protect user information. By using our services, you agree to the terms of our Privacy Policy [Link of our Privacy Policy].
+                    </p>
+                </div>
+                <div class="contentHolder">
+                    <p class="title">6. User Responsibilities</p>
+                    <p class="content">6.1. Users agree not to use our services for any illegal or unethical purpose.</p>
+                    <p class="content">6.2. Users are responsible for their interactions with other users and must not engage in harassing, threatening, or harmful behavior.</p>
+                    <p class="content">6.3 You agree to use this website only for lawful purposes and in a way that does not infringe upon the rights of, restrict, or inhibit anyone else's use and enjoyment of the website.</p>
+                </div>
+                <div class="contentHolder">
+                    <p class="title">7. Disclaimer of Warranty</p>
+                    <p class="content">7.1. We provide our services on an "as-is" basis, without any warranties, expressed or implied.</p>
+                </div>
+                <div class="contentHolder">
+                    <p class="title">8. User-Generated Content</p>
+                    <p class="content">8.1 Pablo De Jesus Dental Center has the rights to remove or moderate user-generated content such as comments, reviews, submissions, etc.</p>
+                </div>
+                <div class="contentHolder">
+                    <p class="title">9. Termination</p>
+                    <p class="content">9.1. We reserve the right to terminate or suspend user accounts at our discretion, with or without notice.</p>
+                </div>
+                <div class="contentHolder">
+                    <p class="title">10. Governing Law</p>
+                    <p class="content">10.1. These Terms and Conditions are governed by the laws of the Philippine Court System.</p>
+                </div>
+                <div class="contentHolder">
+                    <p class="title">11. Changes to Terms and Conditions</p>
+                    <p class="content">1.1. Pablo De Jesus Dental Center reserves the right to change, modify, or update these terms and conditions at any time. It is your responsibility to review these terms periodically for changes. Your continued use of the website after any changes to these terms signifies your acceptance of those changes.</p>
+                </div>
+                <div class="contentHolder">
+                    <p class="title">12. Contact Information</p>
+                    <p class="content">12.1. If you have any questions or concerns about these terms and conditions, please contact us at: </p>
+                    <p class="content">Pablo De Jesus Dental Center</p>
+                    <p class="content">[Address]</p>
+                    <p class="content">[Phone Number]</p>
+                    <p class="content">[Email Address]</p>
+                </div>
+
+            </div>
+            <div class="text hidden" id="terms">
+    
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+var privacyLink = document.querySelector("#privacyLink");
+var termsLink = document.querySelector("#termsLink");
+var privacy = document.querySelector("#privacy");
+var terms = document.querySelector("#terms");
+
+privacyLink.addEventListener("click", function() {
+    togglePages(privacyLink, termsLink, privacy, terms);
+});
+
+termsLink.addEventListener("click", function() {
+    togglePages(termsLink, privacyLink, terms, privacy);
+});
+
+function togglePages(linkClicked, linkActive, activePage, inactivePage) {
+    if (!linkClicked.classList.contains("active")) {
+        linkClicked.classList.add("active");
+        linkActive.classList.remove("active");
+        activePage.classList.remove("hidden");
+        inactivePage.classList.add("hidden");
+    }
+}
+
+
+
+
+</script>
+
+</html>
