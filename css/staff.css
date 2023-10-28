@@ -565,12 +565,12 @@ th, td{
     margin:0 4vh 0 0 ;
     background-color: var(--white);
 }
-#preview{
+#preview,#preview1{
     position: relative;
     flex-shrink: 0;
     width: 100%;
 }
-#uploadImg{
+#uploadImg,#uploadSignature{
     position: absolute;
     z-index: 5;
     display: flex;
@@ -594,7 +594,7 @@ th, td{
     0px 2px 15px rgba(3, 7, 18, 0.03),
     0px 3px 24px rgba(3, 7, 18, 0.02);
 }
-#uploadImg:hover{
+#uploadImg:hover,#uploadSignature:hover{
     background-color: var(--lightgray);
 }
 .errorPrompt{

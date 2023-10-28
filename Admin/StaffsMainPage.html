@@ -145,81 +145,6 @@
                 </table>
             </div>
         </div>
-        <!-- table loader template -->
-        <template id="staffTemplateLoader">
-            <tr class="tableRow">
-                <td class="staffTable">
-                    <div id="nameTable" class="numberTablediv">
-                        <div class="imgHolderNameTable skeleton1">
-                            <img src="" alt="">
-                        </div>
-                        <span id="patientNameOriginalValue" style="display: none;"></span>
-                        <span id="staffName" class="skeleton1"></span>
-                    </div>
-                </td>
-                <td class="positionTable">
-                    <div class="numberTablediv"><span id="position" class="skeleton1"></span></div>
-                </td>
-                <td class="contactTable">
-                    <div class="numberTablediv"><span id="contactNumber" class="skeleton1"></span></div>
-                </td>
-                <td class="emailTable">
-                    <div class="numberTablediv"><span id="emailAddresss" class="skeleton1"></span></div>
-                </td>
-                <td class="statusTable">
-                    <div class="numberTablediv"><span id="status" class="skeleton1"></span></div>
-                </td>
-                <td class="actionsTable">
-                </td>
-            </tr>
-        </template>
-
-        <!-- table main template -->
-        <template id="staffTemplate">
-            <tr class="tableRow">
-                <td class="staffTable">
-                    <div id="nameTable" class="numberTablediv">
-                        <div class="imgHolderNameTable">
-                            <img src="../images/" alt="" id="imgStaff">
-                        </div>
-                        <span id="patientNameOriginalValue" style="display: none;"></span>
-                        <span id="staffName"></span>
-                    </div>
-                </td>
-                <td class="positionTable">
-                    <div class="numberTablediv"><span id="position"></span></div>
-                </td>
-                <td class="contactTable">
-                    <div class="numberTablediv"><span id="contactNumber"></span></div>
-                </td>
-                <td class="emailTable">
-                    <div class="numberTablediv"><span id="emailAddresss"></span></div>
-                </td>
-                <td class="statusTable">
-                    <span id="imgSourceFetch" style="display: none;"></span>
-                    <span id="religionFetch" style="display: none;"></span>
-                    <span id="birthdayFetch" style="display: none;"></span>
-                    <span id="ageFetch" style="display: none;"></span>
-                    <span id="civilStatusFetch" style="display: none;"></span>
-                    <span id="addressFetch" style="display: none;"></span>
-                    <span id="dateHiredFetch" style="display: none;"></span>
-                    <div class="numberTablediv"><span id="status"></span></div>
-                </td>
-                <td class="actionsTable">
-                    <div class="numberTablediv" id="actionsTable">
-                        <i class="fa-solid fa-eye viewButton"></i>
-                        <i class="fa-solid fa-trash deleteButton"></i>
-                    </div>
-                </td>
-            </tr>
-        </template>
-        <!-- No Data Found Template -->
-        <template id="no-data-found">
-            <div class="no-data-found">
-                <img src="../images/No Data Found.png" alt="" class="shake">
-            </div>
-        </template>
-
         <div class="formContainer" id="formContainer">
 
             <form class="formHandler" action="" id="addStaffForm">
@@ -234,13 +159,19 @@
                     </div>
                 </div>
                 <div class="forms">
-                    <div class="formSection hidden" id="formSection1">
+                    <div class="formSection" id="formSection1">
                         <div class="buttonContainer">
                             <i class="fa-solid fa-xmark" id="cancelButton1"></i>
                             <span>Personal Details</span>
                             <i class="fa-solid fa-angles-right" id="nextButton1"></i>
                         </div>
                         <div class="imageInput">
+                            <div class="imgHolderStaff" id="dropArea1" ondrop="handleDrop(event)"
+                            ondragover="handleDragOver1(event)">
+                                <label for="signatureInput" id="uploadSignature"><i class="fa-solid fa-camera"></i></label>
+                                <input type="file" id="signatureInput" onchange="previewImage1(event)">
+                                <img id="preview1" src="../images/noProfile.png" alt="">
+                            </div>
                             <div class="imgHolderStaff" id="dropArea" ondrop="handleDrop(event)"
                                 ondragover="handleDragOver(event)">
                                 <label for="fileInput" id="uploadImg"><i class="fa-solid fa-camera"></i></label>
@@ -339,7 +270,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="formSection" id="formSection2">
+                    <div class="formSection hidden" id="formSection2">
                         <div class="buttonContainer">
                             <i class="fa-solid fa-angles-left" id="cancelButton2"></i>
                             <span>Address</span>
@@ -528,6 +459,81 @@
                 </div>
             </div>
         </template>
+                <!-- table loader template -->
+                <template id="staffTemplateLoader">
+                    <tr class="tableRow">
+                        <td class="staffTable">
+                            <div id="nameTable" class="numberTablediv">
+                                <div class="imgHolderNameTable skeleton1">
+                                    <img src="" alt="">
+                                </div>
+                                <span id="patientNameOriginalValue" style="display: none;"></span>
+                                <span id="staffName" class="skeleton1"></span>
+                            </div>
+                        </td>
+                        <td class="positionTable">
+                            <div class="numberTablediv"><span id="position" class="skeleton1"></span></div>
+                        </td>
+                        <td class="contactTable">
+                            <div class="numberTablediv"><span id="contactNumber" class="skeleton1"></span></div>
+                        </td>
+                        <td class="emailTable">
+                            <div class="numberTablediv"><span id="emailAddresss" class="skeleton1"></span></div>
+                        </td>
+                        <td class="statusTable">
+                            <div class="numberTablediv"><span id="status" class="skeleton1"></span></div>
+                        </td>
+                        <td class="actionsTable">
+                        </td>
+                    </tr>
+                </template>
+        
+                <!-- table main template -->
+                <template id="staffTemplate">
+                    <tr class="tableRow">
+                        <td class="staffTable">
+                            <div id="nameTable" class="numberTablediv">
+                                <div class="imgHolderNameTable">
+                                    <img src="../images/" alt="" id="imgStaff">
+                                </div>
+                                <span id="patientNameOriginalValue" style="display: none;"></span>
+                                <span id="staffName"></span>
+                            </div>
+                        </td>
+                        <td class="positionTable">
+                            <div class="numberTablediv"><span id="position"></span></div>
+                        </td>
+                        <td class="contactTable">
+                            <div class="numberTablediv"><span id="contactNumber"></span></div>
+                        </td>
+                        <td class="emailTable">
+                            <div class="numberTablediv"><span id="emailAddresss"></span></div>
+                        </td>
+                        <td class="statusTable">
+                            <span id="imgSourceFetch" style="display: none;"></span>
+                            <span id="religionFetch" style="display: none;"></span>
+                            <span id="birthdayFetch" style="display: none;"></span>
+                            <span id="ageFetch" style="display: none;"></span>
+                            <span id="civilStatusFetch" style="display: none;"></span>
+                            <span id="addressFetch" style="display: none;"></span>
+                            <span id="dateHiredFetch" style="display: none;"></span>
+                            <div class="numberTablediv"><span id="status"></span></div>
+                        </td>
+                        <td class="actionsTable">
+                            <div class="numberTablediv" id="actionsTable">
+                                <i class="fa-solid fa-eye viewButton"></i>
+                                <i class="fa-solid fa-trash deleteButton"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </template>
+                <!-- No Data Found Template -->
+                <template id="no-data-found">
+                    <div class="no-data-found">
+                        <img src="../images/No Data Found.png" alt="" class="shake">
+                    </div>
+                </template>
+        
     </section>
 </body>
 

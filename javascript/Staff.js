@@ -584,6 +584,24 @@ function previewImage(event) {
     }
   }
 }
+function previewImage1(event) {
+  var fileInput = event.target;
+  var file = fileInput.files[0];
+
+  if (file) {
+    if (validateFileType(file) && validateFileSize(file)) {
+      previewFile1(file);
+    } else {
+      Swal.fire({
+        text: "Please select a JPEG, JPG, or PNG file under 5MB.",
+        icon: "warning",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+      fileInput.value = "";
+    }
+  }
+}
 
 function handleDrop(event) {
   event.preventDefault();
@@ -592,6 +610,22 @@ function handleDrop(event) {
   var file = event.dataTransfer.files[0];
   if (validateFileType(file) && validateFileSize(file)) {
     previewFile(file);
+  } else {
+    Swal.fire({
+      text: "Drop a JPEG, JPG, or PNG file under 5MB.",
+      icon: "warning",
+      timer: 2000,
+      showConfirmButton: false,
+    });
+  }
+}
+function handleDrop1(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  var file = event.dataTransfer.files[0];
+  if (validateFileType(file) && validateFileSize(file)) {
+    previewFile1(file);
   } else {
     Swal.fire({
       text: "Drop a JPEG, JPG, or PNG file under 5MB.",
@@ -612,6 +646,16 @@ function previewFile(file) {
 
   reader.onload = function (e) {
     var previewImage = document.getElementById("preview");
+    previewImage.src = e.target.result;
+  };
+
+  reader.readAsDataURL(file);
+}
+function previewFile1(file) {
+  var reader = new FileReader();
+
+  reader.onload = function (e) {
+    var previewImage = document.getElementById("preview1");
     previewImage.src = e.target.result;
   };
 
