@@ -568,6 +568,24 @@
         color: var(--white);
         transition: all ease .3s;
     }
+    footer{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 20vh;
+        background-color: var(--white);
+        padding-top: 1vh;
+    }
+    .footerSection{
+        width: 50%;
+    }
+    .footerSection img{
+        width: 7vh;
+    }
+    .textHolderFooter a{
+        font-size: 1.4vh;
+    }
 }
 @media screen and (max-width:961px) {
     *{  
