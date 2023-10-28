@@ -19,6 +19,7 @@ var passwordLogInAdmin = document.getElementById("passwordLogInAdmin");
 var modal = document.getElementById("container");
 //new
 var modalAdmin = document.getElementById("containerAdmin");
+var termsHolder = document.querySelector(".termsHolder");
 var role = document.querySelector(".role");
 var resendOTP = document.querySelector("#resendOTP");
 let timerOn = true;
@@ -34,11 +35,17 @@ document.addEventListener("DOMContentLoaded", function () {
   //new
   document.addEventListener("click", (event) => {
     if (modal.classList.contains("active")) {
-      if (event.target === modal || modal.contains(event.target)) {
+      if (
+        event.target === modal ||
+        modal.contains(event.target) ||
+        event.target === termsHolder ||
+        termsHolder.contains(event.target)
+      ) {
         return;
       }
       modal.classList.remove("right-panel-active");
       modal.classList.remove("active");
+      termsHolder.classList.add("hidden");
     }
     if (modalAdmin.classList.contains("active")) {
       if (event.target === modalAdmin || modalAdmin.contains(event.target)) {
@@ -77,8 +84,9 @@ function listeners() {
   var showTerms = document.querySelector("#showTerms");
   var termsHolder = document.querySelector(".termsHolder");
 
-  showTerms.addEventListener("click", function () {
-    termsHolder.className = "termsHolder-show";
+  showTerms.addEventListener("click", function (event) {
+    event.stopPropagation();
+    termsHolder.classList.remove("hidden");
     close.forEach((closed) => {
       closed.removeEventListener("click", closeClickHandler);
     });
@@ -86,8 +94,9 @@ function listeners() {
 
   var termsClose = document.querySelector("#termsClose");
 
-  termsClose.addEventListener("click", function () {
-    termsHolder.className = "termsHolder";
+  termsClose.addEventListener("click", function (event) {
+    event.stopPropagation();
+    termsHolder.classList.add("hidden");
     close.forEach((closed) => {
       closed.addEventListener("click", closeClickHandler);
     });

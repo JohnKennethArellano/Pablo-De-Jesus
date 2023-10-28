@@ -5,6 +5,7 @@
 *{  
     margin: 0;
     padding: 0;
+    border: none;
     box-sizing: border-box;
 }
 :root{
@@ -840,22 +841,8 @@ button.ghost{
 button.ghost:hover{
 color: var(--white) !important;
 }
-.termsHolder{  
-    position: absolute;
-    position: fixed;
-    top: 10%;
-    right: 30vw;
-    width: 40%;
-    height: 80vh;
-    border-radius: .6vw;
-    padding: .5vw 1vw;
-    background-color: var(--white);
-    visibility: hidden;
-    opacity: 0;
-    z-index: 60;
-    transition: all ease-in .3s;
-}
-.termsHolder-show {
+
+.termsHolder {
     position: absolute;
     position: fixed;
     top: 10%;
@@ -873,14 +860,14 @@ color: var(--white) !important;
     0px 2px 15px rgba(3, 7, 18, 0.03),
     0px 3px 24px rgba(3, 7, 18, 0.02);
 }
-.termsHolder-show span{
+.termsHolder span{
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 2.8vh;
 }
-.termsHolder-show span i{
+.termsHolder span i{
     font-size: var(--small);
 }
 .termsHolder span{
