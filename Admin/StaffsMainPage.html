@@ -145,7 +145,7 @@
                 </table>
             </div>
         </div>
-        <div class="formContainer" id="formContainer">
+        <div class="formContainer hidden" id="formContainer">
 
             <form class="formHandler" action="" id="addStaffForm">
                 <div class="progressTracker">
@@ -166,16 +166,16 @@
                             <i class="fa-solid fa-angles-right" id="nextButton1"></i>
                         </div>
                         <div class="imageInput">
-                            <div class="imgHolderStaff" id="dropArea1" ondrop="handleDrop(event)"
-                            ondragover="handleDragOver1(event)">
+                            <div class="imgHolderStaff" id="dropArea1" ondrop="handleDrop1(event)"
+                            ondragover="handleDragOver(event)">
                                 <label for="signatureInput" id="uploadSignature"><i class="fa-solid fa-camera"></i></label>
-                                <input type="file" id="signatureInput" onchange="previewImage1(event)">
-                                <img id="preview1" src="../images/noProfile.png" alt="">
+                                <input type="file" id="signatureInput" onchange="previewImage1(event)" name="signature" style="display: none;">
+                                <img id="preview1" src="../images/E-signature.png" alt="">
                             </div>
                             <div class="imgHolderStaff" id="dropArea" ondrop="handleDrop(event)"
                                 ondragover="handleDragOver(event)">
                                 <label for="fileInput" id="uploadImg"><i class="fa-solid fa-camera"></i></label>
-                                <input type="file" id="fileInput" onchange="previewImage(event)">
+                                <input type="file" id="fileInput" onchange="previewImage(event)" name="profilePicture" style="display: none;">
                                 <img id="preview" src="../images/noProfile.png" alt="">
                             </div>
                             <div class="input4">
@@ -310,62 +310,6 @@
                         </div>
 
                     </div>
-                    <!-- <div class="formSection hidden" id="formSection3">
-                        <div class="buttonContainer">
-                            <i class="fa-solid fa-angles-left" id="cancelButton3"></i>
-                            <span>Confirm details</span>
-                            <i class="fa-solid fa-angles-right" id="hiddenButton"></i>
-                        </div>
-                        <div class="nameContainer1">
-                            <div class="input3">                              
-                                <span class="formLabelPreview">Full name</span>
-                                <span class="inputPreview" id="namePreview"></span>
-                            </div>
-                            <div class="input2">                              
-                                <span class="formLabel">Position</span>
-                                <span class="inputPreview1" id="positionPreview"></span>
-                            </div>
-                        </div>
-                        <div class="nameContainer1">
-                            <div class="input2">                              
-                                <span class="formLabel">Religion</span>
-                                <span class="inputPreview1" id="religionPreview"></span>
-                            </div>
-                            <div class="input2">                              
-                                <span class="formLabel">Birthday</span>
-                                <span class="inputPreview1" id="birthdayPreview"></span>
-                            </div>
-                            <div class="input2">                              
-                                <span class="formLabel">Age</span>
-                                <span class="inputPreview1" id="agePreview"></span>
-                            </div>
-                        </div>
-                        <div class="nameContainer1">
-                            <div class="input2">                              
-                                <span class="formLabel">Civil status</span>
-                                <span class="inputPreview1" id="csPreview"></span>
-                            </div>
-                            <div class="input2">                              
-                                <span class="formLabel">Contact #</span>
-                                <span class="inputPreview1" id="contactPreview"></span>
-                            </div>
-                            <div class="input2">                              
-                                <span class="formLabel">Email</span>
-                                <span class="inputPreview1" id="emailPreview"></span>
-                            </div>
-                        </div>
-                        <div class="nameContainer1">
-                            <div class="input3">                              
-                                <span class="formLabelPreview">Address</span>
-                                <span class="inputPreview" id="addressPreview"></span>
-                            </div>
-                            <div class="input2">                              
-                                <span class="formLabel">Clinic</span>
-                                <span class="inputPreview1" id="clinicPlace"></span>
-                            </div>
-                        </div>
-
-                    </div> -->
                 </div>
             </form>
             <div class="formHandler hidden" id="viewStaffDetails">

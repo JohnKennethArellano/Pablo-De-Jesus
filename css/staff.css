@@ -427,9 +427,10 @@ th, td{
     flex-direction: column;
 }
 .input4{
+    position: absolute;
+    right: 1.5vw;
     width: fit-content;
     height: 12vw;
-    position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -548,9 +549,9 @@ th, td{
     height: fit-content;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: .5vw;
     margin-bottom: 3vh;
+    padding: 0 2vw;
 }
 .imgHolderStaff{
     position: relative;
@@ -559,13 +560,19 @@ th, td{
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius:1vw 1vw 50% 50%;
+    border-radius: .4vw;
     overflow: hidden;
     border: solid 1px lightgray;
     margin:0 4vh 0 0 ;
     background-color: var(--white);
 }
-#preview,#preview1{
+.imgHolderStaff:first-child{
+    width: 24vw;
+}
+#preview1{
+    width: 60%;
+}
+#preview{
     position: relative;
     flex-shrink: 0;
     width: 100%;
