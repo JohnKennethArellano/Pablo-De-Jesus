@@ -208,7 +208,6 @@ function login() {
     } else {
       container.classList.toggle("active");
     }
-
     containerAdmin.classList.remove("active");
     role.classList.remove("visible");
     //add this also
