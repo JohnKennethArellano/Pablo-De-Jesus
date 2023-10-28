@@ -2,6 +2,17 @@ function onload() {
   listeners();
   fetchNotification();
 }
+
+var formBg = document.querySelector("#formBg");
+
+formBg.addEventListener("click", (event) => {
+  if (!formBg.classList.contains("hidden")) {
+    if (event.target === formBg || formBg.contains(event.target)) {
+      return;
+    }
+    formBg.classList.add("hidden");
+  }
+});
 const containerBody = document.querySelector("#containerBody"),
   templateLoader = document.querySelector("#templateLoader"),
   mainTemplate = document.querySelector("#mainTemplate"),
@@ -226,7 +237,8 @@ function listeners() {
       });
     });
 }
-function showForm() {
+function showForm(event) {
+  event.stopPropagation();
   var formBg = document.querySelector("#formBg"),
     closeForm = document.querySelector("#closeForm"),
     formContainer = document.querySelectorAll(".formContainer"),
@@ -237,9 +249,6 @@ function showForm() {
     clinicDescriptionAdd = document.querySelector("#clinicDescriptionAdd"),
     numberAdd = document.querySelector("#numberAdd"),
     emailAdd = document.querySelector("#emailAdd"),
-    province = document.querySelector("#province"),
-    provinceInput = document.querySelector("#provinceInput"),
-    city = document.querySelector("#city"),
     cityInput = document.querySelector("#cityInput"),
     barangay = document.querySelector("#barangay"),
     barangayInput = document.querySelector("#barangayInput"),
@@ -251,9 +260,6 @@ function showForm() {
     religion = document.querySelector("#religionAdd"),
     email = document.querySelector("#emailAddAdmin"),
     number = document.querySelector("#numberAdmin"),
-    provinceAdmin = document.querySelector("#provinceAdmin"),
-    cityAdmin = document.querySelector("#cityAdmin"),
-    barangayAdmin = document.querySelector("#barangayAdmin"),
     provinceInputAdmin = document.querySelector("#provinceInputAdmin"),
     cityInputAdmin = document.querySelector("#cityInputAdmin"),
     barangayInputAdmin = document.querySelector("#barangayInputAdmin"),

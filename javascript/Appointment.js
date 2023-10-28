@@ -2,38 +2,58 @@ function onload() {
   listeners();
   fetchNotification();
 }
-
+//new
+document.addEventListener("DOMContentLoaded", function () {
+  var calendarContainer = document.querySelector("#calendarContainer"),
+    acceptModal = document.querySelector("#acceptModal");
+  document.addEventListener("click", (event) => {
+    if (calendarContainer.classList.contains("showElement")) {
+      if (
+        event.target === calendarContainer ||
+        calendarShow.contains(event.target)
+      ) {
+        return;
+      }
+      calendarContainer.classList.remove("showElement");
+    }
+    if (acceptModal.classList.contains("showElement")) {
+      if (event.target === acceptModal || calendarShow.contains(event.target)) {
+        return;
+      }
+      acceptModal.classList.remove("showElement");
+    }
+  });
+});
 function listeners() {
   //update the sidebar js
   const links = document.querySelectorAll(".links");
   links.forEach((link) => {
-      const tooltipText = link.getAttribute("data-tooltip");
+    const tooltipText = link.getAttribute("data-tooltip");
 
-      const tooltip = document.createElement("div");
-      tooltip.classList.add("tooltip");
-      tooltip.textContent = tooltipText;
+    const tooltip = document.createElement("div");
+    tooltip.classList.add("tooltip");
+    tooltip.textContent = tooltipText;
 
-      link.appendChild(tooltip);
+    link.appendChild(tooltip);
   });
-   //end of the update
-  var profileExpand = document.querySelector('#profileExpand');
-  var logoutHolder = document.querySelector('#logoutHolder');
-  var logoutHolderOptions = document.querySelectorAll('.logoutHolder span');
-  profileExpand.addEventListener("click", ()=>{
+  //end of the update
+  var profileExpand = document.querySelector("#profileExpand");
+  var logoutHolder = document.querySelector("#logoutHolder");
+  var logoutHolderOptions = document.querySelectorAll(".logoutHolder span");
+  profileExpand.addEventListener("click", () => {
     logoutHolder.classList.toggle("hidden");
-    logoutHolderOptions.forEach((action)=>{
-      action.addEventListener("click", ()=>{
-        logoutHolder.classList.add("hidden")
-      })
-    })
-  })
+    logoutHolderOptions.forEach((action) => {
+      action.addEventListener("click", () => {
+        logoutHolder.classList.add("hidden");
+      });
+    });
+  });
 
   var sortButton = document.querySelector("#sortButton");
   var sortOptions = document.querySelector("#sortOptions");
   var sorts = document.querySelectorAll(".sortOptions span");
   var sortText = document.querySelector("#sortText");
   var search = document.querySelector("#search");
-  var calendarShow = document.querySelector("#calendarShow");
   var calendarShow = document.querySelector("#calendarShow");
   var calendarContainer = document.querySelector("#calendarContainer");
   const caretIcons = document.querySelectorAll(".fa-caret-down");
@@ -50,7 +70,8 @@ function listeners() {
       }
     });
   });
-  calendarShow.addEventListener("click", function () {
+  calendarShow.addEventListener("click", function (event) {
+    event.stopPropagation();
     calendarContainer.classList.toggle("showElement");
     sortOptions.classList.remove("showElement");
     caretIcons.forEach((icon) => {
@@ -87,7 +108,7 @@ function listeners() {
   for (let i = 0; i < 10; i++) {
     tableBody.append(patientTemplate1.content.cloneNode(true));
   }
-  fetch("https://run.mocky.io/v3/f2868cd7-e6bb-4af5-a24d-42f4c37e7614")
+  fetch("../JSON/appointments.json")
     .then((res) => res.json())
     .then((posts) => {
       console.log(posts);
@@ -103,13 +124,13 @@ function listeners() {
           stat.style.color = "#fa6363";
         }
 
-        tableRow.querySelector("#numberTable").textContent = post.number;
-        tableRow.querySelector("#patientName").textContent = post.name;
+        tableRow.querySelector("#numberTable").textContent = post.id;
+        tableRow.querySelector("#patientName").textContent = post.fname;
         tableRow.querySelector("#patientNameOriginalValue").textContent =
-          post.name;
+          post.fname;
         truncateText(tableRow.querySelector("#patientName"), 25);
-        tableRow.querySelector("#dateTable").textContent = post.date;
-        tableRow.querySelector("#timeTable").textContent = post.date;
+        tableRow.querySelector("#dateTable").textContent = post.created_at;
+        tableRow.querySelector("#timeTable").textContent = post.created_at;
         tableRow.querySelector("#serviceTable").textContent = post.service;
         tableRow.querySelector("#serviceTableOriginalValue").textContent =
           post.service;
@@ -122,7 +143,10 @@ function listeners() {
       var deleteButtons = document.querySelectorAll(".fa-trash");
 
       editButtons.forEach((editButton) => {
-        editButton.addEventListener("click", function () {
+        editButton.addEventListener("click", function (event) {
+          var acceptModal = document.querySelector("#acceptModal");
+          acceptModal.classList.add("showElement");
+          event.stopPropagation();
           var patientName = this.closest("tr").querySelector(
             "#patientNameOriginalValue"
           ).textContent;
@@ -135,13 +159,8 @@ function listeners() {
           var serviceTable = this.closest("tr").querySelector(
             "#serviceTableOriginalValue"
           ).textContent;
-
+          alert(patientName, statusTable, dateTable, timeTable, serviceTable);
           if (statusTable === "Pending") {
-            // Show Accept Modal
-            var acceptModal = document.querySelector("#acceptModal");
-            acceptModal.classList.add("showElement");
-
-            //fetch data
             acceptModal.querySelector("#appoinmentService").textContent =
               serviceTable;
             acceptModal.querySelector("#serviceInfo").textContent =
@@ -153,7 +172,8 @@ function listeners() {
             acceptModal.querySelector("#patientName").textContent = patientName;
 
             var closeAcceptModal = document.querySelector("#closeAcceptModal");
-            closeAcceptModal.onclick = function () {
+            closeAcceptModal.onclick = function (event) {
+              event.stopPropagation();
               acceptModal.classList.remove("showElement");
             };
             //reject apppointment then show the rejectmodal
@@ -296,14 +316,14 @@ function truncateText(element, limit) {
 }
 function viewNotification(event) {
   var url = event.currentTarget.querySelector("#urlRedirect").textContent;
-  window.location.href ="../Admin" + url;
+  window.location.href = "../Admin" + url;
 }
 
-async function fetchNotification(){
-  const container = document.querySelector("#allNotification")
-  const loader = document.querySelector("#notificationLoader")
-  const mainContainer = document.querySelector("#notificationMainTemplate")
-  const nodatafound = document.querySelector("#no-notifications")
+async function fetchNotification() {
+  const container = document.querySelector("#allNotification");
+  const loader = document.querySelector("#notificationLoader");
+  const mainContainer = document.querySelector("#notificationMainTemplate");
+  const nodatafound = document.querySelector("#no-notifications");
   try {
     for (let i = 0; i < 5; i++) {
       const clone = document.importNode(loader.content, true);
@@ -311,7 +331,7 @@ async function fetchNotification(){
     }
     const response = await fetch("../JSON/notification.json");
     const data = await response.json();
-    console.log( data);
+    console.log(data);
 
     function filterData(data, searchTerm) {
       searchTerm = searchTerm ? searchTerm.toLowerCase() : "";
@@ -320,10 +340,7 @@ async function fetchNotification(){
       for (const notifs of data.notification) {
         const title = notifs.title.toLowerCase();
         const text = notifs.text.toLowerCase();
-        if (
-          title.includes(searchTerm) ||
-          text.includes(searchTerm)
-        ) {
+        if (title.includes(searchTerm) || text.includes(searchTerm)) {
           filteredData.push(notifs);
         }
       }
@@ -338,7 +355,7 @@ async function fetchNotification(){
         const clone = document.importNode(nodatafound.content, true);
         container.appendChild(clone);
       } else {
-        let hasUnreadNotifications = false; 
+        let hasUnreadNotifications = false;
         filteredData.sort((a, b) => {
           if (a.status === b.status) {
             return 0;
@@ -348,14 +365,14 @@ async function fetchNotification(){
         filteredData.forEach((item) => {
           const clone = document.importNode(mainContainer.content, true);
 
-          var notificationStatus = item.status
+          var notificationStatus = item.status;
 
-          if(notificationStatus === false){
-            clone.querySelector(".notif").classList.add("unread")
+          if (notificationStatus === false) {
+            clone.querySelector(".notif").classList.add("unread");
             const notifDot = document.createElement("div");
             notifDot.classList.add("notifDot");
             clone.querySelector(".notif").appendChild(notifDot);
-            hasUnreadNotifications = true; 
+            hasUnreadNotifications = true;
           }
           clone.querySelector("#imgNotif").src = "../images/" + item.image;
           clone.querySelector("#notificationTitle").innerHTML = highlightText(
@@ -371,10 +388,9 @@ async function fetchNotification(){
         });
         const notificationDots = document.querySelector(".notification-dot");
         if (!hasUnreadNotifications) {
-          notificationDots.classList.add("hidden")
-        }
-        else{
-          notificationDots.classList.remove("hidden")
+          notificationDots.classList.add("hidden");
+        } else {
+          notificationDots.classList.remove("hidden");
         }
       }
     }
@@ -384,7 +400,10 @@ async function fetchNotification(){
       }
 
       const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, "gi");
-      return text.replace(regex, (match) => `<p class="highlight">${match}</p>`);
+      return text.replace(
+        regex,
+        (match) => `<p class="highlight">${match}</p>`
+      );
     }
 
     function escapeRegExp(string) {
@@ -396,15 +415,13 @@ async function fetchNotification(){
     search.addEventListener("input", function () {
       updateDisplay(this.value);
     });
-  }
-  catch (error) {
+  } catch (error) {
     console.error("An error occurred:", error);
   }
-
 }
 function viewNotificationContainer(event) {
   var parent = event.target.parentElement;
   var notificationContainer = parent.querySelector(".notificationContainer");
   notificationContainer.classList.toggle("hidden");
-  event.target.classList.toggle("showContainer")
+  event.target.classList.toggle("showContainer");
 }
