@@ -17,6 +17,7 @@ var passwordLogIn = document.getElementById("passwordLogIn");
 var usernameLogInAdmin = document.getElementById("usernameLogInAdmin");
 var passwordLogInAdmin = document.getElementById("passwordLogInAdmin");
 var modal = document.getElementById("container");
+//new
 var modalAdmin = document.getElementById("containerAdmin");
 var role = document.querySelector(".role");
 var resendOTP = document.querySelector("#resendOTP");
@@ -30,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
       behavior: "smooth",
     });
   }
-
+  //new
   document.addEventListener("click", (event) => {
     if (modal.classList.contains("active")) {
       if (event.target === modal || modal.contains(event.target)) {
@@ -219,7 +220,7 @@ function login() {
   loginForm.addEventListener("click", () => {
     container.classList.remove("right-panel-active");
   });
-
+  //new nag lagay ako ng event params tsaka ng stopPrpagation russ
   login.addEventListener("click", (event) => {
     event.stopPropagation();
     if (container.classList.contains("right-panel-active")) {
