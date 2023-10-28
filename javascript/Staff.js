@@ -427,54 +427,6 @@ function listeners() {
         defaultDesign(phoneNumber, "");
         defaultDesign(email, "");
       });
-      //  city = document.querySelector("#city"),
-      // barangay = document.querySelector("#barangay"),
-      // houseNumberStreet = document.querySelector("#houseNumberStreet");
-
-      // nextButton2.addEventListener("click", () => {
-
-      //   var houseNumberStreetValue = houseNumberStreet.value.trim();
-      //   isValid = true;
-      //   if(province.value == ""){
-      //     showError(province, "Province missing")
-      //     isValid = false;
-      //   }
-      //   else{
-      //     removeError(province)
-      //   }
-      //   if(city.value == ""){
-      //     showError(city, "City missing")
-      //     isValid = false;
-      //   }
-      //   else{
-      //     removeError(city)
-      //   }
-      //   if(barangay.value == ""){
-      //     showError(barangay, "City missing")
-      //     isValid = false;
-      //   }
-      //   else{
-      //     removeError(barangay)
-      //   }
-      //   if(houseNumberStreetValue == ""){
-      //     showError(houseNumberStreet, "House # and Street missing")
-      //     isValid = false;
-      //   }
-      //   else{
-      //     removeError(houseNumberStreet)
-      //   }
-      //   if(isValid){
-      //     line2.classList.add("completed");
-      //     setTimeout(() => {
-      //       check2.classList.replace("fa-circle-xmark", "fa-circle-check");
-      //     }, 900);
-      //     check2.classList.add("completedIcon");
-
-      //     formSection2.classList.add("hidden")
-      //     formSection3.classList.remove("hidden")
-      //     console.log(province.value,city.value,barangay.value,houseNumberStreetValue)
-      //   }
-      // });
 
       cancelButton2.addEventListener("click", () => {
         formSection2.classList.add("hidden");
@@ -584,6 +536,7 @@ function previewImage(event) {
     }
   }
 }
+//added
 function previewImage1(event) {
   var fileInput = event.target;
   var file = fileInput.files[0];
@@ -619,6 +572,8 @@ function handleDrop(event) {
     });
   }
 }
+
+//added
 function handleDrop1(event) {
   event.preventDefault();
   event.stopPropagation();
@@ -651,6 +606,7 @@ function previewFile(file) {
 
   reader.readAsDataURL(file);
 }
+//added
 function previewFile1(file) {
   var reader = new FileReader();
 
