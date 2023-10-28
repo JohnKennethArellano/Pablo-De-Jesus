@@ -9,6 +9,18 @@ function load() {
   fetchClinics();
   // openInChrome();
 }
+var username = document.getElementById("username");
+var password = document.getElementById("password");
+var confirmPassword = document.getElementById("confirmPassword");
+var usernameLogIn = document.getElementById("usernameLogIn");
+var passwordLogIn = document.getElementById("passwordLogIn");
+var usernameLogInAdmin = document.getElementById("usernameLogInAdmin");
+var passwordLogInAdmin = document.getElementById("passwordLogInAdmin");
+var modal = document.getElementById("container");
+var modalAdmin = document.getElementById("containerAdmin");
+var role = document.querySelector(".role");
+var resendOTP = document.querySelector("#resendOTP");
+let timerOn = true;
 
 document.addEventListener("DOMContentLoaded", function () {
   const targetElement = document.querySelector("#clinics");
@@ -18,20 +30,26 @@ document.addEventListener("DOMContentLoaded", function () {
       behavior: "smooth",
     });
   }
+
+  document.addEventListener("click", (event) => {
+    if (modal.classList.contains("active")) {
+      if (event.target === modal || modal.contains(event.target)) {
+        return;
+      }
+      modal.classList.remove("right-panel-active");
+      modal.classList.remove("active");
+    }
+    if (modalAdmin.classList.contains("active")) {
+      if (event.target === modalAdmin || modalAdmin.contains(event.target)) {
+        return;
+      }
+      modalAdmin.classList.remove("active");
+    }
+  });
 });
 
 // global variables
-var username = document.getElementById("username");
-var password = document.getElementById("password");
-var confirmPassword = document.getElementById("confirmPassword");
-var usernameLogIn = document.getElementById("usernameLogIn");
-var passwordLogIn = document.getElementById("passwordLogIn");
-var usernameLogInAdmin = document.getElementById("usernameLogInAdmin");
-var passwordLogInAdmin = document.getElementById("passwordLogInAdmin");
-var modal = document.getElementById("container");
-var role = document.querySelector(".role");
-var resendOTP = document.querySelector("#resendOTP");
-let timerOn = true;
+
 function listeners() {
   var login = document.querySelector("#login");
 
@@ -202,7 +220,8 @@ function login() {
     container.classList.remove("right-panel-active");
   });
 
-  login.addEventListener("click", () => {
+  login.addEventListener("click", (event) => {
+    event.stopPropagation();
     if (container.classList.contains("right-panel-active")) {
       container.classList.remove("right-panel-active");
     } else {
@@ -210,31 +229,29 @@ function login() {
     }
     containerAdmin.classList.remove("active");
     role.classList.remove("visible");
-    //add this also
-    // resetDefault(usernameLogIn)
-    // resetDefault(passwordLogIn)
-    // resetDefault(username)
-    // resetDefault(password)
-    // resetDefault(confirmPassword)
-    //end
   });
-  admin.addEventListener("click", () => {
+  admin.addEventListener("click", (event) => {
+    event.stopPropagation();
     containerAdmin.classList.toggle("active");
     container.classList.remove("active");
     role.classList.remove("visible");
     document.getElementById("container").classList.remove("right-panel-active");
   });
-  register.addEventListener("click", () => {
+  register.addEventListener("click", (event) => {
+    event.stopPropagation();
     container.classList.toggle("right-panel-active");
     container.classList.toggle("active");
   });
-  loginResponsive.addEventListener("click", () => {
+  loginResponsive.addEventListener("click", (event) => {
+    event.stopPropagation();
     container.classList.remove("right-panel-active");
   });
-  createResponsive.addEventListener("click", () => {
+  createResponsive.addEventListener("click", (event) => {
+    event.stopPropagation();
     container.classList.add("right-panel-active");
   });
-  registerResponsive.addEventListener("click", () => {
+  registerResponsive.addEventListener("click", (event) => {
+    event.stopPropagation();
     container.classList.add("right-panel-active");
     container.classList.toggle("active");
   });
