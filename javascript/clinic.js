@@ -3,13 +3,10 @@ function onload() {
   fetchNotification();
 }
 
-var formBg = document.querySelector("#formBg");
+var formBg = document.getElementById("formBg");
 
-formBg.addEventListener("click", (event) => {
+formBg.addEventListener("click", () => {
   if (!formBg.classList.contains("hidden")) {
-    if (event.target === formBg || formBg.contains(event.target)) {
-      return;
-    }
     formBg.classList.add("hidden");
   }
 });
@@ -317,18 +314,18 @@ function validateClinicInfo() {
     clinicDescriptionAdd = document.querySelector("#clinicDescriptionAdd"),
     numberAdd = document.querySelector("#numberAdd"),
     emailAdd = document.querySelector("#emailAdd"),
-    province = document.querySelector("#province"),
-    provinceInput = document.querySelector("#provinceInput").value.trim(),
-    city = document.querySelector("#city"),
-    cityInput = document.querySelector("#cityInput").value.trim(),
-    barangay = document.querySelector("#barangay"),
-    barangayInput = document.querySelector("#barangayInput").value.trim();
+    province = document.querySelector("#provinceInput"),
+    city = document.querySelector("#cityInput"),
+    barangay = document.querySelector("#barangayInput");
 
   var clinicName = clinicNameAdd.value.trim(),
     facebook = facebookLinkAdd.value.trim(),
     description = clinicDescriptionAdd.value.trim(),
     number = numberAdd.value.trim(),
     email = emailAdd.value.trim(),
+    provinceValue = province.value.trim(),
+    cityValue = city.value.trim(),
+    barangayValue = barangay.value.trim(),
     isValid = true;
 
   if (clinicName == "") {
@@ -380,21 +377,21 @@ function validateClinicInfo() {
     removeError(emailAdd);
   }
 
-  if (provinceInput == "") {
+  if (provinceValue == "") {
     showError(province, "This field is required.");
     isValid = false;
   } else {
     removeError(province);
   }
 
-  if (cityInput == "") {
+  if (cityValue == "") {
     showError(city, "This field is required.");
     isValid = false;
   } else {
     removeError(city);
   }
 
-  if (barangayInput == "") {
+  if (barangayValue == "") {
     showError(barangay, "This field is required.");
     isValid = false;
   } else {
@@ -424,12 +421,9 @@ function valdidateClinicAdmin() {
     religion = document.querySelector("#religionAdd"),
     email = document.querySelector("#emailAddAdmin"),
     number = document.querySelector("#numberAdmin"),
-    province = document.querySelector("#provinceAdmin"),
-    city = document.querySelector("#cityAdmin"),
-    barangay = document.querySelector("#barangayAdmin"),
-    provinceInput = document.querySelector("#provinceInputAdmin"),
-    cityInput = document.querySelector("#cityInputAdmin"),
-    barangayInput = document.querySelector("#barangayInputAdmin"),
+    province = document.querySelector("#provinceInputAdmin"),
+    city = document.querySelector("#cityInputAdmin"),
+    barangay = document.querySelector("#barangayInputAdmin"),
     houseNumber = document.querySelector("#houseNumberAndStreet");
 
   var firstNameValue = firstName.value.trim(),
@@ -440,9 +434,9 @@ function valdidateClinicAdmin() {
     birthdateValue = birthdate.value.trim(),
     emailValue = email.value.trim(),
     numberValue = number.value.trim(),
-    provinceValue = provinceInput.value.trim(),
-    cityValue = cityInput.value.trim(),
-    barangayValue = barangayInput.value.trim(),
+    provinceValue = province.value.trim(),
+    cityValue = city.value.trim(),
+    barangayValue = barangay.value.trim(),
     houseNumberValue = houseNumber.value.trim(),
     isValid = true;
 

@@ -488,7 +488,7 @@
                         <span class="errorMessage"></span>
                     </div>
                 </div>
-                <div class="formContainer ">
+                <div class="formContainer">
                     <div class="inputHolder">
                         <label for="numberAdd" class="formLabel">Contact number <span class="asterisk">*</span></label>
                         <input autocomplete="off" class="formInput" placeholder="9123123123" id="numberAdd"
@@ -503,17 +503,17 @@
                     </div>
                     <div class="inputHolder">
                         <label for="province" class="formLabel">Province <span class="asterisk">*</span></label>
-                        <input autocomplete="off" class="formInput" name="province" id="provinceInput">
+                        <input autocomplete="off" class="formInput" name="province" id="provinceInput" placeholder="ex. Bulacan">
                         <span class="errorMessage"></span>
                     </div>
                     <div class="inputHolder">
                         <label for="city" class="formLabel">City <span class="asterisk">*</span></label>
-                        <input autocomplete="off" class="formInput" name="city" id="cityInput">
+                        <input autocomplete="off" class="formInput" name="city" id="cityInput" placeholder="ex. Paombong">
                         <span class="errorMessage"></span>
                     </div>
                     <div class="inputHolder">
                         <label for="barangay" class="formLabel">Barangay <span class="asterisk">*</span></label>
-                        <input autocomplete="off" class="formInput" name="barangay" id="barangayInput">
+                        <input autocomplete="off" class="formInput" name="barangay" id="barangayInput" placeholder="ex. Sto. Rosario">
                         <span class="errorMessage"></span>
                     </div>
                     <div class="buttonsAddForm">
@@ -554,7 +554,6 @@
                     </div>
                 </div>
                 <div class="formContainer2 hidden">
-
                     <div class="nameHolder">
                         <div class="genderHolder">
                             <span for="selectSex" class="formLabel">Sex <span class="asterisk">*</span></span>
@@ -605,33 +604,23 @@
                     </div>
                     <div class="nameHolder">
                         <div class="nameHolderInput">
-                            <label for="provinceAdmin" class="formLabel">Province <span
+                            <label for="provinceInputAdmin" class="formLabel">Province <span
                                     class="asterisk">*</span></label>
-                            <input autocomplete="off" style="display: none;" name="provinceAdmin"
-                                id="provinceInputAdmin">
-                            <select id="provinceAdmin" class="formInput" onchange="showValue(this,provinceInputAdmin)">
-                                <option value="" selected class="formInput">Select province first</option>
-                            </select>
+                            <input autocomplete="off" name="provinceAdmin" class="formInput" id="provinceInputAdmin" placeholder="ex. Bulacan">
                             <span class="errorMessage"></span>
                         </div>
                         <div class="nameHolderInput">
-                            <label for="cityAdmin" class="formLabel">City <span class="asterisk">*</span></label>
-                            <input autocomplete="off" style="display: none;" name="cityAdmin" id="cityInputAdmin">
-                            <select id="cityAdmin" class="formInput" onchange="showValue(this,cityInputAdmin)">
-                                <option value="" selected class="formInput">Select province first</option>
-                            </select>
+                            <label for="cityInputAdmin" class="formLabel">City <span class="asterisk">*</span></label>
+                            <input autocomplete="off" class="formInput" name="cityAdmin" id="cityInputAdmin"  placeholder="ex. Paombong">
                             <span class="errorMessage"></span>
                         </div>
                     </div>
                     <div class="nameHolder">
                         <div class="nameHolderInput">
-                            <label for="barangayAdmin" class="formLabel">Barangay <span
+                            <label for="barangayInputAdmin" class="formLabel">Barangay <span
                                     class="asterisk">*</span></label>
-                            <input autocomplete="off" style="display: none;" name="barangayAdmin"
+                            <input autocomplete="off" class="formInput" name="barangayAdmin"  placeholder="ex. Sto. Rosario"
                                 id="barangayInputAdmin">
-                            <select id="barangayAdmin" class="formInput" onchange="showValue(this,barangayInputAdmin)">
-                                <option value="" selected class="formInput">Select province first</option>
-                            </select>
                             <span class="errorMessage"></span>
                         </div>
                         <div class="nameHolderInput">

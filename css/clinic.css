@@ -1187,7 +1187,7 @@ tbody::-webkit-scrollbar {
 .clinicImageAdd {
     position: absolute;
     bottom: 1vh;
-    right: .5vw;
+    right: 5.5vw;
     width: 2vw;
     height: 2vw;
     border-radius: 50%;
