@@ -435,12 +435,12 @@ function printPdf() {
 
   const new_window = window.open();
   new_window.document.write(htmlCode);
+  new_window.document.close();
   setTimeout(() => {
     new_window.print();
     new_window.close();
   }, 2000);
 }
-
 function exportToExcel() {
   const rowsToExport = document.querySelectorAll("#tableBody tr");
   const data = [];
