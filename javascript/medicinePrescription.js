@@ -576,5 +576,20 @@ function printPdf() {
       3: { cellWidth: 72 },
     },
   });
-  pdf.save("table_data.pdf");
+  pdf.save("Prescription" + getCurrentDateTime() +".pdf");
+}
+function getCurrentDateTime() {
+  const currentDate = new Date();
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+
+  const hours = currentDate.getHours();
+  const minutes = currentDate.getMinutes();
+  const seconds = currentDate.getSeconds();
+
+  const currentDateTime = `${year}${month}${day}${hours}${minutes}${seconds}`;
+
+  return currentDateTime;
 }
