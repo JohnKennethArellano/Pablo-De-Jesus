@@ -3,26 +3,18 @@ function onload() {
   fetchNotification();
 }
 document.addEventListener("DOMContentLoaded", function () {
-  var addClinicForm = document.querySelector("#addClinicForm")
-  document.addEventListener("click", (event) => {
-    if (addClinicForm.classList.contains("showElement")) {
-      if (
-        event.target === addClinicForm ||
-        addClinicForm.contains(event.target)
-      ) {
-        return;
-      }
-      addClinicForm.classList.remove("showElement");
+  var addClinicForm = document.querySelector("#addClinicForm");
+  var formBg = document.getElementById("formBg");
+  
+  formBg.addEventListener("click", (event) => {
+    if (!formBg.classList.contains("hidden") && 
+        event.target !== addClinicForm && 
+        !addClinicForm.contains(event.target)) {
+      formBg.classList.add("hidden");
     }
   });
 });
-var formBg = document.getElementById("formBg");
 
-formBg.addEventListener("click", () => {
-  if (!formBg.classList.contains("hidden")) {
-    formBg.classList.add("hidden");
-  }
-});
 const containerBody = document.querySelector("#containerBody"),
   templateLoader = document.querySelector("#templateLoader"),
   mainTemplate = document.querySelector("#mainTemplate"),
