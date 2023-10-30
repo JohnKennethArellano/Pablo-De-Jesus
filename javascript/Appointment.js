@@ -426,21 +426,6 @@ function viewNotificationContainer(event) {
   notificationContainer.classList.toggle("hidden");
   event.target.classList.toggle("showContainer");
 }
-function printPdf() {
-  var appointmentContainer = document.querySelector("#appointmentContainer");
-
-  const htmlCode = `<link rel="stylesheet" href="../css/appointment.css">
-    <link rel="stylesheet" href="../css/admin.css">
-    <table id="appointmentContainer">${appointmentContainer.innerHTML}</table>`;
-
-  const new_window = window.open();
-  new_window.document.write(htmlCode);
-  new_window.document.close();
-  setTimeout(() => {
-    new_window.print();
-    new_window.close();
-  }, 2000);
-}
 function exportToExcel() {
   const rowsToExport = document.querySelectorAll("#tableBody tr");
   const data = [];
@@ -483,4 +468,70 @@ function exportToExcel() {
   const date = new Date();
   const fileName = "table_data_" + date.toISOString().split("T")[0] + ".xlsx";
   XLSX.writeFile(wb, fileName);
+}
+function printPdf() {
+  const pdf = new jsPDF("portrait");
+
+  const rowsToExport = document.querySelectorAll("#tableBody tr");
+
+  let data = [];
+
+  for (const row of rowsToExport) {
+    const numberTable = row.querySelector(".numberTable #numberTable");
+    const number = numberTable ? numberTable.innerText : "";
+
+    const nameElement = row.querySelector(
+      ".nameTable #patientNameOriginalValue"
+    );
+    const name = nameElement ? nameElement.innerText : "";
+
+    const dateTable = row.querySelector(".dateTable #dateTable");
+    const date = dateTable ? dateTable.innerText : "";
+
+    const timeTable = row.querySelector(".timeTable #timeTable");
+    const time = timeTable ? timeTable.innerText : "";
+
+    const serviceTable = row.querySelector(
+      ".serviceTable #serviceTableOriginalValue"
+    );
+    const service = serviceTable ? serviceTable.innerText : "";
+
+    const statusTable = row.querySelector(".statusTable #statusTable");
+    const status = statusTable ? statusTable.innerText : "";
+
+    data.push([number, name, date, time, service, status]);
+  }
+
+  pdf.autoTable({
+    head: [["Id", "Name", "Date", "Time", "Service", "Status"]],
+    body: data,
+    theme: "striped",
+    startY: 5,
+    pageBreak: "auto",
+    tableWidth: "wrap",
+    columnStyles: {
+      0: { cellWidth: 10 },
+      1: { cellWidth: 40 },
+      2: { cellWidth: 20 },
+      3: { cellWidth: 20 },
+      4: { cellWidth: 70 },
+      5: { cellWidth: 20 },
+    },
+  });
+  pdf.save("Appointment" + getCurrentDateTime() + ".pdf");
+}
+function getCurrentDateTime() {
+  const currentDate = new Date();
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+
+  const hours = currentDate.getHours();
+  const minutes = currentDate.getMinutes();
+  const seconds = currentDate.getSeconds();
+
+  const currentDateTime = `${year}${month}${day}${hours}${minutes}${seconds}`;
+
+  return currentDateTime;
 }

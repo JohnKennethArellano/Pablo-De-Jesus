@@ -536,7 +536,7 @@ function exportToExcel() {
 }
 
 function printPdf() {
-  const pdf = new jsPDF("portrait"); // Create a PDF in portrait orientation
+  const pdf = new jsPDF("portrait");
 
   const rowsToExport = document.querySelectorAll(".medicineInformations");
 
