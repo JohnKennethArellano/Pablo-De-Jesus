@@ -10,6 +10,9 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
     <script src="../javascript/Staff.js" defer></script>
     <script src="../javascript/sweetalert2.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js" defer></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.4.6/jspdf.plugin.autotable.min.js"></script>
     <link rel="website icon" type="png " href="../images/logo.png">
     <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
     <title>Staff</title>
@@ -125,6 +128,8 @@
                         <span id="allStaffs">All</span>
                         <span id="onLeaveStaffs">On leave</span>
                     </div>
+                    <button id="pdfPrint" onclick="printPdf()"><span>PDF</span><i class="fa-solid fa-file-pdf"></i></button>
+                    <button id="excelfPrint" onclick="exportToExcel()"><span>Excel</span><i class="fa-solid fa-file-excel"></i></button>
                     <button id="addStaff"><span>Staff</span><i class="fa-solid fa-plus "></i></button>
                 </div>
             </div>
@@ -422,7 +427,7 @@
                             <div class="numberTablediv"><span id="contactNumber" class="skeleton1"></span></div>
                         </td>
                         <td class="emailTable">
-                            <div class="numberTablediv"><span id="emailAddresss" class="skeleton1"></span></div>
+                            <div class="numberTablediv"><span id="emailAddress" class="skeleton1"></span></div>
                         </td>
                         <td class="statusTable">
                             <div class="numberTablediv"><span id="status" class="skeleton1"></span></div>
@@ -451,7 +456,7 @@
                             <div class="numberTablediv"><span id="contactNumber"></span></div>
                         </td>
                         <td class="emailTable">
-                            <div class="numberTablediv"><span id="emailAddresss"></span></div>
+                            <div class="numberTablediv"><span id="emailAddress"></span></div>
                         </td>
                         <td class="statusTable">
                             <span id="imgSourceFetch" style="display: none;"></span>

@@ -465,8 +465,7 @@ function exportToExcel() {
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "Data");
 
-  const date = new Date();
-  const fileName = "table_data_" + date.toISOString().split("T")[0] + ".xlsx";
+  const fileName = "Appointment" + getCurrentDateTime() + ".xlsx";
   XLSX.writeFile(wb, fileName);
 }
 function printPdf() {
@@ -510,7 +509,7 @@ function printPdf() {
     pageBreak: "auto",
     tableWidth: "wrap",
     headStyles: { halign: "center", valign: "middle" },
-    bodyStyles: { halign: "center", valign: "middle" }, 
+    bodyStyles: { halign: "center", valign: "middle" },
     columnStyles: {
       0: { cellWidth: 10 },
       1: { cellWidth: 40 },

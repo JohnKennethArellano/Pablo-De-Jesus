@@ -135,7 +135,7 @@ function listeners() {
         obj.contactNumber.toString(),
         searchTerm
       );
-      clone.querySelector("#emailAddresss").innerHTML = highlightText(
+      clone.querySelector("#emailAddress").innerHTML = highlightText(
         obj.email,
         searchTerm
       );
@@ -487,7 +487,7 @@ function listeners() {
         var contactNumber =
           this.closest("tr").querySelector("#contactNumber").textContent;
         var email =
-          this.closest("tr").querySelector("#emailAddresss").textContent;
+          this.closest("tr").querySelector("#emailAddress").textContent;
         var address =
           this.closest("tr").querySelector("#addressFetch").textContent;
         var dateHired =
@@ -937,62 +937,90 @@ function viewNotificationContainer(event) {
   notificationContainer.classList.toggle("hidden");
   event.target.classList.toggle("showContainer");
 }
-
-function printPdf() {
-  var appointmentContainer = document.querySelector("#appointmentContainer");
-
-  const htmlCode = `<link rel="stylesheet" href="../css/appointment.css">
-    <link rel="stylesheet" href="../css/admin.css">
-    <table id="appointmentContainer">${appointmentContainer.innerHTML}</table>`;
-
-  const new_window = window.open();
-  new_window.document.write(htmlCode);
-  new_window.document.close();
-  setTimeout(() => {
-    new_window.print();
-    new_window.close();
-  }, 2000);
-}
 function exportToExcel() {
-  const rowsToExport = document.querySelectorAll("#tableBody tr");
+  const rowsToExport = document.querySelectorAll(".tableRow");
   const data = [];
-
+  const headers = ["Name", "Position", "Contact Number", "Email Address"];
+  data.push(headers);
   rowsToExport.forEach((row) => {
-    const numberTable = row.querySelector(".numberTable #numberTable");
-    const number = numberTable ? numberTable.innerText : "";
+    const nameElement = row.querySelector(".staffTable #patientNameOriginalValue");
+    const nameValue = nameElement ? nameElement.innerText : "";
 
-    const nameElement = row.querySelector(
-      ".nameTable #patientNameOriginalValue"
-    );
-    const name = nameElement ? nameElement.innerText : "";
+    const positionTable = row.querySelector(".positionTable #position");
+    const position = positionTable ? positionTable.innerText : "";
 
-    const dateTable = row.querySelector(".dateTable #dateTable");
-    const date = dateTable ? dateTable.innerText : "";
+    const contactTable = row.querySelector(".contactTable #contactNumber");
+    const contactNumber = contactTable ? contactTable.innerText : "";
 
-    const timeTable = row.querySelector(".timeTable #timeTable");
-    const time = timeTable ? timeTable.innerText : "";
+    const emailTable = row.querySelector(".emailTable #emailAddress");
+    const emailAddress = emailTable ? emailTable.innerText : "";
 
-    const serviceTable = row.querySelector(
-      ".serviceTable #serviceTableOriginalValue"
-    );
-    const service = serviceTable ? serviceTable.innerText : "";
 
-    const statusTable = row.querySelector(".statusTable #statusTable");
-    const status = statusTable ? statusTable.innerText : "";
 
-    data.push([number, name, date, time, service, status]);
+    data.push([nameValue, position, contactNumber,emailAddress ]);
   });
 
   const ws = XLSX.utils.aoa_to_sheet(data);
-
-  const customColumnWidths = [7, 25, 20, 20, 30, 20];
+  const customColumnWidths = [30, 25, 20, 40];
 
   ws["!cols"] = customColumnWidths.map((width) => ({ wch: width }));
 
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "Data");
 
-  const date = new Date();
-  const fileName = "table_data_" + date.toISOString().split("T")[0] + ".xlsx";
+  const fileName = "Staff" + getCurrentDateTime() + ".xlsx";
   XLSX.writeFile(wb, fileName);
+}
+function printPdf() {
+  const pdf = new jsPDF("portrait");
+
+  const rowsToExport = document.querySelectorAll(".tableRow");
+  const data = [];
+  rowsToExport.forEach((row) => {
+    const nameElement = row.querySelector(".staffTable #patientNameOriginalValue");
+    const nameValue = nameElement ? nameElement.innerText : "";
+
+    const positionTable = row.querySelector(".positionTable #position");
+    const position = positionTable ? positionTable.innerText : "";
+
+    const contactTable = row.querySelector(".contactTable #contactNumber");
+    const contactNumber = contactTable ? contactTable.innerText : "";
+
+    const emailTable = row.querySelector(".emailTable #emailAddress");
+    const emailAddress = emailTable ? emailTable.innerText : "";
+    data.push([nameValue, position, contactNumber,emailAddress ]);
+  });
+
+  pdf.autoTable({
+    head: [["Name", "Position", "Contact no.", "Email"]],
+    body: data,
+    theme: "striped",
+    startY: 5,
+    pageBreak: "auto",
+    tableWidth: "wrap",
+    headStyles: { halign: "center", valign: "middle" },
+    bodyStyles: { halign: "center", valign: "middle" },
+    columnStyles: {
+      0: { cellWidth: 40 },
+      1: { cellWidth: 40 },
+      2: { cellWidth: 30 },
+      3: { cellWidth: 72 },
+    },
+  });
+  pdf.save("Staff" + getCurrentDateTime() + ".pdf");
+}
+function getCurrentDateTime() {
+  const currentDate = new Date();
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+
+  const hours = currentDate.getHours();
+  const minutes = currentDate.getMinutes();
+  const seconds = currentDate.getSeconds();
+
+  const currentDateTime = `${year}${month}${day}${hours}${minutes}${seconds}`;
+
+  return currentDateTime;
 }

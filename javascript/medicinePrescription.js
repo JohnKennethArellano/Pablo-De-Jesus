@@ -479,21 +479,66 @@ function toggleDosageOptions(spanElement) {
     sortCarretDosagePrescribe.style.transform = "";
   }
 }
-// function printPdf() {
-//   var appointmentContainer = document.querySelector("#containerBody");
+const names = [
+  "John Kenneth Arellano",
+  "Russel Dela Cruz",
+  "Allysandra San Juan",
+  "Geneses Galang",
+  "Nicole Santos",
+  "Franchesca Culalic",
+];
 
-//   const htmlCode = `<link rel="stylesheet" href="../css/medicine.css">
-//     <link rel="stylesheet" href="../css/admin.css">
-//     <table id="appointmentContainer">${appointmentContainer.innerHTML}</table>`;
+const searchInput = document.querySelector("#patientsNamePrescribe");
+const suggestionsContainer = document.querySelector("#searchPatientsName");
+searchInput.addEventListener("input", (event) => {
+  const searchInputValue = event.target.value.trim();
+  if (searchInputValue === "") {
+    suggestionsContainer.innerHTML = "";
+    return;
+  }
+  const filteredNames = filterNames(searchInputValue);
+  displaySuggestions(filteredNames);
+});
+function displaySuggestions(filteredNames) {
+  suggestionsContainer.innerHTML = "";
 
-//   const new_window = window.open();
-//   new_window.document.write(htmlCode);
-//   new_window.document.close();
-//   setTimeout(() => {
-//     new_window.print();
-//     new_window.close();
-//   }, 2000);
-// }
+  const searchInputValue = searchInput.value.toLowerCase();
+
+  filteredNames.forEach((name) => {
+    const suggestion = document.createElement("span");
+    suggestion.className = "patientName";
+    let highlightedName = "";
+    let currentIndex = 0;
+    for (let i = 0; i < name.length; i++) {
+      const char = name[i].toLowerCase();
+
+      if (
+        currentIndex < searchInputValue.length &&
+        char === searchInputValue[currentIndex]
+      ) {
+        highlightedName += `<span class="highlight">${name[i]}</span>`;
+        currentIndex++;
+      } else {
+        highlightedName += name[i];
+      }
+    }
+
+    suggestion.innerHTML = highlightedName;
+    suggestion.addEventListener("click", () => {
+      searchInput.value = name;
+      suggestionsContainer.innerHTML = "";
+    });
+    suggestionsContainer.appendChild(suggestion);
+  });
+}
+function filterNames(searchInputValue) {
+  const searchTerm = searchInputValue.toLowerCase();
+  const filteredNames = names.filter((name) =>
+    name.toLowerCase().includes(searchTerm)
+  );
+
+  return filteredNames;
+}
 function exportToExcel() {
   const rowsToExport = document.querySelectorAll(".medicineInformations");
   const data = [];
@@ -515,8 +560,6 @@ function exportToExcel() {
     );
     const service = prescribeInfo ? prescribeInfo.innerText : "";
 
-    const statusTable = row.querySelector(".statusTable #statusTable");
-    const status = statusTable ? statusTable.innerText : "";
 
     data.push([nameValue, prescribeByValue, time, service]);
   });
@@ -530,8 +573,7 @@ function exportToExcel() {
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "Data");
 
-  const date = new Date();
-  const fileName = "table_data_" + date.toISOString().split("T")[0] + ".xlsx";
+  const fileName = "Presciption" + getCurrentDateTime() + ".xlsx";
   XLSX.writeFile(wb, fileName);
 }
 function printPdf() {
