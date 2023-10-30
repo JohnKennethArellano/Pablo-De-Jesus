@@ -534,7 +534,6 @@ function exportToExcel() {
   const fileName = "table_data_" + date.toISOString().split("T")[0] + ".xlsx";
   XLSX.writeFile(wb, fileName);
 }
-
 function printPdf() {
   const pdf = new jsPDF("portrait");
 
