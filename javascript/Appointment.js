@@ -509,6 +509,8 @@ function printPdf() {
     startY: 5,
     pageBreak: "auto",
     tableWidth: "wrap",
+    headStyles: { halign: "center", valign: "middle" },
+    bodyStyles: { halign: "center", valign: "middle" }, 
     columnStyles: {
       0: { cellWidth: 10 },
       1: { cellWidth: 40 },

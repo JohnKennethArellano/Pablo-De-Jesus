@@ -567,8 +567,10 @@ function printPdf() {
     body: data,
     theme: "striped",
     startY: 5,
-    pageBreak: 'auto',
+    pageBreak: "auto",
     tableWidth: "wrap",
+    headStyles: { halign: "center", valign: "middle" },
+    bodyStyles: { halign: "center", valign: "middle" },
     columnStyles: {
       0: { cellWidth: 40 },
       1: { cellWidth: 40 },
@@ -576,7 +578,7 @@ function printPdf() {
       3: { cellWidth: 72 },
     },
   });
-  pdf.save("Prescription" + getCurrentDateTime() +".pdf");
+  pdf.save("Prescription" + getCurrentDateTime() + ".pdf");
 }
 function getCurrentDateTime() {
   const currentDate = new Date();
