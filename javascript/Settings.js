@@ -496,6 +496,22 @@ function previewImage(event) {
     }
   }
 }
+function handleDrop(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  var file = event.dataTransfer.files[0];
+  if (validateFileType(file) && validateFileSize(file)) {
+    previewFile(file);
+  } else {
+    Swal.fire({
+      text: "Drop a JPEG, JPG, or PNG file under 5MB.",
+      icon: "warning",
+      timer: 2000,
+      showConfirmButton: false,
+    });
+  }
+}
 function handleDragOver(event) {
   event.preventDefault();
   event.stopPropagation();

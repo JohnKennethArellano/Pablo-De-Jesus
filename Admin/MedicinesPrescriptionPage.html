@@ -119,10 +119,29 @@
                         <input autocomplete="off" placeholder="Search" id="search" spellcheck="false">
                         <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                     </div>
+                    <button id="addPrescription" onclick= "addPrescription()"><span>Prescription</span> <i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
             <div id="containerBody">
-
+            </div>
+            <div class="medicinesForm" id="prescribeMedicineForm">
+                <form action="" id="prescribeMedicineFormContainer">
+                    <div class="formTitle">Prescribe Medicine</div>
+                    <div class="cloneButtonHolder">
+                        <input autocomplete="off" class="inputValue" placeholder="Patient's Name"
+                            id="patientsNamePrescribe" name="patientsNamePrescribe" autocomplete="off">
+                        <div class="searchPatientsName" id="searchPatientsName">
+                        </div>
+                        <button id="cloneButton" type="button" onclick="cloneDiv()"><i
+                                class="fa-solid fa-plus"></i></button>
+                    </div>
+                    <div id="addedMedicinePrescription">
+                    </div>
+                    <div class="buttonForm">
+                        <button id="prescribeMedicineFormCancel" class="cancelButton" type="button">Cancel</button>
+                        <button id="prescribeMedicineFormSubmit" class="submitButton" type="button">Prescribe</button>
+                    </div>
+                </form>
             </div>
             <!-- No Data Found Template -->
             <template id="no-data-found">
@@ -257,6 +276,56 @@
                 </div>
             </div>
         </template>
+                    <!-- add oter medicine -->
+                    <div class="inputHolder3" id="medicinePrescribeClone" disabled>
+
+                        <div class="nameAndBrand">
+                            <div class="p1">
+                                <label for="addPresciption" class="labelForm">Medicine Name <span
+                                        class="asterisk">*</span></label>
+                                <input autocomplete="off" id="addPresciption" class="inputValue" placeholder="Ex. Ibufrofen"
+                                    name="addPresciptionName[]">
+                            </div>
+                            <div class="p2">
+                                <label for="addPresciptionBrand" class="labelForm">Medicine Brand <span
+                                        class="asterisk">*</span></label>
+                                <input autocomplete="off" id="addPresciptionBrand" class="inputValue" placeholder="Ex. Advil"
+                                    name="addPresciptionBrand[]">
+                            </div>
+        
+                        </div>
+                        <div class="nameAndBrand">
+                            <div class="p1">
+                                <label for="addPresciptionCount" class="labelForm">Quantity<span
+                                        class="asterisk">*</span></label>
+                                <input type="number" id="addPresciptionCount" class="inputValue" name="addPresciptionCount[]"
+                                    min="0" value="">
+        
+                            </div>
+                            <div class="p2">
+                                <label for="medicineDosagePrescribe" class="labelForm">Dosage <span
+                                        class="asterisk">*</span></label>
+                                <div class="dosageContainer">
+                                    <input autocomplete="off" name="addDosage[]" style="display:none;" id="dosageValuePrescribe"
+                                        value="ML" />
+                                    <input type="number" id="medicineDosagePrescribe" name="addmedicineDosagePrescribe[]"
+                                        class="inputValue" value="" min="0">
+                                    <span class="caretDosage" id="sortCarretDosagePrescribe"
+                                        onclick="toggleDosageOptions(this)"><span id="dosageTypePrescribe">ML</span> <i
+                                            class="fa-solid fa-caret-down sortCarretDosagePrescribe"></i></span>
+                                    <div class="dosageOptions1" id="dosageOptionsPrescribe">
+                                        <span>ML</span>
+                                        <span>MG</span>
+                                    </div>
+                                    <div class="cancelMedicinePrescribe"
+                                        onclick="removeDiv(this.parentNode.parentNode.parentNode.parentNode)">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </div>
+                                </div>
+                            </div>
+        
+                        </div>
+                    </div>
     </section>
 </body>
 

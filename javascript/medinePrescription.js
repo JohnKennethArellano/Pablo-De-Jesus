@@ -321,3 +321,5 @@ function viewNotificationContainer(event) {
   notificationContainer.classList.toggle("hidden");
   event.target.classList.toggle("showContainer");
 }
+
+
