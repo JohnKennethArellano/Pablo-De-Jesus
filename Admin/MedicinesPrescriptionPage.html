@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../css/medicine.css">
     <script src="../javascript/medicinePrescription.js" defer></script>
     <script src="../javascript/sweetalert2.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js" defer></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.4.6/jspdf.plugin.autotable.min.js"></script>
     <link rel="website icon" type="png " href="../images/logo.png">
     <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
     <title>Medicine</title>
@@ -119,6 +122,8 @@
                         <input autocomplete="off" placeholder="Search" id="search" spellcheck="false">
                         <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                     </div>
+                    <button id="pdfPrint" onclick="printPdf()"><span>PDF</span><i class="fa-solid fa-file-pdf"></i></button>
+                    <button id="excelfPrint" onclick="exportToExcel()"><span>Excel</span><i class="fa-solid fa-file-excel"></i></button>
                     <button id="addPrescription" onclick= "addPrescription()"><span>Prescription</span> <i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>

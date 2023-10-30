@@ -479,3 +479,102 @@ function toggleDosageOptions(spanElement) {
     sortCarretDosagePrescribe.style.transform = "";
   }
 }
+// function printPdf() {
+//   var appointmentContainer = document.querySelector("#containerBody");
+
+//   const htmlCode = `<link rel="stylesheet" href="../css/medicine.css">
+//     <link rel="stylesheet" href="../css/admin.css">
+//     <table id="appointmentContainer">${appointmentContainer.innerHTML}</table>`;
+
+//   const new_window = window.open();
+//   new_window.document.write(htmlCode);
+//   new_window.document.close();
+//   setTimeout(() => {
+//     new_window.print();
+//     new_window.close();
+//   }, 2000);
+// }
+function exportToExcel() {
+  const rowsToExport = document.querySelectorAll(".medicineInformations");
+  const data = [];
+
+  rowsToExport.forEach((row) => {
+    const nameElement = row.querySelector(
+      ".patientNamePrescribe #patientNamePrescribeOriginal"
+    );
+    const nameValue = nameElement ? nameElement.innerText : "";
+
+    const prescribeBy = row.querySelector("#issuedByOriginal");
+    const prescribeByValue = prescribeBy ? prescribeBy.innerText : "";
+
+    const timeTable = row.querySelector(".dateIssued #medicineBrand");
+    const time = timeTable ? timeTable.innerText : "";
+
+    const prescribeInfo = row.querySelector(
+      ".prescribeInfo #medicineinfosOriginal"
+    );
+    const service = prescribeInfo ? prescribeInfo.innerText : "";
+
+    const statusTable = row.querySelector(".statusTable #statusTable");
+    const status = statusTable ? statusTable.innerText : "";
+
+    data.push([nameValue, prescribeByValue, time, service]);
+  });
+
+  const ws = XLSX.utils.aoa_to_sheet(data);
+
+  const customColumnWidths = [30, 25, 20, 40];
+
+  ws["!cols"] = customColumnWidths.map((width) => ({ wch: width }));
+
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Data");
+
+  const date = new Date();
+  const fileName = "table_data_" + date.toISOString().split("T")[0] + ".xlsx";
+  XLSX.writeFile(wb, fileName);
+}
+
+function printPdf() {
+  const pdf = new jsPDF("portrait"); // Create a PDF in portrait orientation
+
+  const rowsToExport = document.querySelectorAll(".medicineInformations");
+
+  let data = [];
+
+  for (const row of rowsToExport) {
+    const nameElement = row.querySelector(
+      ".patientNamePrescribe #patientNamePrescribeOriginal"
+    );
+    const nameValue = nameElement ? nameElement.innerText : "";
+
+    const prescribeBy = row.querySelector("#issuedByOriginal");
+    const prescribeByValue = prescribeBy ? prescribeBy.innerText : "";
+
+    const timeTable = row.querySelector(".dateIssued #medicineBrand");
+    const time = timeTable ? timeTable.innerText : "";
+
+    const prescribeInfo = row.querySelector(
+      ".prescribeInfo #medicineinfosOriginal"
+    );
+    const service = prescribeInfo ? prescribeInfo.innerText : "";
+
+    data.push([nameValue, prescribeByValue, time, service]);
+  }
+
+  pdf.autoTable({
+    head: [["Name", "Issued By", "Date Issued", "Info"]],
+    body: data,
+    theme: "striped",
+    startY: 5,
+    pageBreak: 'auto',
+    tableWidth: "wrap",
+    columnStyles: {
+      0: { cellWidth: 40 },
+      1: { cellWidth: 40 },
+      2: { cellWidth: 30 },
+      3: { cellWidth: 72 },
+    },
+  });
+  pdf.save("table_data.pdf");
+}
