@@ -2,7 +2,20 @@ function onload() {
   listeners();
   fetchNotification();
 }
-
+document.addEventListener("DOMContentLoaded", function () {
+  var addClinicForm = document.querySelector("#addClinicForm")
+  document.addEventListener("click", (event) => {
+    if (addClinicForm.classList.contains("showElement")) {
+      if (
+        event.target === addClinicForm ||
+        addClinicForm.contains(event.target)
+      ) {
+        return;
+      }
+      addClinicForm.classList.remove("showElement");
+    }
+  });
+});
 var formBg = document.getElementById("formBg");
 
 formBg.addEventListener("click", () => {

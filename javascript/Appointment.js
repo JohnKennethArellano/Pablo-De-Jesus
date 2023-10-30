@@ -446,32 +446,36 @@ function exportToExcel() {
   const data = [];
 
   rowsToExport.forEach((row) => {
-      const numberTable = row.querySelector(".numberTable #numberTable");
-      const number = numberTable ? numberTable.innerText : "";
+    const numberTable = row.querySelector(".numberTable #numberTable");
+    const number = numberTable ? numberTable.innerText : "";
 
-      const nameElement = row.querySelector(".nameTable #patientNameOriginalValue");
-      const name = nameElement ? nameElement.innerText : "";
+    const nameElement = row.querySelector(
+      ".nameTable #patientNameOriginalValue"
+    );
+    const name = nameElement ? nameElement.innerText : "";
 
-      const dateTable = row.querySelector(".dateTable #dateTable");
-      const date = dateTable ? dateTable.innerText : "";
+    const dateTable = row.querySelector(".dateTable #dateTable");
+    const date = dateTable ? dateTable.innerText : "";
 
-      const timeTable = row.querySelector(".timeTable #timeTable");
-      const time = timeTable ? timeTable.innerText : "";
+    const timeTable = row.querySelector(".timeTable #timeTable");
+    const time = timeTable ? timeTable.innerText : "";
 
-      const serviceTable = row.querySelector(".serviceTable #serviceTableOriginalValue");
-      const service = serviceTable ? serviceTable.innerText : "";
+    const serviceTable = row.querySelector(
+      ".serviceTable #serviceTableOriginalValue"
+    );
+    const service = serviceTable ? serviceTable.innerText : "";
 
-      const statusTable = row.querySelector(".statusTable #statusTable");
-      const status = statusTable ? statusTable.innerText : "";
+    const statusTable = row.querySelector(".statusTable #statusTable");
+    const status = statusTable ? statusTable.innerText : "";
 
-      data.push([number, name, date, time, service, status]);
+    data.push([number, name, date, time, service, status]);
   });
 
   const ws = XLSX.utils.aoa_to_sheet(data);
 
   const customColumnWidths = [7, 25, 20, 20, 30, 20];
 
-  ws['!cols'] = customColumnWidths.map((width) => ({ wch: width }));
+  ws["!cols"] = customColumnWidths.map((width) => ({ wch: width }));
 
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, "Data");
@@ -480,4 +484,3 @@ function exportToExcel() {
   const fileName = "table_data_" + date.toISOString().split("T")[0] + ".xlsx";
   XLSX.writeFile(wb, fileName);
 }
-
