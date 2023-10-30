@@ -940,8 +940,6 @@ function viewNotificationContainer(event) {
 function exportToExcel() {
   const rowsToExport = document.querySelectorAll(".tableRow");
   const data = [];
-  const headers = ["Name", "Position", "Contact Number", "Email Address"];
-  data.push(headers);
   rowsToExport.forEach((row) => {
     const nameElement = row.querySelector(".staffTable #patientNameOriginalValue");
     const nameValue = nameElement ? nameElement.innerText : "";
