@@ -447,56 +447,64 @@ function listeners() {
   var updatePhotoForm = document.querySelector("#updatePhotoForm"),
     updatePhoto = document.querySelector("#updatePhoto");
 
-  updatePhoto.addEventListener("click", () => {
-    fileInput = document.querySelector("#fileInput").value;
-    console.log(fileInput);
-    if (fileInput != "") {
-      Swal.fire({
-        title: "Update avatar?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#73E977",
-        cancelButtonColor: "#fa6363",
-        confirmButtonText: "Confirm",
-      }).then(() => {
+    updatePhoto.addEventListener("click", () => {
+      fileInput = document.querySelector("#fileInput").value;
+      console.log(fileInput);
+      if (fileInput !== "") {
         Swal.fire({
-          icon: "success",
-          title: "Avatar changed",
-          showConfirmButton: false,
-          timer: 2000,
-        }).then(() => {
-          updatePhotoForm.submit();
+          title: "Update avatar?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#73E977",
+          cancelButtonColor: "#fa6363",
+          confirmButtonText: "Confirm",
+          cancelButtonText: "Cancel", 
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              icon: "success",
+              title: "Avatar changed",
+              showConfirmButton: false,
+              timer: 2000,
+            }).then(() => {
+              updatePhotoForm.submit();
+            });
+          }
         });
-      });
-    }
-  });
+      }
+    });
+    
 
   var updateSignatureForm = document.querySelector("#updateSignatureForm"),
     updateSignature = document.querySelector("#updateSignature");
 
-  updateSignature.addEventListener("click", () => {
-    fileInput = document.querySelector("#fileInput1").value;
-    console.log(fileInput);
-    if (fileInput != "") {
-      Swal.fire({
-        title: "Update signature?",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#73E977",
-        cancelButtonColor: "#fa6363",
-        confirmButtonText: "Confirm",
-      }).then(() => {
+    updateSignature.addEventListener("click", () => {
+      fileInput = document.querySelector("#fileInput1").value;
+      console.log(fileInput);
+      if (fileInput !== "") {
         Swal.fire({
-          icon: "success",
-          title: "Signature changed",
-          showConfirmButton: false,
-          timer: 2000,
-        }).then(() => {
-          updateSignatureForm.submit();
+          title: "Update signature?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#73E977",
+          cancelButtonColor: "#fa6363",
+          confirmButtonText: "Confirm",
+          cancelButtonText: "Cancel",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire({
+              icon: "success",
+              title: "Signature changed",
+              showConfirmButton: false,
+              timer: 2000,
+            }).then(() => {
+              updateSignatureForm.submit();
+            });
+          }
         });
-      });
-    }
-  });
+      }
+    });
+    
   const navButton1 = document.querySelector("#navButton"),
     navButton2 = document.querySelector("#navButton1"),
     basicInfos = document.querySelector("#form1"),
