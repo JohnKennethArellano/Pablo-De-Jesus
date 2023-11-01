@@ -44,6 +44,7 @@
     0px 1px 9px rgba(3, 7, 18, 0.05),
     0px 2px 15px rgba(3, 7, 18, 0.03),
     0px 3px 24px rgba(3, 7, 18, 0.02);
+    transition: all ease .3s ;
 }
 .rightSide{
     position: relative;
@@ -73,11 +74,31 @@
     overflow: hidden;
     border: solid 1px lightgray;
     background-color: var(--white);
+    transition: all ease .3s ;
+}
+.signatureHolder{
+    position: relative;
+    width: 18vw;
+    height: 13vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:1vw;
+    overflow: hidden;
+    border: solid 1px lightgray;
+    background-color: var(--white);
+    transition: all ease .3s ;
 }
 #preview{
     position: relative;
     flex-shrink: 0;
     width: 100%;
+}
+#preview1{
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    object-fit: contain;
 }
 #uploadImg{
     position: absolute;
@@ -104,6 +125,33 @@
     0px 3px 24px rgba(3, 7, 18, 0.02);
 }
 #uploadImg:hover{
+    background-color: var(--lightgray);
+}
+#uploadSignature{
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 1vh;
+    right: 1vh;
+    border: none;
+    outline: none;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: var(--small);
+    color: var(--darkgray);
+    background-color: lightgray;
+    transition: all ease .3s;
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+}
+#uploadSignature:hover{
     background-color: var(--lightgray);
 }
 .namePreview{

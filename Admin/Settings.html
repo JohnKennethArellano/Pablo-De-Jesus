@@ -121,7 +121,7 @@
                         <div class="previewPosition" id="previewPosition"></div>
 
                         <!-- form for update pic only -->
-                        <form action="" id="updatePhotoForm">
+                        <form action="" id="updatePhotoForm" class="photoForm ">
                             <div class="imgHolderStaff" id="dropArea" ondrop="handleDrop(event)"
                                 ondragover="handleDragOver(event)">
                                 <label for="fileInput" id="uploadImg"><i class="fa-solid fa-camera"></i></label>
@@ -130,6 +130,17 @@
                             </div>
                             <div class="uploadPhoto">
                                 <button type="button" id="updatePhoto">Update avatar</button>
+                            </div>
+                        </form>
+                        <form action="" id="updateSignatureForm" class="photoForm hidden">
+                            <div class="signatureHolder" id="dropArea1" ondrop="handleDrop1(event)"
+                                ondragover="handleDragOver(event)">
+                                <label for="fileInput1" id="uploadSignature"><i class="fa-solid fa-camera"></i></label>
+                                <input type="file" id="fileInput1" onchange="previewImage1(event)">
+                                <img id="preview1" src="../images/E-signature.png" alt="">
+                            </div>
+                            <div class="uploadPhoto">
+                                <button type="button" id="updateSignature">Update signature</button>
                             </div>
                         </form>
 
@@ -142,9 +153,9 @@
                     <div class="rightSide">
                         <div class="settingsNavBar">
                             <span class="navButtons active" id="navButton">Basic</span>
-                            <span class="navButtons" id="navButton1">Others</span>
+                            <span class="navButtons " id="navButton1">Others</span>
                         </div>
-                        <form action="" class="formContainer" id="form1">
+                        <form action="" class="formContainer " id="form1">
                             <div class="inputsContainer">
                                 <div class="input">
                                     <label for="firstName" class="formLabel">First name </label>

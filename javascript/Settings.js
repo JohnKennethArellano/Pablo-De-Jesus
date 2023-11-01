@@ -443,18 +443,11 @@ function listeners() {
         );
       });
     });
-  const navButton1 = document.querySelector("#navButton"),
-    navButton2 = document.querySelector("#navButton1"),
-    basicInfos = document.querySelector("#form1"),
-    otherInfos = document.querySelector("#form2");
-
-  switchForm(navButton2, navButton1, otherInfos, basicInfos);
-  switchForm(navButton1, navButton2, basicInfos, otherInfos);
 
   var updatePhotoForm = document.querySelector("#updatePhotoForm"),
     updatePhoto = document.querySelector("#updatePhoto");
 
-  updatePhoto.addEventListener("click", (e) => {
+  updatePhoto.addEventListener("click", () => {
     fileInput = document.querySelector("#fileInput").value;
     console.log(fileInput);
     if (fileInput != "") {
@@ -477,6 +470,40 @@ function listeners() {
       });
     }
   });
+
+  var updateSignatureForm = document.querySelector("#updateSignatureForm"),
+    updateSignature = document.querySelector("#updateSignature");
+
+  updateSignature.addEventListener("click", () => {
+    fileInput = document.querySelector("#fileInput1").value;
+    console.log(fileInput);
+    if (fileInput != "") {
+      Swal.fire({
+        title: "Update signature?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#73E977",
+        cancelButtonColor: "#fa6363",
+        confirmButtonText: "Confirm",
+      }).then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Signature changed",
+          showConfirmButton: false,
+          timer: 2000,
+        }).then(() => {
+          updateSignatureForm.submit();
+        });
+      });
+    }
+  });
+  const navButton1 = document.querySelector("#navButton"),
+    navButton2 = document.querySelector("#navButton1"),
+    basicInfos = document.querySelector("#form1"),
+    otherInfos = document.querySelector("#form2");
+
+  switchForm(navButton2, navButton1, otherInfos, basicInfos,updatePhotoForm,updateSignatureForm);
+  switchForm(navButton1, navButton2, basicInfos, otherInfos,updateSignatureForm,updatePhotoForm);
 }
 function previewImage(event) {
   var fileInput = event.target;
@@ -485,6 +512,24 @@ function previewImage(event) {
   if (file) {
     if (validateFileType(file) && validateFileSize(file)) {
       previewFile(file);
+    } else {
+      Swal.fire({
+        text: "Please select a JPEG, JPG, or PNG file under 5MB.",
+        icon: "warning",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+      fileInput.value = "";
+    }
+  }
+}
+function previewImage1(event) {
+  var fileInput = event.target;
+  var file = fileInput.files[0];
+
+  if (file) {
+    if (validateFileType(file) && validateFileSize(file)) {
+      previewFile1(file);
     } else {
       Swal.fire({
         text: "Please select a JPEG, JPG, or PNG file under 5MB.",
@@ -512,6 +557,22 @@ function handleDrop(event) {
     });
   }
 }
+function handleDrop1(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  var file = event.dataTransfer.files[0];
+  if (validateFileType(file) && validateFileSize(file)) {
+    previewFile1(file);
+  } else {
+    Swal.fire({
+      text: "Drop a JPEG, JPG, or PNG file under 5MB.",
+      icon: "warning",
+      timer: 2000,
+      showConfirmButton: false,
+    });
+  }
+}
 function handleDragOver(event) {
   event.preventDefault();
   event.stopPropagation();
@@ -526,6 +587,16 @@ function previewFile(file) {
 
   reader.readAsDataURL(file);
 }
+function previewFile1(file) {
+  var reader = new FileReader();
+
+  reader.onload = function (e) {
+    var previewImage = document.getElementById("preview1");
+    previewImage.src = e.target.result;
+  };
+
+  reader.readAsDataURL(file);
+}
 function validateFileType(file) {
   var allowedExtensions = /(\.jpeg|\.jpg|\.png)$/i;
   return allowedExtensions.exec(file.name);
@@ -534,6 +605,7 @@ function validateFileSize(file) {
   var maxSizeInBytes = 5 * 1024 * 1024;
   return file.size <= maxSizeInBytes;
 }
+
 function showError(input, message) {
   parentElem = input.parentElement;
   errorMes = parentElem.querySelector(".errorMessage");
@@ -627,12 +699,21 @@ function hasUppercaseLetter(passwordValue) {
 
   return false;
 }
-function switchForm(button1, button2, formsShow, formHide) {
+function switchForm(
+  button1,
+  button2,
+  formsShow,
+  formHide,
+  pictureForm1,
+  pictureForm2
+) {
   button1.addEventListener("click", () => {
     button2.classList.remove("active");
     button1.classList.add("active");
     formHide.classList.add("hidden");
     formsShow.classList.remove("hidden");
+    pictureForm1.classList.add("hidden");
+    pictureForm2.classList.remove("hidden");
   });
 }
 function selectStatus(event) {
