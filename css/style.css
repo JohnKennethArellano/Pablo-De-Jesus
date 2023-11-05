@@ -1926,21 +1926,12 @@ footer{
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 40vh;
+    height: 30vh;
     background-color: var(--white);
-    padding-top: 2vh;
-}
-.bgHolderFooter{
-    width: 100%;
-    overflow: hidden;
-}
-.bgHolderFooter img{
-    width: 100%;
 }
 .footerContent{
     width: 100%;
-    height: 25vh;
-    background-color: var(--blue);
+    height: 100%;
     display: flex;
     justify-content: center;
 }
@@ -1952,10 +1943,11 @@ footer{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 2vw;
+
 }
 .footerSection img{
-    width: 8vw;
+    width: 10vw;
+    margin-bottom:1vw;
 }
 .textHolderFooter{
     width: 100%;
@@ -1963,10 +1955,10 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--blue);
 }
 .textHolderFooter a {
     text-decoration: none;
-    color: var(--white);
+    color: var(--blue);
     padding: 0 1vw;
 }

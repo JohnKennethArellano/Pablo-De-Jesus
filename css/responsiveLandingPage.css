@@ -577,6 +577,7 @@
         height: 20vh;
         background-color: var(--white);
         padding-top: 1vh;
+        color: var(--blue);
     }
     .footerSection{
         width: 50%;
