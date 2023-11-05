@@ -406,6 +406,7 @@
     height: 7vw;
     overflow: hidden;
     border-radius: 50%;
+    background-color: var(--white);
 }
 
 .staffImgHolder img {

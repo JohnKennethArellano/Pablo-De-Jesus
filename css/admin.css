@@ -56,7 +56,7 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 80;
+    z-index: 82;
     border: solid 1px var(--lightgray);
     pointer-events: none;
 }
