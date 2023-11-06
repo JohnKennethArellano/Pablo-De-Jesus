@@ -844,7 +844,7 @@ button{
 
 
 /* Header PDF */
-.headerHolderPdf{
+/* .headerHolderPdf{
     width: 100%;
     height: fit-content;
     display: flex;
@@ -874,4 +874,4 @@ button{
 }
 .clinicPdf:last-child{
     font-size: 1.3vw;
-}
+} */
