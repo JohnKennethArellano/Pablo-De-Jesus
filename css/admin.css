@@ -841,3 +841,37 @@ button{
     flex-wrap: wrap;
 
 }
+
+
+/* Header PDF */
+.headerHolderPdf{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imgHolderPdf{
+    width: 7vw;
+    height: 7vw;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1vw;
+}
+.imgHolderPdf img{
+    width: 100%;
+    height: 100%;
+    flex-grow: 0;
+}
+.clinicNamePdf{
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.clinicPdf:first-child{
+    font-size: 2vw;
+}
+.clinicPdf:last-child{
+    font-size: 1.3vw;
+}

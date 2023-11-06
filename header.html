@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .headerHolderPdf{
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: aliceblue;
+        }
+        .imgHolderPdf{
+            width: 7vw;
+            height: 7vw;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1vw;
+        }
+        .imgHolderPdf img{
+            width: 100%;
+            height: 100%;
+            flex-grow: 0;
+        }
+        .clinicNamePdf{
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .clinicPdf:first-child{
+            font-size: 2vw;
+        }
+        .clinicPdf:last-child{
+            font-size: 1.3vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="headerHolderPdf">
+        <div class="imgHolderPdf">
+            <img src="../images/logo.png" alt="">
+        </div>
+        <div class="clinicNamePdf">
+            <div class="clinicPdf" id="clinicPdf1">Pablo De Jesus</div>
+            <div class="clinicPdf" id="clinicPdf2">Dental Clinic</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -941,7 +941,9 @@ function exportToExcel() {
   const rowsToExport = document.querySelectorAll(".tableRow");
   const data = [];
   rowsToExport.forEach((row) => {
-    const nameElement = row.querySelector(".staffTable #patientNameOriginalValue");
+    const nameElement = row.querySelector(
+      ".staffTable #patientNameOriginalValue"
+    );
     const nameValue = nameElement ? nameElement.innerText : "";
 
     const positionTable = row.querySelector(".positionTable #position");
@@ -953,9 +955,7 @@ function exportToExcel() {
     const emailTable = row.querySelector(".emailTable #emailAddress");
     const emailAddress = emailTable ? emailTable.innerText : "";
 
-
-
-    data.push([nameValue, position, contactNumber,emailAddress ]);
+    data.push([nameValue, position, contactNumber, emailAddress]);
   });
 
   const ws = XLSX.utils.aoa_to_sheet(data);
@@ -975,7 +975,9 @@ function printPdf() {
   const rowsToExport = document.querySelectorAll(".tableRow");
   const data = [];
   rowsToExport.forEach((row) => {
-    const nameElement = row.querySelector(".staffTable #patientNameOriginalValue");
+    const nameElement = row.querySelector(
+      ".staffTable #patientNameOriginalValue"
+    );
     const nameValue = nameElement ? nameElement.innerText : "";
 
     const positionTable = row.querySelector(".positionTable #position");
@@ -986,14 +988,14 @@ function printPdf() {
 
     const emailTable = row.querySelector(".emailTable #emailAddress");
     const emailAddress = emailTable ? emailTable.innerText : "";
-    data.push([nameValue, position, contactNumber,emailAddress ]);
+    data.push([nameValue, position, contactNumber, emailAddress]);
   });
 
   pdf.autoTable({
     head: [["Name", "Position", "Contact no.", "Email"]],
     body: data,
     theme: "striped",
-    startY: 5,
+    startY: 40,
     pageBreak: "auto",
     tableWidth: "wrap",
     headStyles: { halign: "center", valign: "middle" },
@@ -1005,7 +1007,20 @@ function printPdf() {
       3: { cellWidth: 72 },
     },
   });
-  pdf.save("Staff" + getCurrentDateTime() + ".pdf");
+  const img = new Image();
+  img.src = "../images/logo.png";
+  img.onload = () => {
+    pdf.addImage(img, "png", 65, 2, 30, 30);
+
+    pdf.setFontSize(20);
+    pdf.setTextColor(33, 150, 243);
+    pdf.text("Pablo De Jesus", 95, 16);
+    pdf.setFontSize(14);
+    pdf.text("Dental Clinic", 95, 24);
+    pdf.setFontSize(10);
+    pdf.text("Generated on " + formatDateTime(), 80, 33);
+    pdf.save("Staff" + getCurrentDateTime() + ".pdf");
+  };
 }
 function getCurrentDateTime() {
   const currentDate = new Date();
@@ -1019,6 +1034,21 @@ function getCurrentDateTime() {
   const seconds = currentDate.getSeconds();
 
   const currentDateTime = `${year}${month}${day}${hours}${minutes}${seconds}`;
+
+  return currentDateTime;
+}
+function formatDateTime() {
+  const currentDate = new Date();
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+
+  const hours = currentDate.getHours();
+  const minutes = currentDate.getMinutes();
+  const seconds = currentDate.getSeconds();
+
+  const currentDateTime = `${year}:${month}:${day} ${hours}:${minutes}:${seconds}`;
 
   return currentDateTime;
 }
