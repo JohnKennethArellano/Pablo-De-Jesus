@@ -379,6 +379,7 @@
     justify-content: space-between;
 }
 .inputHolder3 .nameAndBrand .p1,.inputHolder3 .nameAndBrand .p2{
+    position: relative;
     width: 49% !important;
 }
 .medicineTypeContainer .medicineTypeHolder{
@@ -1130,4 +1131,34 @@
 }
 .hidden{
     display: none;
+}
+
+/* additional */
+.prescribeOtherMedicines{
+    position: absolute;
+    z-index: 2;
+    margin-top: .5vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+}
+.prescribeOtherMedicines span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border: solid 1px var(--lightgray);
+    border-width: 0 0 1px 0;
+    font-size: var(--medium);
+    padding: .5vw 0;
+    transition: all ease .3s;
+    cursor:  pointer;
+}
+.prescribeOtherMedicines span:hover{
+    background-color: var(--lightgray);
 }

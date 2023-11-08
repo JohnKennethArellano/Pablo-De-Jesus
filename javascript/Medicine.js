@@ -6,25 +6,25 @@ function onload() {
 function listeners() {
   const links = document.querySelectorAll(".links");
   links.forEach((link) => {
-      const tooltipText = link.getAttribute("data-tooltip");
+    const tooltipText = link.getAttribute("data-tooltip");
 
-      const tooltip = document.createElement("div");
-      tooltip.classList.add("tooltip");
-      tooltip.textContent = tooltipText;
+    const tooltip = document.createElement("div");
+    tooltip.classList.add("tooltip");
+    tooltip.textContent = tooltipText;
 
-      link.appendChild(tooltip);
+    link.appendChild(tooltip);
   });
-      var profileExpand = document.querySelector('#profileExpand');
-    var logoutHolder = document.querySelector('#logoutHolder');
-    var logoutHolderOptions = document.querySelectorAll('.logoutHolder span');
-    profileExpand.addEventListener("click", ()=>{
-      logoutHolder.classList.toggle("hidden");
-      logoutHolderOptions.forEach((action)=>{
-        action.addEventListener("click", ()=>{
-          logoutHolder.classList.add("hidden")
-        })
-      })
-    })
+  var profileExpand = document.querySelector("#profileExpand");
+  var logoutHolder = document.querySelector("#logoutHolder");
+  var logoutHolderOptions = document.querySelectorAll(".logoutHolder span");
+  profileExpand.addEventListener("click", () => {
+    logoutHolder.classList.toggle("hidden");
+    logoutHolderOptions.forEach((action) => {
+      action.addEventListener("click", () => {
+        logoutHolder.classList.add("hidden");
+      });
+    });
+  });
   const containerBody = document.querySelector("#containerBody");
   const medicineTypeTemplate = document.querySelector("#medicineTypeTemplate");
   const medicineOnlyTemplate = document.querySelector("#medicineOnlyTemplate");
@@ -36,7 +36,7 @@ function listeners() {
     const clone = document.importNode(templateMedicineType.content, true);
     containerBody.appendChild(clone);
   }
-  fetch("https://run.mocky.io/v3/44c2645c-62f4-41c9-8a01-eca47e9c00f6")
+  fetch("../JSON/medicine.json")
     .then((response) => response.json())
     .then((data) => {
       updateDisplay("", data);
@@ -244,7 +244,6 @@ function listeners() {
         }
       });
     });
-
     //edit Medicine Form
     var editMedicineForm = document.querySelector("#editMedicineForm");
     var editMedicine = document.querySelectorAll(".editMedicine");
@@ -583,15 +582,23 @@ function listeners() {
 
     prescribeMedicine.forEach((edit) => {
       edit.addEventListener("click", function () {
-        var medicineName = this.closest(".medicines").querySelector("#medicineName").innerText;
-        var medicineBrand = this.closest(".medicines").querySelector("#medicineBrand").innerText;
-        var medicineIDOriginal = this.closest(".medicines").querySelector("#medicineIDOriginal").innerText;
+        var medicineName =
+          this.closest(".medicines").querySelector("#medicineName").innerText;
+        var medicineBrand =
+          this.closest(".medicines").querySelector("#medicineBrand").innerText;
+        var medicineIDOriginal = this.closest(".medicines").querySelector(
+          "#medicineIDOriginal"
+        ).innerText;
         var mgMl = this.closest(".medicines").querySelector("#mgML").innerText;
 
-        prescribeMedicineForm.querySelector("#medicineNamePrescribe").value = medicineName;
-        prescribeMedicineForm.querySelector("#dosageTypePrescribe").innerText = mgMl;
-        prescribeMedicineForm.querySelector("#medicineIdPrescribe").value = medicineIDOriginal;
-        prescribeMedicineForm.querySelector("#medicineBrandPrescribe").value = medicineBrand;
+        prescribeMedicineForm.querySelector("#medicineNamePrescribe").value =
+          medicineName;
+        prescribeMedicineForm.querySelector("#dosageTypePrescribe").innerText =
+          mgMl;
+        prescribeMedicineForm.querySelector("#medicineIdPrescribe").value =
+          medicineIDOriginal;
+        prescribeMedicineForm.querySelector("#medicineBrandPrescribe").value =
+          medicineBrand;
         prescribeMedicineForm.classList.add("showElement1");
 
         var prescribeMedicineFormSubmit = prescribeMedicineForm.querySelector(
@@ -751,7 +758,6 @@ function listeners() {
           manufacturedDate;
         viewMedicineForm.querySelector("#expirationDateView").value =
           medicineExpirationDate;
-        console.log(medicineName);
         viewMedicineForm.classList.add("showElement1");
 
         var cancelButton = viewMedicineForm.querySelector(
@@ -1066,6 +1072,11 @@ function cloneDiv() {
 
   // Add the cloned div to the form
   document.getElementById("addedMedicinePrescription").appendChild(cloneDiv);
+
+  var addPresciption = cloneDiv.querySelector("#addPresciption");
+  addPresciption.addEventListener("input", function () {
+    console.log(this.value);
+  });
 }
 
 function toggleDosageOptions(spanElement) {
@@ -1290,14 +1301,14 @@ function truncateText(element, limit) {
 }
 function viewNotification(event) {
   var url = event.currentTarget.querySelector("#urlRedirect").textContent;
-  window.location.href ="../Admin" + url;
+  window.location.href = "../Admin" + url;
 }
 
-async function fetchNotification(){
-  const container = document.querySelector("#allNotification")
-  const loader = document.querySelector("#notificationLoader")
-  const mainContainer = document.querySelector("#notificationMainTemplate")
-  const nodatafound = document.querySelector("#no-notifications")
+async function fetchNotification() {
+  const container = document.querySelector("#allNotification");
+  const loader = document.querySelector("#notificationLoader");
+  const mainContainer = document.querySelector("#notificationMainTemplate");
+  const nodatafound = document.querySelector("#no-notifications");
   try {
     for (let i = 0; i < 5; i++) {
       const clone = document.importNode(loader.content, true);
@@ -1305,7 +1316,7 @@ async function fetchNotification(){
     }
     const response = await fetch("../JSON/notification.json");
     const data = await response.json();
-    console.log( data);
+    console.log(data);
 
     function filterData(data, searchTerm) {
       searchTerm = searchTerm ? searchTerm.toLowerCase() : "";
@@ -1314,10 +1325,7 @@ async function fetchNotification(){
       for (const notifs of data.notification) {
         const title = notifs.title.toLowerCase();
         const text = notifs.text.toLowerCase();
-        if (
-          title.includes(searchTerm) ||
-          text.includes(searchTerm)
-        ) {
+        if (title.includes(searchTerm) || text.includes(searchTerm)) {
           filteredData.push(notifs);
         }
       }
@@ -1332,7 +1340,7 @@ async function fetchNotification(){
         const clone = document.importNode(nodatafound.content, true);
         container.appendChild(clone);
       } else {
-        let hasUnreadNotifications = false; 
+        let hasUnreadNotifications = false;
         filteredData.sort((a, b) => {
           if (a.status === b.status) {
             return 0;
@@ -1342,14 +1350,14 @@ async function fetchNotification(){
         filteredData.forEach((item) => {
           const clone = document.importNode(mainContainer.content, true);
 
-          var notificationStatus = item.status
+          var notificationStatus = item.status;
 
-          if(notificationStatus === false){
-            clone.querySelector(".notif").classList.add("unread")
+          if (notificationStatus === false) {
+            clone.querySelector(".notif").classList.add("unread");
             const notifDot = document.createElement("div");
             notifDot.classList.add("notifDot");
             clone.querySelector(".notif").appendChild(notifDot);
-            hasUnreadNotifications = true; 
+            hasUnreadNotifications = true;
           }
           clone.querySelector("#imgNotif").src = "../images/" + item.image;
           clone.querySelector("#notificationTitle").innerHTML = highlightText(
@@ -1365,10 +1373,9 @@ async function fetchNotification(){
         });
         const notificationDots = document.querySelector(".notification-dot");
         if (!hasUnreadNotifications) {
-          notificationDots.classList.add("hidden")
-        }
-        else{
-          notificationDots.classList.remove("hidden")
+          notificationDots.classList.add("hidden");
+        } else {
+          notificationDots.classList.remove("hidden");
         }
       }
     }
@@ -1378,7 +1385,10 @@ async function fetchNotification(){
       }
 
       const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, "gi");
-      return text.replace(regex, (match) => `<p class="highlight">${match}</p>`);
+      return text.replace(
+        regex,
+        (match) => `<p class="highlight">${match}</p>`
+      );
     }
 
     function escapeRegExp(string) {
@@ -1390,15 +1400,13 @@ async function fetchNotification(){
     search.addEventListener("input", function () {
       updateDisplay(this.value);
     });
-  }
-  catch (error) {
+  } catch (error) {
     console.error("An error occurred:", error);
   }
-
 }
 function viewNotificationContainer(event) {
   var parent = event.target.parentElement;
   var notificationContainer = parent.querySelector(".notificationContainer");
   notificationContainer.classList.toggle("hidden");
-  event.target.classList.toggle("showContainer")
+  event.target.classList.toggle("showContainer");
 }

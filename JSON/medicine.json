@@ -1,0 +1,34 @@
+{
+  "Analgesic": {
+    "Ibuprofen": [
+      {
+        "medicineType": "Capsule",
+        "medicineBrand": "Advil",
+        "medicineId": "ADV-2",
+        "medicineName": "Ibuprofen",
+        "medicineCount": 30,
+        "medicineDosage": "15",
+        "mgOrml": "ML",
+        "manufacturedDate": "2023-10-30",
+        "expirationDate": "2024-11-03",
+        "lowStockValue": 20,
+        "description": "Pain Reliever"
+      }
+    ],
+    "Aspirin": [
+      {
+        "medicineType": "Tablet",
+        "medicineBrand": "Zorprin",
+        "medicineId": "ASP-3",
+        "medicineName": "Aspirin",
+        "medicineCount": 30,
+        "medicineDosage": "15",
+        "mgOrml": "ML",
+        "manufacturedDate": "2023-01-17",
+        "expirationDate": "2026-10-22",
+        "lowStockValue": 10,
+        "description": "Pain reliever"
+      }
+    ]
+  }
+}

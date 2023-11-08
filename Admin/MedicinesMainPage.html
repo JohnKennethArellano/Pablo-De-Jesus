@@ -437,16 +437,21 @@
                 </form>
             </div>
             <!-- add oter medicine -->
-            <div class="inputHolder3 hidden" id="medicinePrescribeClone" disabled>
-
+            <div class="inputHolder3 hidden" id="medicinePrescribeClone">
                 <div class="nameAndBrand">
                     <div class="p1">
                         <label for="addPresciption" class="labelForm">Medicine Name <span
                                 class="asterisk">*</span></label>
-                        <input autocomplete="off" id="addPresciption" class="inputValue" placeholder="Ex. Ibufrofen"
+                        <input autocomplete="off" id="addPresciption" class="inputValue addPresciption" placeholder="Ex. Ibufrofen"
                             name="addPresciptionName[]">
+                        <div class="prescribeOtherMedicines">
+                        </div>
                     </div>
                     <div class="p2">
+                        <div class="cancelMedicinePrescribe"
+                        onclick="removeDiv(this.parentNode.parentNode.parentNode.parentNode)">
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
                         <label for="addPresciptionBrand" class="labelForm">Medicine Brand <span
                                 class="asterisk">*</span></label>
                         <input autocomplete="off" id="addPresciptionBrand" class="inputValue" placeholder="Ex. Advil"
@@ -476,10 +481,6 @@
                             <div class="dosageOptions1" id="dosageOptionsPrescribe">
                                 <span>ML</span>
                                 <span>MG</span>
-                            </div>
-                            <div class="cancelMedicinePrescribe"
-                                onclick="removeDiv(this.parentNode.parentNode.parentNode.parentNode)">
-                                <i class="fa-solid fa-xmark"></i>
                             </div>
                         </div>
                     </div>
