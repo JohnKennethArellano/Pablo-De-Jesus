@@ -10,6 +10,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
     <script src="../javascript/Staff.js" defer></script>
     <script src="../javascript/sweetalert2.js" defer></script>
+    <script src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.0.js" defer></script>
+    <script src="../javascript/addressDropdown.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js" defer></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.4.6/jspdf.plugin.autotable.min.js"></script>
@@ -150,9 +152,9 @@
                 </table>
             </div>
         </div>
-        <div class="formContainer hidden" id="formContainer">
+        <div class="formContainer" id="formContainer">
 
-            <form class="formHandler" action="" id="addStaffForm">
+        <form class="formHandler" action="" id="addStaffForm">
                 <div class="progressTracker">
                     <div class="stage">
                         <div class="line" id="line1"></div>
@@ -164,7 +166,7 @@
                     </div>
                 </div>
                 <div class="forms">
-                    <div class="formSection" id="formSection1">
+                    <div class="formSection hidden" id="formSection1">
                         <div class="buttonContainer">
                             <i class="fa-solid fa-xmark" id="cancelButton1"></i>
                             <span>Personal Details</span>
@@ -275,7 +277,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="formSection hidden" id="formSection2">
+                    <div class="formSection " id="formSection2">
                         <div class="buttonContainer">
                             <i class="fa-solid fa-angles-left" id="cancelButton2"></i>
                             <span>Address</span>
@@ -284,21 +286,24 @@
                         <div class="nameContainer">
                             <div class="input2">
                                 <label for="provinceInput" class="formLabel">Province <div class="asterisk"> *</div></label>
-                                <input autocomplete="off" name="province" id="provinceInput" class="addressPicker">
+                                <input autocomplete="off" name="province" id="provinceInput" style="display: none;">
+                                <select class="addressPicker" id="province" onchange="showValue(this, provinceInput)"></select>
                                 <span class="errorPrompt"></span>
                             </div>
                         </div>
                         <div class="nameContainer">
                             <div class="input2">
                                 <label for="cityInput" class="formLabel">City <div class="asterisk"> *</div></label>
-                                <input autocomplete="off" class="addressPicker" name="city" id="cityInput">
+                                <input autocomplete="off"  name="city" id="cityInput" style="display: none;">
+                                <select class="addressPicker" id="city" onchange="showValue(this, cityInput)"></select>
                                 <span class="errorPrompt"></span>
                             </div>
                         </div>
                         <div class="nameContainer">
                             <div class="input2">
                                 <label for="barangayInput" class="formLabel">Barangay <div class="asterisk"> *</div></label>
-                                <input autocomplete="off" class="addressPicker" name="barangay" id="barangayInput">
+                                <input autocomplete="off" name="barangay" id="barangayInput" style="display: none;">
+                                <select class="addressPicker" id="barangay" onchange="showValue(this, barangayInput)"></select>
                                 <span class="errorPrompt"></span>
                             </div>
                         </div>
@@ -316,7 +321,6 @@
 
                     </div>
                 </div>
-            </form>
             <div class="formHandler hidden" id="viewStaffDetails">
                 <div class="view1">
                     <div id="statusController">
@@ -377,6 +381,7 @@
                     <button type="button" id="cancelView">Cancel</button>
                 </div>
             </div>
+        </form>
         </div>
         <!-- No data Found -->
         <template id="no-notifications">
